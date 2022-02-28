@@ -5,4 +5,6 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+//import './slider';
+
 require('./components/Example');

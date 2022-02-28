@@ -6,12 +6,12 @@
 */
 namespace App\Http\Livewire\Paginas;
 
-use Livewire\Component;
+use App\Http\Livewire\AbstractPaginaComponent;
 
-class DashboardComponent extends Component
+class DashboardComponent extends AbstractPaginaComponent
 {
     
-        /*
+    /*
     |--------------------------------------------------------------------------
     |  Features route
     |--------------------------------------------------------------------------
@@ -20,11 +20,11 @@ class DashboardComponent extends Component
     */
 
     public function route(){
-        \Route::get('', static::class)->name('home');
+        \Route::get('', static::class)->name($this->route_name());
     }
 
-    public function render()
+    public function view()
     {
-        return view('livewire.paginas.dashboard-component');
+        return 'livewire.paginas.dashboard-component';
     }
 }

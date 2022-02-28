@@ -37,6 +37,17 @@ final class ListComponent extends TableComponent
 
     /*
     |--------------------------------------------------------------------------
+    |  Features route
+    |--------------------------------------------------------------------------
+    | Rota create do crud, cadastrar um novo registro
+    |
+    */
+    public function getCreateProperty()
+    {
+        return 'admin.office.create';
+    }
+    /*
+    |--------------------------------------------------------------------------
     |  Features query
     |--------------------------------------------------------------------------
     | Inicia a consulta ao banco de dados

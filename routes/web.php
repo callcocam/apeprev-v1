@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Http\Livewire\Paginas\DashboardComponent::class)->name('home');
+Route::get('/home',  function(){
+    return redirect()->to('/');
+})->name('home');
+
 Route::get('/dashboard', function(){
     return redirect()->route('dashboard');
 })->name('admin.dashboard');

@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
  mix
  .js('resources/js/app.js', 'public/js')
+ .js('resources/js/slider.js', 'public/js/slider.js')
  .js('vendor/callcocam/packages-tall/tall-theme/resources/js/app.js', 'public/js/assets')
      .postCss('resources/css/app.css', 'public/css', [
          require('postcss-import'),
