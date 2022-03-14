@@ -71,7 +71,6 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
     |
     */
     public function save(){
-        dd($this->participante);
         $this->validate([
             "participante.name" => ['required'],
             "participante.cracha" => ['required','max:12'],
