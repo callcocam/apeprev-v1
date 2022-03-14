@@ -78,6 +78,7 @@ class EditComponent extends FormComponent
         }
         return [
             Input::make('Name')->rules('required'),
+            Input::make('Slug'),
             Checkbox::make('Permissions')->options($query->pluck("name",'id')->toArray())->rules('required'),
             Radio::make('Special')->options(['no-access','all-access','no-defined'])->rules('required'),
             Radio::make('Status', 'status_id')->status()->lg()

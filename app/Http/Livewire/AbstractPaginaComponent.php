@@ -8,10 +8,11 @@ namespace App\Http\Livewire;
 
 
 use Livewire\{Component, WithPagination};
+use WireUi\Traits\Actions;
 
 abstract class AbstractPaginaComponent extends Component
 {
-    use WithPagination;
+    use WithPagination, Actions;
 
     public $model;
     
@@ -77,11 +78,14 @@ abstract class AbstractPaginaComponent extends Component
     | Label visivel no me menu
     |
     */
-    public function path(){
+    public function path($param=null){
         $path = \Str::replace("-", "/",$this->format_name());
         $path = \Str::replace(".", "/",$path);
         $path = \Str::replace("paginas/", "",$path);
         $path = \Str::replace("/list", "",$path);
+        if($param){
+            $path = \Str::of($path)->append('/{model}');
+        }
         return $path;
      }
      
@@ -92,8 +96,13 @@ abstract class AbstractPaginaComponent extends Component
     | Label visivel no me menu
     |
     */
-    public function route_name(){
-        return $this->format_name();
+    public function route_name($sufix=null){
+        $name = \Str::replace("paginas.", "", $this->format_name());
+        if($sufix){
+            $name = \Str::of($name)->append('.');
+            $name = \Str::of($name)->append($sufix);
+        }
+        return $name;
      }
      
     /*

@@ -7,6 +7,7 @@
 namespace App\Http\Livewire\Paginas\Eventos;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use App\Models\Event;
 
 class ListComponent extends AbstractPaginaComponent
 {
@@ -21,6 +22,10 @@ class ListComponent extends AbstractPaginaComponent
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
 
+    public function query(){
+
+        return Event::query()->orderByDesc('start');
+    }
       /*
     |--------------------------------------------------------------------------
     |  Features label

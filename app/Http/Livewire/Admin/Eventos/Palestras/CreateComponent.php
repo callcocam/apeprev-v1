@@ -72,6 +72,7 @@ class CreateComponent extends FormComponent
     protected function fields(): array
     {
         return [
+            Select::make('Palestrante','user_id')->options(\App\Models\User::query()->pluck('name','id')->toArray())->rules('required'),
             Select::make('Evento','event_id')->options(\App\Models\Event::query()->pluck('name','id')->toArray())->rules('required'),
             Input::make('Titulo','name')->rules('required'),
             Textarea::make('Preview','description.preview')->rules('required'),

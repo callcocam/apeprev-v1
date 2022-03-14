@@ -29,8 +29,12 @@ class LoadMenuHelper
         $submenus[] = $this->make('Status','admin.statuses','chevron-right');
         $menus[] = $this->make('OPERACIONAL',null,'cog',$submenus);
 
-        $menus[] = $this->make('INSTITUIÇÕES','admin.instituicaos','office-building');
-        // $menus[] = $this->make('CADASTROS',null,'office-building',$submenus);
+        $submenus=[];
+        $submenus[] = $this->make('Tipo','admin.instituicao-tipos','office-building');
+        $submenus[] = $this->make('Planos','admin.instituicoes.planos','office-building');
+        $submenus[] = $this->make('Listar','admin.instituicaos','office-building');
+        $submenus[] = $this->make('Gerar Associação','admin.instituicaos.associa-se','office-building');
+        $menus[] = $this->make('INSTITUIÇÕES',null,'office-building',$submenus);
         $submenus=[];
         $submenus[] = $this->make('Posts','admin.posts','chevron-right');
         $submenus[] = $this->make('Sliders','admin.sliders','chevron-right');
@@ -44,7 +48,12 @@ class LoadMenuHelper
         
         $submenus=[];
         $submenus[] = $this->make('Listar','admin.events','chevron-right');
+        $submenus[] = $this->make('Planos','admin.evento-planos','chevron-right');
+        $submenus[] = $this->make('Tipo De Inscrição','admin.tipo-inscricaos','chevron-right');
         $submenus[] = $this->make('Palestras','admin.palestras','chevron-right');
+        $submenus[] = $this->make('Hotel','admin.hotels','chevron-right');
+        $submenus[] = $this->make('Local','admin.locals','chevron-right');
+        $submenus[] = $this->make('Contato','admin.eventos-contatos','chevron-right');
         $submenus[] = $this->make('Importar','admin.events.import','chevron-right');
         $menus[] = $this->make('EVENTOS',null,'plus-circle',$submenus);
 
@@ -80,5 +89,10 @@ class LoadMenuHelper
           'submenus'=>$submenus,
           'active'=>$active,
         ];
+    }
+
+    public static function hasSelectInstituitionFeature()
+    {
+      return true;
     }
 }

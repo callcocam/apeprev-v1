@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Created by Claudio Campos.
+ * User: callcocam@gmail.com, contato@sigasmart.com.br
+ * https://www.sigasmart.com.br
+ */
 namespace App\View\Components;
 
 use Illuminate\View\Component;
@@ -9,14 +13,16 @@ class TallLink extends Component
 
 
     protected $component;
+    protected $model;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($component)
+    public function __construct($component, $model=null)
     {
+        $this->model =$model;
         $this->component = app(sprintf("\App\Http\Livewire\Paginas\%s",$component));
     }
 
@@ -33,6 +39,7 @@ class TallLink extends Component
             'restrito'=>$this->component->restrito(),
             'icon'=>$this->component->icon(),
             'classes'=>$this->classes(),
+            'model'=>$this->model,
         ]);
     }
 
@@ -42,14 +49,20 @@ class TallLink extends Component
            return  $this->classe_active();
        }
         
-        return $this->classe_active();
+        return $this->classe_link();
     }
 
     protected function classe_active(){
+       if(method_exists($this->component, 'classe_active')){
+        return $this->component->classe_active();
+       }
         return 'text-white hover:text-blue-600';
     }
     
     protected function classe_link(){
+        if(method_exists($this->component, 'classe_link')){
+            return $this->component->classe_link();
+           }
         return 'text-white hover:text-blue-600';
     }
 }

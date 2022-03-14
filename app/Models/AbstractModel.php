@@ -81,6 +81,7 @@ class AbstractModel extends Model
         return $this->morphOne(Description::class, 'descriptionable')->orderByDesc('created_at');
     }
 
+
     public function isUser(){
         return true;
     }

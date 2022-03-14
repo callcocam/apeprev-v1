@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Created by Claudio Campos.
+ * User: callcocam@gmail.com, contato@sigasmart.com.br
+ * https://www.sigasmart.com.br
+ */
 namespace App\View\Components;
 
 use Illuminate\View\Component;
@@ -8,16 +12,18 @@ class TallHoverableLink extends Component
 {
     protected $component;
     protected $border;
+    protected $model;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($component, $border="r")
+    public function __construct($component, $border="r",$model=null)
     {
         $this->component = app(sprintf("\App\Http\Livewire\Paginas\%s",$component));
         $this->border = $border;
+        $this->model = $model;
     }
 
     /**
@@ -35,6 +41,7 @@ class TallHoverableLink extends Component
             'icon'=>$this->component->icon(),
             'classes'=>$this->classes(),
             'border'=>$this->border,
+            'model'=>$this->model,
         ]);
     }
     

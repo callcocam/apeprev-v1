@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,21 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+        $this->callAfterResolving(BladeCompiler::class, function () {
+            $this->registerComponent('textarea');
+            $this->registerComponent('select');
+        });
+    }
+
+      /**
+     * Register the given component.
+     *
+     * @param  string  $component
+     * @return void
+     */
+    protected function registerComponent(string $component)
+    {
+        Blade::component('jetstream::components.'.$component, 'jet-'.$component);
     }
 
     /**

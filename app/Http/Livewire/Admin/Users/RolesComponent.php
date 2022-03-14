@@ -18,7 +18,7 @@ class RolesComponent extends FormComponent
     public function mount(?User $model)
     {
         //Gate::authorize()
-   
+
         $this->setFormProperties($model); // $user from hereon, called $this->model
     }
 
@@ -28,23 +28,27 @@ class RolesComponent extends FormComponent
     protected function formAttr(): array
     {
         return [
-           'formTitle' => __('User Address'),
+           'formTitle' => __('User Roles'),
            'wrapWithView' => false,
            'showDelete' => false,
        ];
     }
 
+    public function success()
+    {
+        $this->model->roles()->sync(data_get($this->data,'access'));
+    }
     protected function fields(): array
     {
         $query = \App\Models\Auth\Acl\Role::query();
-        if($checkboxSearch = \Arr::get($this->checkboxSearch, 'roles')){
+        if($checkboxSearch = \Arr::get($this->checkboxSearch, 'access')){
             $query->where("name", "LIKE", "%{$checkboxSearch}%");
         }
         
         $options = $query->get();
 
         return [           
-            Checkbox::make('Roles')->collect($options)->rules('required'),
+            Checkbox::make('Roles','access')->collect($options)->rules('required'),
         ];
     }
 }

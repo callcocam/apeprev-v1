@@ -7,9 +7,18 @@
 namespace App\Http\Livewire\Paginas\Associados;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use App\Models\Instituicao;
 
 class RecadastreSeComponent extends AbstractPaginaComponent
 {
+    
+    
+    public $data = [
+        "document"  =>"",
+        "phone"     =>null,
+        "whatsapp"  =>null,
+    ];
+
      /*
     |--------------------------------------------------------------------------
     |  Features route
@@ -18,9 +27,28 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     |
     */
     public function route(){
-       \Route::get($this->path(), static::class)->name($this->route_name());
+      
+       \Route::get($this->path(), static::class)->name('associados.recadastre-se');
+       \Route::get($this->path(true), static::class)->name('associados.associe-se.finalizar');
     }
 
+
+    public function mount(?Instituicao $model)
+    {
+    
+        $this->setFormProperties($model);
+    }
+  
+    /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function route_name($sufix=null){
+       return 'associados.recadastre-se';
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features order
@@ -34,6 +62,11 @@ class RecadastreSeComponent extends AbstractPaginaComponent
 
     public function view()
     {
-        return 'livewire.paginas.associados.recadastre-se-component';
+
+        if($this->model && $this->model->exists)
+           return 'livewire.paginas.associados.recadastre-se-component';
+
+        return 'livewire.paginas.associados.associe-se-document-component';
+        
     }
 }

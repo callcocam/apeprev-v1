@@ -15,12 +15,16 @@
 
 <body class="font-sans antialiased" onload="init()">
     @tallLoader
+    <x-dialog z-index="z-50" blur="md" align="center" />
+   <x-notifications z-index="z-50" />
     <div class="min-h-screen bg-white">
         @livewire('includes.header-component')
         @livewire('includes.menu-component')
         <!-- Page Heading -->
         @if (isset($header))
-            {{ $header }}
+            <x-content>
+                {{ $header }}
+            </x-content>
         @endif
         <!-- Page Content -->
         <main>

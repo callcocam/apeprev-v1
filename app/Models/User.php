@@ -55,4 +55,11 @@ class User extends Authenticatable
     // {
     //     return $this->roles()->pluck('id','id')->toArray();
     // }
+
+
+    public function instituicao()
+    {
+        return $this->belongsTo(Instituicao::class);
+    }
+
 }

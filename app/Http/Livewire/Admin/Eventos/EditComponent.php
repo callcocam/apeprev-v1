@@ -17,6 +17,8 @@ use Tall\Form\Fields\DatetimePicker;
 use Tall\Form\Fields\Select;
 use Tall\Form\Fields\Editor;
 use Tall\Form\Fields\Upload;
+use Tall\Form\Fields\Checkbox;
+use Tall\Form\Fields\Divider;
 use Tall\Form\Fields\Includes\Prepend;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -75,16 +77,37 @@ class EditComponent extends FormComponent
     */
     protected function fields(): array
     {
+        
+        $query = \App\Models\EventosContato::query();
+        if($contatosSearch = \Arr::get($this->checkboxSearch, 'contatos')){
+            $query->where("name", "LIKE", "%{$contatosSearch}%");
+        }
+
+        data_set($this->data, 'policie.name','Politica de privacidade do evento');
+        data_set($this->data, 'politica_inscricao.name','Politica de inscrição do evento');
+        data_set($this->data, 'politica_desistencia.name','Politica de desistência do evento');
         return [
             Input::make('name')
             ->placeholder("Your name")->rules("required"),
-            Upload::make('Cover', 'cover')->placeholder("Select Your Image"),  
+            Select::make('Hotel','hotel_id')->span(6)->options(\App\Models\Hotel::query()->pluck('name','id')->toArray())->rules("required"),
+            Select::make('Local','local_id')->span(6)->options(\App\Models\Local::query()->pluck('name','id')->toArray())->rules("required"),
+            Upload::make('Cover', 'cover')->span(7)->placeholder("Select Your Image"),  
+            Upload::make('Mobile', 'mobile')->span(5)->placeholder("Select Your Image"),  
             Textarea::make('Url', 'url')->placeholder("Your url"),     
             Input::make('Tem Palestras', 'tem_palestras')->placeholder("Tem Palestras"),     
+            Divider::blank("Politicas")->hint('Preencha corretamente todos os campos'),
+            Input::make('Politica de privacidade', 'policie.content')->placeholder("Politica de privacidade"),   
+            Editor::make('Politica de inscrição', 'politica_inscricao.content')->placeholder("Politica de privacidade"),   
+            Editor::make('Politica de desistencia', 'politica_desistencia.content')->placeholder("Politica de desistencia"),   
             Textarea::make('Preview', 'description.preview')->placeholder("Your Desc"),   
             Editor::make('Description', 'description.content')->placeholder("Your Desc"),   
             DatetimePicker::make('Publish Up','start')->placeholder("Your start date")->span(3),   
             DatetimePicker::make('Publish Down','end')->placeholder("Your end date")->span(3),
+            Select::make('Abrir inscrições','inscrevase')->span(6)->options(['0'=>"NÃO",'1'=>'SIM'])->rules("required"),
+            Divider::blank("Planos Eventos")->hint('Planos - Selecione os planos para o evento'),
+            Checkbox::make('Contatos')->options($query->pluck("name",'id')->toArray()),
+            Divider::blank("Planos Contatos")->hint('Planos - Selecione os contatos para o evento'),
+            Checkbox::make('Planos')->options(\App\Models\EventoPlano::query()->pluck("name",'id')->toArray())->rules('required'),
             Radio::make('Status', 'status_id')->status()->lg()
         ];
     }

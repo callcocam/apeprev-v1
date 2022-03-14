@@ -1,7 +1,7 @@
-<x-guest-layout>
+<x-app-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <x-jet-authentication-card-logo class="w-48"/>
         </x-slot>
 
         <div x-data="{ recovery: false }">
@@ -54,4 +54,4 @@
             </form>
         </div>
     </x-jet-authentication-card>
-</x-guest-layout>
+</x-app-layout>

@@ -122,6 +122,9 @@ class EditComponent extends FormComponent
             Input::make('Email')->rules('required')->placeholder('Your best email')->icon('mail-open'),
             Input::make('Phone')->placeholder('Your best phone')->icon('mail-open'),
             DatetimePicker::make('Birth Date')->icon('mail-open'),
+            Select::make('Instituicão','instituicao_id')
+            ->options(\App\Models\Instituicao::query()->pluck('name','id')->toArray())
+            ->placeholder('==Selecione o Instituicão==')->icon('mail-open'),
             Select::make('Cargo','office_id')
             ->options(\App\Models\Office::query()->pluck('name','id')->toArray())
             ->placeholder('==Selecione o cargo==')->icon('mail-open'),

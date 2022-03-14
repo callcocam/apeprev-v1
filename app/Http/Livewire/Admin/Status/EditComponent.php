@@ -72,6 +72,7 @@ class EditComponent extends FormComponent
         return [
             Input::make('Name')->rules('required'),
             Input::make('Type')->rules('required'),
+            Input::make('Slug'),
             Input::make('Styles')->placeholder('Ex: bg-gray-500'),
             Radio::make('Status', 'status_id')->status()->lg()
         ];

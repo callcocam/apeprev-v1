@@ -16,9 +16,15 @@
         </svg>
         @if (\Route::has($route))
             @if ($restrito)
-                <a href="{{ route($route) }}"
-                    class="text-gray-700 bold border-b-2 border-gray-300 hover:text-gray-900">
-                    {{ __('Find out more') }}...</a>
+                @if ($model)
+                    <a href="{{ route($route, $model) }}"
+                        class="text-gray-700 bold border-b-2 border-gray-300 hover:text-gray-900">
+                        {{ __('Find out more') }}...</a>
+                @else
+                    <a href="{{ route($route) }}"
+                        class="text-gray-700 bold border-b-2 border-gray-300 hover:text-gray-900">
+                        {{ __('Find out more') }}...</a>
+                @endif
             @endif
         @endif
     </div>

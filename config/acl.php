@@ -78,4 +78,7 @@ return [
         'tag' => 'acl',
 
     ],
+    'roles'=>[
+        'inscription'=>env("ACL_ROLE_INSCRIPTION",'fazer-inscricoes')
+    ]
 ];

@@ -61,12 +61,12 @@ class User extends AbstractModel implements
 
     public function getAccessAttribute()
     {
-        $roles = $this->roles()->select(["name", "id"])->get();
-        $data = [];
-        foreach ($roles as $role){
-            $data[]=$role->id;
-        }
-        return $data;
+        $roles = $this->roles()->pluck("id", "id")->toArray();
+        // $data = [];
+        // foreach ($roles as $role){
+        //     $data[]=$role->id;
+        // }
+        return $roles;
     }
 
     public function scopeRoles($query, $term)

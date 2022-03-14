@@ -24,7 +24,14 @@ final class ListComponent extends TableComponent
     {
         $this->authorize(Route::currentRouteName());
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features route
+    |--------------------------------------------------------------------------
+    | Rota do crud create
+    |
+    */
     public function getCreateProperty()
     {
         return 'admin.sponsor.create';

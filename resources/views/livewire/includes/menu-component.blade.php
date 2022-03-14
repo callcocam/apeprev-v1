@@ -44,10 +44,12 @@
                     <x-tall-toggleable-link component="Associados\PareceresComponent" />
                 </x-tall-toggleable-dropdown>
             </x-tall-toggleable>
-            <x-tall-hoverable label="EVENTOS">               
-                <x-tall-hoverable-link  component="Eventos\ListComponent"/>
-                <x-tall-hoverable-link  component="Eventos\CertificadosComponent" border="none"/>
-                <x-tall-hoverable-link  component="Eventos\Inscricoes\IniciarComponent" border="none"/>
+            <x-tall-hoverable label="EVENTOS">
+                <x-tall-hoverable-link component="Eventos\ListComponent" />
+                <x-tall-hoverable-link component="Eventos\CertificadosComponent" border="none" />
+                @if ($model = \App\Models\Event::query()->where('inscrevase', 1)->first())
+                    <x-tall-hoverable-link component="Eventos\Inscricoes\IniciarComponent" border="none" :model="$model"/>
+                @endif
             </x-tall-hoverable>
             <x-tall-navlink component="Noticias\ListComponent" />
             <x-tall-navlink component="PortalTransparenciaComponent" />
@@ -55,9 +57,9 @@
             <x-tall-navlink component="CalculadoraComprevComponent" />
         </ul>
     </div>
-</nav>
-<style>
-    /* #Mega Menu Styles
+
+    <style>
+        /* #Mega Menu Styles
   if you use sass, convert all this additional css to tailwindcss using the 'hack' @apply for all element.style (css properties)
 [ https://tailwindcss.com/docs/functions-and-directives/#apply ]
 example:
@@ -70,68 +72,70 @@ example:
   w-full;
   }
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-    .mega-menu {
-        display: none;
-        left: 0;
-        position: absolute;
-        text-align: left;
-        width: 100%;
-    }
+        .mega-menu {
+            display: none;
+            left: 0;
+            position: absolute;
+            text-align: left;
+            width: 100%;
+        }
 
 
 
-    /* #hoverable Class Styles */
-    .hoverable {
-        position: static;
-    }
+        /* #hoverable Class Styles */
+        .hoverable {
+            position: static;
+        }
 
-    .hoverable>a:after {
-        content: "\25BC";
-        font-size: 10px;
-        padding-left: 6px;
-        position: relative;
-        top: -1px;
-    }
+        .hoverable>a:after {
+            content: "\25BC";
+            font-size: 10px;
+            padding-left: 6px;
+            position: relative;
+            top: -1px;
+        }
 
-    .hoverable:hover .mega-menu {
-        display: block;
-    }
+        .hoverable:hover .mega-menu {
+            display: block;
+        }
 
 
-    /* #toggle Class Styles */
+        /* #toggle Class Styles */
 
-    .toggleable>label:after {
-        content: "\25BC";
-        font-size: 10px;
-        padding-left: 6px;
-        position: relative;
-        top: -1px;
-    }
+        .toggleable>label:after {
+            content: "\25BC";
+            font-size: 10px;
+            padding-left: 6px;
+            position: relative;
+            top: -1px;
+        }
 
-    .toggle-input {
-        display: none;
-    }
+        .toggle-input {
+            display: none;
+        }
 
-    .toggle-input:not(checked)~.mega-menu {
-        display: none;
-    }
+        .toggle-input:not(checked)~.mega-menu {
+            display: none;
+        }
 
-    .toggle-input:checked~.mega-menu {
-        display: block;
-    }
+        .toggle-input:checked~.mega-menu {
+            display: block;
+        }
 
-    .toggle-input:checked+label {
-        color: white;
-        background: rgb(3, 102, 114);
-        /*@apply bg-teal-700 */
-    }
+        .toggle-input:checked+label {
+            color: white;
+            background: rgb(3, 102, 114);
+            /*@apply bg-teal-700 */
+        }
 
-    .toggle-input:checked~label:after {
-        content: "\25B2";
-        font-size: 10px;
-        padding-left: 6px;
-        position: relative;
-        top: -1px;
-    }
+        .toggle-input:checked~label:after {
+            content: "\25B2";
+            font-size: 10px;
+            padding-left: 6px;
+            position: relative;
+            top: -1px;
+        }
 
-</style>
+    </style>
+
+</nav>
