@@ -71,6 +71,7 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
     |
     */
     public function save(){
+        dd($this->participante);
         $this->validate([
             "participante.name" => ['required'],
             "participante.cracha" => ['required','max:12'],
@@ -83,8 +84,15 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
             "participante.phone" => ['required'],
             "participante.tipo_inscricao_id" => ['required'],
         ]);
-
-        if(\App\Models\User::create){}
+        if(data_get($this->participante, 'id')){
+            \App\Models\User::update($this->participante);
+        }
+        else{
+            data_set($this->participante,'password',date("YmdHis"));
+            if($participante = $this->instituicao->participantes()->create($this->participante)){
+                   $this->participante = $participante->toArray();
+            }
+        }
      }
 
     public function view()

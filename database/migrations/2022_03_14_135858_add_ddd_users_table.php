@@ -14,7 +14,7 @@ class AddDddUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('dd',3)->nullable();
+            $table->string('ddd',3)->nullable();
         });
     }
 

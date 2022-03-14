@@ -50,6 +50,13 @@ class Instituicao  extends AbstractModel
   }
   
   
+  
+  public function participantes()
+  {
+    return $this->hasMany(User::class);
+  }
+  
+  
   public function sponsor()
   {
     return $this->belongsToMany(Sponsor::class);
