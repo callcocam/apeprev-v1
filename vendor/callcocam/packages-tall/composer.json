@@ -1,0 +1,35 @@
+{
+    "name": "callcocam/packages-tall",
+    "type": "package",
+    "description": "The packages table form.",
+    "keywords": ["framework", "laravel", "livewire", "alpinejs", "tailwindcss"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/jetstream": "^2.4",
+        "livewire/livewire": "^2.5",
+        "wireui/wireui": "^0.15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tall\\Theme\\": "tall-theme/src",
+            "Tall\\Form\\": "tall-form/src",
+            "Tall\\Table\\": "tall-table/src",            
+            "Tall\\Database\\Factories\\": "tall-table/src/database/factories/",
+            "Tall\\Database\\Seeders\\": "tall-table/src/database/seeders/"
+        }
+    },
+    
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tall\\Theme\\ThemeServiceProvider",
+                "Tall\\Form\\FormServiceProvider",
+                "Tall\\Table\\TallTableServiceProvider",
+                "Tall\\Form\\Cep\\Providers\\CepServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
