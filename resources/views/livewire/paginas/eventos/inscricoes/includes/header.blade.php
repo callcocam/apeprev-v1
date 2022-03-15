@@ -8,7 +8,7 @@
         </button>
         <div>
             <h1 class="text-2xl font-medium text-gray-800 dark:text-white">
-                {{$title}}: {{ $model->name }}
+                {{ $title }}: {{ $model->name }}
             </h1>
         </div>
     </div>
@@ -44,11 +44,14 @@
                         Cadastro</a>
                     <a href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white">Certificado</a>
-                    <a href="/login"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white">Sair</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white" onclick="event.preventDefault();
+                                       this.closest('form').submit();">Sair</a>
+                    </form>
                 </div>
             </div>
         @endauth
     </div>
-
 </header>

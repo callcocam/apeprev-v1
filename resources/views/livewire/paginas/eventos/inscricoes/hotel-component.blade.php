@@ -1,9 +1,14 @@
 <div>
     <div x-data="{ sidebarOpen: false, darkMode: false }" :class="{ 'dark': darkMode }">
         <div class="flex  bg-gray-100 dark:bg-gray-800 font-roboto">
-            @include('livewire.paginas.eventos.inscricoes.includes.sidebar')
+            @include(
+                'livewire.paginas.eventos.inscricoes.includes.sidebar'
+            )
             <div class="flex-1 flex flex-col">
-                @include('livewire.paginas.eventos.inscricoes.includes.header', ['title'=>'HOTEL PARA EVENTO'])
+                @include(
+                    'livewire.paginas.eventos.inscricoes.includes.header',
+                    ['title' => 'HOTEL PARA EVENTO']
+                )
                 <main class="flex-1 overflow-x-hidden overflow-y-auto">
                     <section class="bg-white dark:bg-gray-800">
                         @if ($hotel = $model->hotel)
@@ -55,11 +60,12 @@
                                             </p>
                                         </div>
                                     </div>
-
-                                    <div
-                                        class="w-full mt-8 bg-transparent border rounded-md lg:max-w-sm p-4 text-left text-sm text-gray-500">
-                                        {{ $hotel->description->content }}
-                                    </div>
+                                    @if ($description = $hotel->description)
+                                        <div
+                                            class="w-full mt-8 bg-transparent border rounded-md lg:max-w-sm p-4 text-left text-sm text-gray-500">
+                                            {{ $description->content }}
+                                        </div>
+                                    @endif
                                 </div>
                                 <div
                                     class="flex items-center justify-center w-full h-96 lg:w-1/2 shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
@@ -71,7 +77,9 @@
                             </div>
                         @endif
                     </section>
-                    @include('livewire.paginas.eventos.inscricoes.includes.footer')
+                    @include(
+                        'livewire.paginas.eventos.inscricoes.includes.footer'
+                    )
                 </main>
             </div>
         </div>

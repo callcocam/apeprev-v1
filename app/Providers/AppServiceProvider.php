@@ -15,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(\App\Scopes\FilterQueryBuilder::class, function () {
+               $request = app(\Illuminate\Http\Request::class);
+                return new \App\Scopes\FilterQueryBuilder($request);
+        });
     }
 
     /**

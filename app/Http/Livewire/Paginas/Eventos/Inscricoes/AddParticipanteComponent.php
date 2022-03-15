@@ -6,6 +6,7 @@
 */
 namespace App\Http\Livewire\Paginas\Eventos\Inscricoes;
 use App\Models\Event;
+use Illuminate\Validation\Rule;
 
 class AddParticipanteComponent extends AbstractInscricaoComponent
 {
@@ -35,6 +36,9 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
         'participante.cracha.required' => 'Campo é obrigatório.',
         'participante.cracha.max' => 'Campo deve ser menor que 12 caractéres.',
         'participante.cpf.required' => 'Campo é obrigatório.',
+        'participante.cpf.unique' => 'Campo já existe.',
+        'participante.email.unique' => 'Campo já existe.',
+        'participante.rg.unique' => 'Campo já existe.',
         'participante.rg.required' => 'Campo é obrigatório.',
         'participante.office_id.required' => 'Selecione um opção.',
         'participante.birth_date.required' => 'Campo é obrigatório.',
@@ -48,7 +52,7 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
 
    protected function getListeners()
    {
-       return ['cloaseModal'];
+       return ['cloaseModal','edit'];
    }
 
    public function mount(Event $model)
@@ -74,22 +78,33 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
         $this->validate([
             "participante.name" => ['required'],
             "participante.cracha" => ['required','max:12'],
-            "participante.cpf" => ['required'],
+            "participante.cpf" => ['required', Rule::unique('users', 'cpf')->ignore(data_get($this->participante, 'id'))],
             "participante.rg" => ['required'],
             "participante.office_id" => ['required'],
             "participante.birth_date" => ['required'],
-            "participante.email" => ['required'],
+            "participante.email" => ['required', Rule::unique('users', 'email')->ignore(data_get($this->participante, 'id'))],
             "participante.ddd" => ['required'],
             "participante.phone" => ['required'],
             "participante.tipo_inscricao_id" => ['required'],
         ]);
         if(data_get($this->participante, 'id')){
-            \App\Models\User::update($this->participante);
+            $this->instituicao->participantes()->where('id',data_get($this->participante, 'id'))->update([
+                'name'=>data_get($this->participante, 'name'),
+                'cracha'=>data_get($this->participante, 'cracha'),
+                'cpf'=>data_get($this->participante, 'cpf'),
+                'rg'=>data_get($this->participante, 'rg'),
+                'office_id'=>data_get($this->participante, 'office_id'),
+                'birth_date'=>date_carbom_format(data_get($this->participante, 'birth_date'))->format("Y-m-d"),
+                'email'=>data_get($this->participante, 'email'),
+                'ddd'=>data_get($this->participante, 'ddd'),
+                'phone'=>data_get($this->participante, 'phone'),
+                'tipo_inscricao_id'=>data_get($this->participante, 'tipo_inscricao_id')
+            ]);
         }
         else{
             data_set($this->participante,'password',date("YmdHis"));
             if($participante = $this->instituicao->participantes()->create($this->participante)){
-                   $this->participante = $participante->toArray();
+                  data_set( $this->participante ,'id', $participante->id);
             }
         }
      }
@@ -99,10 +114,6 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
         return 'livewire.paginas.eventos.inscricoes.add-participante-component';
     }
 
-    // public function getOfficesProperty()
-    // {
-    //     return  \App\Models\Office::all();
-    // }
     public function updatedParticipanteOfficeId($value)
     {
         if($value == 'add'){
@@ -110,6 +121,40 @@ class AddParticipanteComponent extends AbstractInscricaoComponent
         }
     }
 
+    public function edit($id)
+    { 
+        if($participante = \App\Models\User::find($id)){
+            data_set( $this->participante ,'id', $participante->id);
+            data_set( $this->participante ,'name', $participante->name);
+            data_set( $this->participante ,'cracha', $participante->cracha);
+            data_set( $this->participante ,'cpf', $participante->cpf);
+            data_set( $this->participante ,'rg', $participante->rg);
+            data_set( $this->participante ,'office_id', $participante->office_id);
+            data_set( $this->participante ,'birth_date', $participante->birth_date);
+            data_set( $this->participante ,'email', $participante->email);
+            data_set( $this->participante ,'ddd', $participante->ddd);
+            data_set( $this->participante ,'phone', $participante->phone);
+            data_set( $this->participante ,'tipo_inscricao_id', $participante->tipo_inscricao_id);
+        }
+
+    }
+
+    public function new()
+    {
+        $this->participante = [
+            'name'=>'',
+            'cracha'=>'',
+            'cpf'=>'',
+            'rg'=>'',
+            'office_id'=>'',
+            'birth_date'=>'',
+            'email'=>'',
+            'ddd'=>'',
+            'phone'=>'',
+            'tipo_inscricao_id'=>'',
+            'hotel'=>0,
+        ];
+    }
     public function cloaseModal($office)
     { 
         if($office){

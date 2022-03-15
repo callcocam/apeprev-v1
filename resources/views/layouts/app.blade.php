@@ -16,7 +16,7 @@
 <body class="font-sans antialiased" onload="init()">
     @tallLoader
     <x-dialog z-index="z-50" blur="md" align="center" />
-   <x-notifications z-index="z-50" />
+    <x-notifications z-index="z-50" />
     <div class="min-h-screen bg-white">
         @livewire('includes.header-component')
         @livewire('includes.menu-component')
@@ -31,7 +31,12 @@
             {{ $slot }}
         </main>
     </div>
-    <x-divider-content fill="text-gray-700" bg="bg-white" />
+    @if (isset($divider))
+        {{$divider}}
+    @else
+        <x-divider-content fill="text-gray-700" bg="bg-white" />
+    @endif
+
     @include('layouts.includes.footer')
     @stack('modals')
     @stack('script')

@@ -78,6 +78,7 @@ example:
             position: absolute;
             text-align: left;
             width: 100%;
+            z-index: 1000;
         }
 
 

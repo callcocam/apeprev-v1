@@ -11,6 +11,9 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            @if ($redirect = request()->query('redirect'))
+                <input type="hidden" name="redirect" value="{{ $redirect }}">
+            @endif
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" autofocus autocomplete="name" />

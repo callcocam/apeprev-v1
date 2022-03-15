@@ -114,7 +114,7 @@
                 window.addEventListener('load', () => {
                     window.$wireui.dialog({
                         title: 'Atenção!',
-                        description: 'Você não tem permissão para continuar',
+                        description: "{{sprintf('Você não tem permissão para continuar com a inscrição, entre em contato com a %s e solicite permissão para realizar inscrições',$instituicao->name)}}",
                         icon: 'error',
                         close: 'Voltar para a apresntação',
                         onClose: () => Livewire.emit('onClose')

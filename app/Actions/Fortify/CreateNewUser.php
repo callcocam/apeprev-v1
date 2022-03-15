@@ -28,7 +28,11 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
+       if($redirect = data_get($input,'redirect')){
+            config([
+                'fortify.home'=>$redirect
+            ]);
+       }
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],

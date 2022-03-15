@@ -54,7 +54,10 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
-        return User::query();
+        if (auth()->user()->hasRole('super-admin')) {
+            return User::query();
+        }
+        return User::query()->where('instituicao_id',auth()->user()->instituicao_id);
     }
 
      /*

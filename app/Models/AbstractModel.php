@@ -15,7 +15,7 @@ use App\Scopes\UuidGenerate;
 
 class AbstractModel extends Model
 {
-    use  SoftDeletes, HasSlug,UuidGenerate;
+    use  SoftDeletes, HasSlug, UuidGenerate;
     
     public $incrementing = false;
 

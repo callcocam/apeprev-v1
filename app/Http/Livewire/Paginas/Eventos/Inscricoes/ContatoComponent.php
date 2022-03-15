@@ -16,10 +16,12 @@ class ContatoComponent extends AbstractInscricaoComponent
     public function mount(Event $model)
     {
        $this->setFormProperties($model);
-       $this->form_data['name'] = auth()->user()->name;
-       $this->form_data['email'] = auth()->user()->email;
-       $this->form_data['event_id'] = $model->id;
-       $this->form_data['mesage'] = '';
+       if($user = auth()->user()){
+         $this->form_data['name'] = auth()->user()->name;
+         $this->form_data['email'] = auth()->user()->email;
+         $this->form_data['event_id'] = $model->id;
+         $this->form_data['mesage'] = '';
+       }
 
     }
 

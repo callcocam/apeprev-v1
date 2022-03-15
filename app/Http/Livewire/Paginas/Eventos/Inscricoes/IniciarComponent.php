@@ -31,14 +31,14 @@ class IniciarComponent extends AbstractInscricaoComponent
    public function mount(Event $model)
    {
      parent::mount($model);
-     
-     
-     if($instituicao = auth()->user()->instituicao){
-         $this->instituicao = $instituicao;         
-         data_set( $this->inscricoes, 'document',$instituicao->document);
-         if( $inscricoes = $model->inscricoes()->where('instituicao_id',$instituicao->id)->first()){
-             $this->inscricoes = $inscricoes->toArray();
-         }
+     if($user = auth()->user()){
+        if($instituicao = $user->instituicao){
+            $this->instituicao = $instituicao;         
+            data_set( $this->inscricoes, 'document',$instituicao->document);
+            if( $inscricoes = $model->inscricoes()->where('instituicao_id',$instituicao->id)->first()){
+                $this->inscricoes = $inscricoes->toArray();
+            }
+        }
      }
    }
 
@@ -50,7 +50,8 @@ class IniciarComponent extends AbstractInscricaoComponent
     |
     */
     public function route(){
-       \Route::middleware(['web','auth:sanctum', 'verified'])->get($this->path(true), static::class)->name($this->route_name());
+     //  \Route::middleware(['web','auth:sanctum', 'verified'])->get($this->path(true), static::class)->name($this->route_name());
+       \Route::get($this->path(true), static::class)->name($this->route_name());
     }
    
     /*

@@ -4,10 +4,10 @@
 <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
     class="fixed z-30 inset-y-0 left-0 w-60 transition duration-300 transform bg-white dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
     <nav class="flex flex-col mt-10 px-4 text-left">
+        @if ($model)
+            <x-tall-link component="Eventos\Inscricoes\IniciarComponent" :model="$model" />
+        @endif
         @can('create', \App\Models\EventoInscricao::class)
-            @if ($model)
-                <x-tall-link component="Eventos\Inscricoes\IniciarComponent" :model="$model" />
-            @endif
             <x-tall-link component="Eventos\Inscricoes\ApresentacaoComponent" :model="$model" />
         @endcan
         @if ($model->hotel)
