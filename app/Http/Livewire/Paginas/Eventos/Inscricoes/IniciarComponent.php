@@ -7,15 +7,19 @@
 namespace App\Http\Livewire\Paginas\Eventos\Inscricoes;
 use Illuminate\Validation\Rule;
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Notification;
 
 class IniciarComponent extends AbstractInscricaoComponent
 {
 
     public $cartModal;
     public $instituicao;
-    public $inscricoes = ['document'=>'','vacina'=>0,'termos'=>0];
+    public $inscricoes = ['document'=>'','vacina'=>0,'termos'=>0, 'office_id'=>'','instituicao_id'=>''];
 
     protected $messages = [
+        'inscricoes.instituicao_id.required' => 'Selecione uma instituição.',
+        'inscricoes.office_id.required' => 'Selecione um cargo.',
         'inscricoes.document.required' => 'Digite um documento valido.',
         'inscricoes.vacina.required' => 'Concordar com o comprovante de vacina por favor.',
         'inscricoes.vacina.in' => 'Concordar com o comprovante de vacina por favor.',
@@ -65,6 +69,8 @@ class IniciarComponent extends AbstractInscricaoComponent
        if(data_get($this->inscricoes,'id')){
            return redirect()->route('eventos.inscricoes.inscricao', ['model'=>$this->model]);
        }
+        $this->inscricoes['office_id'] = auth()->user()->office_id;
+        $this->inscricoes['instituicao_id'] = auth()->user()->instituicao_id;
         $this->validate([
             'inscricoes.document' => 'required',
             'inscricoes.vacina' => [
@@ -147,6 +153,31 @@ class IniciarComponent extends AbstractInscricaoComponent
             $model->representante()->create([]);
             $model->address()->create([]);
             return redirect()->route('associados.associe-se.finalizar', $model);
+        }
+    }
+
+    public function associaSe()
+    {
+        $this->validate([
+            'inscricoes.instituicao_id' => 'required',
+            'inscricoes.office_id' => 'required'
+        ]);
+     
+       if ($solicitante =  auth()->user()) {
+            $solicitante->office_id = data_get($this->inscricoes, 'office_id');
+            $solicitante->instituicao_id = data_get($this->inscricoes, 'instituicao_id');
+            $solicitante->save();
+            if(config('notifications.solicitar-afiliacao-usuario')){
+                $users = \App\Models\User::whereHas('roles', function (Builder $query) {
+                    $query->where('slug', 'fazer-inscricoes');
+                })->where('instituicao_id',data_get($this->inscricoes, 'instituicao_id'))->get();
+                if($users){
+                    foreach($users as $recebedor){
+                        Notification::send($recebedor,new \App\Notifications\SolicitarAfiliacaoNotification($solicitante, $recebedor));
+                    }
+                }
+            }
+           return $this->onClose();
         }
     }
 

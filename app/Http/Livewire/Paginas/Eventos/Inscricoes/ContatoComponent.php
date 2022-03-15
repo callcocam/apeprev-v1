@@ -7,6 +7,7 @@
 namespace App\Http\Livewire\Paginas\Eventos\Inscricoes;
 
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Builder;
 
 class ContatoComponent extends AbstractInscricaoComponent
 {
@@ -20,7 +21,7 @@ class ContatoComponent extends AbstractInscricaoComponent
          $this->form_data['name'] = auth()->user()->name;
          $this->form_data['email'] = auth()->user()->email;
          $this->form_data['event_id'] = $model->id;
-         $this->form_data['mesage'] = '';
+         $this->form_data['message'] = '';
        }
 
     }
@@ -43,6 +44,20 @@ class ContatoComponent extends AbstractInscricaoComponent
 
     public function send()
     {
-       sleep(3);
+      $this->validate([
+         'form_data.name' => 'required',
+         'form_data.email' => 'required',
+         'form_data.message' => 'required'
+     ]);
+       if($solicitante = auth()->user()){
+            $users = \App\Models\User::whereHas('roles', function (Builder $query) {
+               $query->where('slug', 'administrador-do-sistema');
+            })->get();
+            if($users){
+               foreach($users as $recebedor){
+                  $recebedor->notify(new \App\Notifications\EventoContatoNotification($solicitante, $recebedor,$this->model, $this->form_data));
+               }
+            }
+       }
     }
 }

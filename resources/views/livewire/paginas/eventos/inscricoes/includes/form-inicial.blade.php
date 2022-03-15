@@ -52,7 +52,7 @@
         <form wire:submit.prevent="send">
             @if ($instituicao)
                 <div class="flex w-full  shadow-lg pt-3 flex-col border border-t-2 mt-2">
-                   <h3 class="text-2xl font-bold mb-4"> {{ $instituicao->name }}</h3>
+                    <h3 class="text-2xl font-bold mb-4"> {{ $instituicao->name }}</h3>
                     @if ($plano = $this->plano)
                         <div class="bg-yellow-500 w-full px-5 py-4 flex items-center justify-between">
                             <h2 class="text-2xl text-gray-800 ">{{ $plano->name }}</h2>
@@ -85,8 +85,7 @@
             <div class="md:col-span-5">
                 <div class="inline-flex items-center">
                     <x-toggle lg wire:model.defer="inscricoes.vacina"
-                        label="ESTOU CIENTE QUE DEVEREI APRESENTAR
-                                                                    COMPROVANTE DE VACINAÇÃO COVID-19 PARA ACESSO AO EVENTO" />
+                        label="ESTOU CIENTE QUE DEVEREI APRESENTAR COMPROVANTE DE VACINAÇÃO COVID-19 PARA ACESSO AO EVENTO" />
                 </div>
             </div>
             <!-- BEGIN: formulário cnpj -->
@@ -109,18 +108,63 @@
             </div>
         </form>
     @else
-        @push('script')
-            <script>
-                window.addEventListener('load', () => {
-                    window.$wireui.dialog({
-                        title: 'Atenção!',
-                        description: "{{sprintf('Você não tem permissão para continuar com a inscrição, entre em contato com a %s e solicite permissão para realizar inscrições',$instituicao->name)}}",
-                        icon: 'error',
-                        close: 'Voltar para a apresntação',
-                        onClose: () => Livewire.emit('onClose')
+        @if ($instituicao)
+            @push('script')
+                <script>
+                    window.addEventListener('load', () => {
+                        window.$wireui.dialog({
+                            title: 'Atenção!',
+                            description: "{{ sprintf('Você não tem permissão para continuar com a inscrição, entre em contato com a %s e solicite permissão para realizar inscrições',$instituicao->name) }}",
+                            icon: 'error',
+                            close: 'Voltar para a apresntação',
+                            onClose: () => Livewire.emit('onClose')
+                        })
                     })
-                })
-            </script>
-        @endpush
+                </script>
+            @endpush
+        @else
+            <form wire:submit.prevent="associaSe">
+
+                <div class="flex flex-col items-center justify-center mt-5">
+                    <div class=" w-full  max-w-lg pb-12 px-12 pt-2 space-y-4 shadow-2xl rounded">
+                        <p class="pt-3">
+                           <b> Opss!</b> parece que você não esta afiliado a nenhuma associação, para solicitar uma afiliação,
+                            Selecione um instituição e o seu cargo na associação selecionada, e o responsavel pelas
+                            inscrições vai finalizar sua inscrição!
+                        </p>
+                        @if (App\Helpers\LoadActionsHelper::hasSelectInstituitionFeature())
+                            <div class="mt-2">
+                                <x-select wire:model.defer="inscricoes.instituicao_id"
+                                    label="{{ __('Selecione Um Instituição') }}">
+                                    <x-select.option value="" label="{{ __('Selecione') }}" />
+                                    @if ($instituicoes = \App\Models\Instituicao::all())
+                                        @foreach ($instituicoes as $instituicao)
+                                            <x-select.option value="{{ $instituicao->id }}"
+                                                label="{{ sprintf('%s - %s', $instituicao->name, $instituicao->document) }}" />
+                                        @endforeach
+                                    @endif
+                                </x-select>
+                            </div>
+                            <div class="mt-4">
+                                <x-select wire:model.defer="inscricoes.office_id"
+                                    label="{{ __('Topo de ligação') }}">
+                                    <x-select.option value="" label="{{ __('Selecione o cargo') }}" />
+                                    @if ($offices = \App\Models\Office::all())
+                                        @foreach ($offices as $office)
+                                            <x-select.option value="{{ $office->id }}" label="{{ $office->name }}" />
+                                        @endforeach
+                                    @endif
+                                </x-select>
+                            </div>
+                        @endif
+                        <x-button class="w-full" type="submit" spinner="associaSe" primary
+                            label="Filiar-se a uma instituição" size="lg" />
+                    </div>
+                    <p class="mt-4 text-center text-gray-400 text-xs">
+                        &copy;2022 SioWeb. Todos direitos reservados.
+                    </p>
+                </div>
+            </form>
+        @endif
     @endcan
 </div>
