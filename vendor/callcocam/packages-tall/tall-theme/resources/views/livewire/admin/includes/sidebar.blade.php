@@ -24,7 +24,7 @@
                         @endcan
                     @endif                                        
                     @if (\Route::has('admin.tenant.show'))
-                        <x-tall-nav-link icon="home" href="{{ route('admin.tenant.show', app('currentTenant')) }}">
+                        <x-tall-nav-link icon="adjustments" href="{{ route('admin.tenant.show', app('currentTenant')) }}">
                             {{ __('TENANT') }}
                         </x-tall-nav-link>
                     @endif
