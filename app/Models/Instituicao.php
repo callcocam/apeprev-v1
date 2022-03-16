@@ -43,6 +43,15 @@ class Instituicao  extends AbstractModel
     return $this->hasOne(Servidor::class);
   }
 
+  public function creditos()
+  {
+    return $this->hasMany(Credito::class);
+  }
+
+  public function creditos_sum()
+  {
+    return $this->creditos()->selectRaw('SUM(valor) as soma');
+  }
   
   public function representante()
   {

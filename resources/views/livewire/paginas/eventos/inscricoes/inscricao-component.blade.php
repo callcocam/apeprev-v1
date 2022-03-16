@@ -79,7 +79,8 @@
                                                 @if ($checkboxValuesCount = $this->checkboxValuesCount())
                                                     <tr>
                                                         <td colspan="6">
-                                                            <div class="flex w-full justify-end space-x-2 items-center py-2">
+                                                            <div
+                                                                class="flex w-full justify-end space-x-2 items-center py-2">
                                                                 <span>
                                                                     Gerar {{ $checkboxValuesCount }} em lote,
                                                                     no valor
@@ -92,7 +93,30 @@
                                                         </td>
                                                     </tr>
                                                 @endif
-                                                <tr >
+                                                @if ($creditos = $instituicao->creditos_sum)
+                                                    <tr>
+                                                        <td colspan="6">
+                                                            <div class="md:col-span-2 mt-4 text-right">
+                                                                <div class="inline-flex items-end">
+                                                                    <span
+                                                                        class="relative inline-block px-3 py-2 font-semibold text-green-900 leading-tight">
+                                                                        <span aria-hidden
+                                                                            class="absolute inset-0 bg-positive-400 opacity-50 rounded-md"></span>
+                                                                        <span class="relative">VALOR TOTAL DO(S) CRÉDITOS 
+                                                                            <span class="font-bold text-2xl">R$
+                                                                                @foreach($creditos as $credito)
+                                                                                {{ form_read( $credito->soma) }}
+                                                                                @endforeach
+                                                                            </span>
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+
+                                                <tr>
                                                     <td colspan="6">
                                                         <div class="md:col-span-2 mt-4 text-right">
                                                             <div class="inline-flex items-end">

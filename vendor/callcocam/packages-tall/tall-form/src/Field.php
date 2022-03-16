@@ -15,6 +15,7 @@ abstract class Field
     protected $wire_model = "defer";
     protected $data_name = "data";
     protected $span = "12";
+    protected $hidden = true;
     protected $default;
     protected $label;
     protected $field;
@@ -139,6 +140,10 @@ abstract class Field
         return $this;
     }
 
+    public function hideIf($callback){
+        $this->hidden = $callback;
+        return $this;
+    }
 
     
     /**

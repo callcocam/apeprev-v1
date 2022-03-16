@@ -14,10 +14,12 @@ use Tall\Form\Fields\Radio;
 use Tall\Form\Fields\Textarea;
 use Tall\Form\Fields\Currency;
 use Tall\Form\Fields\Upload;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 
 class EditComponent extends FormComponent
 {
+    use AuthorizesRequests;
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ class EditComponent extends FormComponent
     */
     public function mount(?Hotel $model)
     {
-        //Gate::authorize()
+        $this->authorize(Route::currentRouteName());
         $this->setFormProperties($model); // $hotel from hereon, called $this->model
     }
 

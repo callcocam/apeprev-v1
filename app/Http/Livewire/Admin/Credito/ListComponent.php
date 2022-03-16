@@ -4,9 +4,9 @@
 * User: callcocam@gmail.com, contato@sigasmart.com.br
 * https://www.sigasmart.com.br
 */
-namespace App\Http\Livewire\Admin\Eventos\Contato;
+namespace App\Http\Livewire\Admin\Credito;
 
-use App\Models\EventosContato;
+use App\Models\Credito;
 use Tall\Table\TableComponent;
 use Tall\Table\Fields\Column;
 use Tall\Table\Fields\Action;
@@ -33,13 +33,19 @@ final class ListComponent extends TableComponent
     */
 
     public function route(){
-        Route::get('/eventos-contatos', static::class)->name('admin.eventos-contatos');
+        Route::get('/creditos', static::class)->name('admin.creditos');
     }
-   
 
+    /*
+    |--------------------------------------------------------------------------
+    |  Features query
+    |--------------------------------------------------------------------------
+    | Rota para criar novo registro
+    |
+    */
     public function getCreateProperty()
     {
-        return 'admin.eventos-contato.create';
+        return 'admin.credito.create';
     }
 
     /*
@@ -50,7 +56,7 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
-        return EventosContato::query();
+        return Credito::query();
     }
     
     /*
@@ -63,7 +69,7 @@ final class ListComponent extends TableComponent
     protected function tableAttr(): array
     {
         return [
-           'tableTitle' => __('EventosContatos'),
+           'tableTitle' => __('Creditos'),
        ];
     }
     /*
@@ -76,7 +82,7 @@ final class ListComponent extends TableComponent
     protected function actions(){
 
         return [
-            Link::make('Edit')->route('admin.eventos-contato.edit')->xs()->icon('pencil-alt')->primary(),
+            Link::make('Edit')->route('admin.credito.edit')->xs()->icon('pencil-alt')->primary(),
             Delete::make('Delete')->xs()->icon('trash')->negative(),
         ];
     }
@@ -102,6 +108,7 @@ final class ListComponent extends TableComponent
             //     return view(include_table("_status"), compact('model','column'));
             // })->makeInputStatus(),
             Column::make('Status','status.name')->field('status_id')
+            ->makeInputStatusBasic()
             ->makeInputStatus()
             ->status(),
             Column::make('Created At')->format(function($model, $column){

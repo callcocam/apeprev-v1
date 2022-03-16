@@ -41,7 +41,14 @@
                                 @endif
                             @endforeach
                         @endif
+                        @if ($model)
+                            <div class="col-span-12">
+                                @livewire('admin.eventos.inscricoes.inscrito-component', ['model' => $model],
+                                key($model->id))
+                            </div>
+                        @endif
                     </div>
+
                 </div>
             </div>
             <div class="flex justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 z-10 space-x-2">
@@ -51,25 +58,9 @@
                     hover:shadow-sm disabled:opacity-60 disabled:cursor-not-allowed rounded-md text-sm ring-red-600 text-white bg-red-500 hover:bg-red-600
                             dark:ring-offset-secondary-800 dark:bg-primary-700 dark:ring-primary-700"
                         href="{{ $url }}">
-                        {{ __('Back to list') }}</a>
+                        {{ __('Voltar para o inicio') }}</a>
                 @endif
-                @if ($url = $this->create)
-                    @if (\Route::has($url))
-                        <a class="focus:outline-none px-2.5 py-1.5 flex justify-center gap-x-2 items-center
-          transition-all ease-in duration-75 focus:ring-2 focus:ring-offset-2
-          hover:shadow-sm disabled:opacity-60 disabled:cursor-not-allowed rounded-md text-sm ring-green-600 text-white bg-green-500 hover:bg-green-600
-                  dark:ring-offset-secondary-800 dark:bg-primary-700 dark:ring-primary-700"
-                            href="{{ route($url) }}">
-                            <x-icon name="plus" class=" w-5 h-5" />
-                            {{ __('Create new') }}
-                        </a>
-                    @endif
-                @endif
-                @if ($buttoms)
-                    @foreach ($buttoms as $field)
-                        @include(sprintf('tall-forms::fields.%s', $field->type))
-                    @endforeach
-                @endif
+                <x-button type="subimit" spinner="saveAndStay" primary label="{{ __('Iniciar Inscrição') }}" />
             </div>
         </form>
     </div>

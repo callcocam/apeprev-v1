@@ -34,6 +34,7 @@ class LoadMenuHelper
         $submenus[] = $this->make('Tipo','admin.instituicao-tipos','office-building');
         $submenus[] = $this->make('Planos','admin.instituicoes.planos','office-building');
         $submenus[] = $this->make('Listar','admin.instituicaos','office-building');
+        $submenus[] = $this->make('Créditos','admin.creditos','office-building');
         $submenus[] = $this->make('Gerar Associação','admin.instituicaos.associa-se','office-building');
         $menus[] = $this->make('INSTITUIÇÕES',null,'office-building',$submenus);
         $submenus=[];
@@ -55,6 +56,7 @@ class LoadMenuHelper
         $submenus[] = $this->make('Hotel','admin.hotels','chevron-right');
         $submenus[] = $this->make('Local','admin.locals','chevron-right');
         $submenus[] = $this->make('Contato','admin.eventos-contatos','chevron-right');
+        $submenus[] = $this->make('Inscrições','admin.eventos.inscricoes.create','chevron-right');
         $submenus[] = $this->make('Importar','admin.events.import','chevron-right');
         $menus[] = $this->make('EVENTOS',null,'plus-circle',$submenus);
 
