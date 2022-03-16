@@ -1,3 +1,3 @@
-<div class="accordion" id="accordion{{$accordion}}">
+<div {{ $attributes->merge([ "class"=>"accordion"]) }} id="accordion{{$accordion}}">
     {{ $slot }}
 </div>

@@ -14,18 +14,16 @@ class EventoContatoNotification extends Notification
   
     private $form_data;
     private $model;
-    private $solicitante;
     private $recebedor;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($solicitante, $recebedor, $model, $form_data)
+    public function __construct($recebedor, $model, $form_data)
     {
         $this->form_data = $form_data;
         $this->model = $model;
-        $this->solicitante = $solicitante;
         $this->recebedor = $recebedor;
     }
 

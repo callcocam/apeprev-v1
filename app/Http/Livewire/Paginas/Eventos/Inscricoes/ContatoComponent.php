@@ -34,7 +34,7 @@ class ContatoComponent extends AbstractInscricaoComponent
     |
     */
     public function route(){
-       \Route::get($this->path(true), static::class)->name($this->route_name());
+       \Route::middleware(['web','auth:sanctum', 'verified'])->get($this->path(true), static::class)->name($this->route_name());
     }
 
     public function view()
@@ -49,15 +49,31 @@ class ContatoComponent extends AbstractInscricaoComponent
          'form_data.email' => 'required',
          'form_data.message' => 'required'
      ]);
-       if($solicitante = auth()->user()){
-            $users = \App\Models\User::whereHas('roles', function (Builder $query) {
-               $query->where('slug', 'administrador-do-sistema');
-            })->get();
-            if($users){
-               foreach($users as $recebedor){
-                  $recebedor->notify(new \App\Notifications\EventoContatoNotification($solicitante, $recebedor,$this->model, $this->form_data));
-               }
-            }
-       }
+      $users = \App\Models\User::whereHas('roles', function (Builder $query) {
+         $query->where('slug', 'atendimento');
+      })->get();
+      if($users){
+         foreach($users as $recebedor){
+            $recebedor->notify(new \App\Notifications\EventoContatoNotification($recebedor,$this->model, $this->form_data));
+         }
+         data_set($this->form_data,'message','');
+         $this->notification()->success(
+            $title = 'Menssagem enviada com sucesso :)',
+            $description = 'Assim que possivel entraremos em contato'
+        );
+      }
+    }
+
+    public function getAtendimentoProperty()
+    {
+       return \App\Models\User::whereHas('roles', function (Builder $query) {
+         $query->where('slug', 'atendimento');
+      })->get();
+    }
+
+    
+    public function getFaqsProperty()
+    {
+       return \App\Models\Faq::where(published())->get();
     }
 }
