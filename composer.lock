@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/callcocam/packages-tall.git",
-                "reference": "6375cc4a22d76865c8cd539fc62f30145b05e822"
+                "reference": "bfa8ae6becfe5b5931ec38839c57fcc60ec50efb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/callcocam/packages-tall/zipball/6375cc4a22d76865c8cd539fc62f30145b05e822",
-                "reference": "6375cc4a22d76865c8cd539fc62f30145b05e822",
+                "url": "https://api.github.com/repos/callcocam/packages-tall/zipball/bfa8ae6becfe5b5931ec38839c57fcc60ec50efb",
+                "reference": "bfa8ae6becfe5b5931ec38839c57fcc60ec50efb",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "issues": "https://github.com/callcocam/packages-tall/issues",
                 "source": "https://github.com/callcocam/packages-tall/tree/main"
             },
-            "time": "2022-03-16T15:34:15+00:00"
+            "time": "2022-03-18T17:06:41+00:00"
         },
         {
             "name": "dasprid/enum",

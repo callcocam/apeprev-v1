@@ -37,7 +37,7 @@ class DashboardComponent extends Component
     public function route(){
 
         \Route::get('', static::class)->name('admin');
-        \Route::get('/dashboard', static::class)->name('dashboard');
+        \Route::get('/dashboard', static::class)->name('admin.dashboard.index');
     }
 
     public function render()

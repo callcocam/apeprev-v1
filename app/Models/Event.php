@@ -50,6 +50,12 @@ class Event extends AbstractModel
 
     }
 
+    public function instituicao()
+    {
+        return $this->hasOne(Instituicao::class);
+
+    }
+
     public function hotel()
     {
         return $this->belongsTo(Hotel::class);

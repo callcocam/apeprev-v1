@@ -116,7 +116,7 @@ class EditComponent extends FormComponent
             Toggle::make('Aceito o termo','representante.accept')->span(6)->rules('required'),
             Radio::make('Status', 'status_id')->status()->lg(),
             Divider::blank("Tipo iscrições")->hint('Tipo de iscrições - Selecione os campos abaixo'),
-            Checkbox::make('Tipo de inscrições', 'tipo_inscricoes')->options($query->pluck("name",'id')->toArray())->rules('required'),
+            Checkbox::make('Tipo de inscrições', 'tipo_inscricoes')->hint('Tipo de iscrições - Selecione os campos abaixo')->options($query->pluck("name",'id')->toArray())->rules('required'),
         ];
     }
     

@@ -22,7 +22,7 @@ Route::get('/welcome',  function(){
 })->name('welcome');
 
 Route::get('/dashboard', function(){
-    return redirect()->route('dashboard');
+    return redirect()->route('admin.dashboard.index');
 })->name('admin.dashboard');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', \App\Http\Livewire\Admin\DashboardComponent::class)->name('dashboard');

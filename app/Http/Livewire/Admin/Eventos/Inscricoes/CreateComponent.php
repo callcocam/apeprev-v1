@@ -8,6 +8,7 @@ namespace App\Http\Livewire\Admin\Eventos\Inscricoes;
 
 use Tall\Form\FormComponent;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rule;
 use Tall\Form\Fields\Input;
 use Tall\Form\Fields\Radio;
 use Tall\Form\Fields\Select;
@@ -20,7 +21,14 @@ class CreateComponent extends FormComponent
     use AuthorizesRequests;
 
     public $instituicao;
+    public $inscricoes;
 
+    protected $messages = [       
+        'data.vacina.required' => 'O campo referente a vacina, é obrigatorio.',
+        'data.vacina.in' => 'O campo referente a vacina, é obrigatorio.',
+        'data.termos.required' => 'O campo concordar com o termos e politica de privacidade, é obrigatorio.',
+        'data.termos.in' => 'O campo concordar com o termos e politica de privacidade, é obrigatorio.',
+    ];
     /*
     |--------------------------------------------------------------------------
     |  Features route
@@ -66,17 +74,31 @@ class CreateComponent extends FormComponent
        ];
     }
 
+    public function updatedDataId($value)
+    {
+        $this->setFormProperties(\App\Models\Event::find($value));
+        if( $inscricoes = $this->model->inscricoes()->where('instituicao_id',$this->instituicao->id)->first()){
+            $this->inscricoes = $inscricoes->toArray();
+            data_set( $this->data,'vacina' ,$inscricoes->vacina);
+            data_set( $this->data,'termos' ,$inscricoes->termos);
+            data_set( $this->data,'event_id' ,$inscricoes->event_id);
+        }
+
+
+    }
+
     public function success(){
-        $this->setFormProperties(\App\Models\Event::find(data_get($this->data, 'id')));
-        // $this->model->evento_inscricaos()->firstOrCreate([
-        //     'instituicao_id'=>$this->instituicao->id,
-        //     'event_id'=>$this->model->id,
-        //     'vacina'=>data_get($this->data,'vacina'),
-        //     'termos'=>data_get($this->data,'termos'),
-        // ]);
-        // if( $inscricoes = $this->model->inscricoes()->where('instituicao_id',$this->instituicao->id)->first()){
-        //     $this->inscricoes = $inscricoes->toArray();
-        // }
+   
+        //$this->setFormProperties(\App\Models\Event::find(data_get($this->data, 'id')));
+        $this->instituicao->evento_inscricaos()->firstOrCreate([
+            'instituicao_id'=>$this->instituicao->id,
+            'event_id'=>$this->model->id,
+            'vacina'=>data_get($this->data,'vacina'),
+            'termos'=>data_get($this->data,'termos'),
+        ]);
+        if( $inscricoes = $this->model->inscricoes()->where('instituicao_id',$this->instituicao->id)->first()){
+            $this->inscricoes = $inscricoes->toArray();
+        }
     }
 
     /*
@@ -90,10 +112,20 @@ class CreateComponent extends FormComponent
     {
         return [
             Select::make('Selecione um evento','id')->lazy()->options(\App\Models\Event::query()->where('inscrevase', 1)->pluck('name','id')->toArray())->rules("required"),
-            Toggle::make('ESTOU CIENTE QUE DEVEREI APRESENTAR COMPROVANTE DE VACINAÇÃO COVID-19 PARA ACESSO AO EVENTO','vacina')->rules('required'),
+            Toggle::make('ESTOU CIENTE QUE DEVEREI APRESENTAR COMPROVANTE DE VACINAÇÃO COVID-19 PARA ACESSO AO EVENTO','vacina')->rules(function($data){
+                if($data){
+                    return [
+                        'required',
+                        Rule::in(['1']),
+                    ];
+                }
+           }, $this->model)->hideIf($this->model),
             Toggle::make($this->termos(),'termos')->rules(function($data){
                  if($data){
-                     return "required";
+                     return [
+                        'required',
+                        Rule::in(['1']),
+                    ];
                  }
             }, $this->model)->hideIf($this->model),
          ];

@@ -140,10 +140,11 @@ abstract class Field
         return $this;
     }
 
-    public function hideIf($callback){
+    public function hideIf($callback=null){
         $this->hidden = $callback;
         return $this;
     }
+
 
     
     /**

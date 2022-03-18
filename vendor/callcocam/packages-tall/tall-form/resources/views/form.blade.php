@@ -34,11 +34,9 @@
                     <div class="md:grid md:grid-cols-12 gap-y-3 gap-x-4">
                         @if ($fields)
                             @foreach ($fields as $field)
-                                @if ($field->hidden)
-                                    <div class="col-span-{{ $field->span }} ">
-                                        @include(sprintf('tall-forms::fields.%s', $field->type))
-                                    </div>
-                                @endif
+                                <div class="col-span-{{ $field->span }} ">
+                                    @include(sprintf('tall-forms::fields.%s',$field->type))
+                                </div>
                             @endforeach
                         @endif
                     </div>
@@ -60,14 +58,14 @@
           hover:shadow-sm disabled:opacity-60 disabled:cursor-not-allowed rounded-md text-sm ring-green-600 text-white bg-green-500 hover:bg-green-600
                   dark:ring-offset-secondary-800 dark:bg-primary-700 dark:ring-primary-700"
                             href="{{ route($url) }}">
-                            <x-icon name="plus" class=" w-5 h-5" />
+                            <x-icon name="plus" class=" w-5 h-5"/>
                             {{ __('Create new') }}
                         </a>
                     @endif
                 @endif
                 @if ($buttoms)
                     @foreach ($buttoms as $field)
-                        @include(sprintf('tall-forms::fields.%s', $field->type))
+                        @include(sprintf('tall-forms::fields.%s',$field->type))
                     @endforeach
                 @endif
             </div>

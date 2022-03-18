@@ -41,11 +41,13 @@
                                 @endif
                             @endforeach
                         @endif
-                        @if ($model)
-                            <div class="col-span-12">
-                                @livewire('admin.eventos.inscricoes.inscrito-component', ['model' => $model],
-                                key($model->id))
-                            </div>
+                        @if ($inscricoes)
+                            @if ($model)
+                                <div class="col-span-12">
+                                    @livewire('admin.eventos.inscricoes.inscrito-component', ['model' => $model],
+                                    key($model->id))
+                                </div>
+                            @endif
                         @endif
                     </div>
 
