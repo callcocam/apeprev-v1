@@ -34,7 +34,8 @@ class InscritoComponent extends Component
         if($instituicao = auth()->user()->instituicao){
             $this->instituicao = $instituicao;
             if( $inscricoes = $model->inscricoes()->where('instituicao_id',$instituicao->id)->first()){
-                $this->inscricoes = $inscricoes->toArray();
+                $this->inscricoes = $inscricoes;
+              
             }
         }
     }
@@ -76,6 +77,12 @@ class InscritoComponent extends Component
     }       
    }
    
+   public function getInscritoProperty()
+   {
+    if($inscritos = $this->inscricoes->inscritos){
+        return $instituicao->participantes;
+    }       
+   }
    public function edit($id)
    {
        $this->emit('edit', $id);
@@ -88,16 +95,18 @@ class InscritoComponent extends Component
 
    public function gerarBoleto($id)
    {
-      dd('gerarBoleto', $id, data_get($this->hotel,$id, false));
+     dd(data_get($this->hotel,$id, false));
       $data =[
-          "instituicao_id"=>"",
-          "event_id"=>"",
-          "evento_inscricao_id"=>"",
-          "lote"=>"",
+          "instituicao_id"=>$this->instituicao->id,
+          "event_id"=>$this->model->id,
+          "evento_inscricao_id"=>data_get($this->inscricoes,'id', false),
+          "hotel_id"=>data_get($this->hotel,'id', false),
+          "lote"=>0,
           "desconto"=>"",
-          "valor"=>"",
-          "user_id"=>"",
+          "valor"=>$this->plano()->valor,
+          "user_id"=>$id,
       ];
+      $this->inscricoes->inscritos()->create($data);
    }
 
    public function selectCheckboxAll()
@@ -121,18 +130,44 @@ class InscritoComponent extends Component
    }
    public function gerarLote()
    {
-       sleep(2);
+    if($this->checkboxValuesCount()){
+        foreach($this->checkboxValues as $value){
+            if(data_get($this->checkboxValues,$value, false)){
+                $data =[
+                    "instituicao_id"=>$this->instituicao->id,
+                    "event_id"=>$this->model->id,
+                    "evento_inscricao_id"=>data_get($this->inscricoes,'id', false),
+                    "hotel_id"=>data_get($this->hotel,'id', false),
+                    "lote"=>1,
+                    "desconto"=>"",
+                    "valor"=>$this->plano()->valor,
+                    "user_id"=>$value,
+                ];                
+                $this->inscricoes->inscritos()->create($data);
+            }
+        }
+    }
    }
 
+   
    
    public function getPlanoProperty()
    {
        //Tem que ter o tipo da instituição
-       if($instituicoes_tipo = $this->instituicao->instituicoes_tipo){
-          if($evento_planos = $instituicoes_tipo->evento_planos){             
-              return data_get($evento_planos,0);
-          }
-       }
-       return null;
+      
+       return $this->plano();
    }
+
+   
+   private function plano()
+   {
+       //Tem que ter o tipo da instituição
+       if($instituicoes_tipo = $this->instituicao->instituicoes_tipo){
+        if($evento_planos = $instituicoes_tipo->evento_planos){             
+            return data_get($evento_planos,0);
+        }
+     }
+         return null;
+   }
+
 }

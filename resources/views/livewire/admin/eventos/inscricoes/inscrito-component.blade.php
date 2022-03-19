@@ -39,9 +39,34 @@
                     <tbody class="block md:table-row-group">
                         <!-- TABELA MOBILE-->
                         @foreach ($participantes as $item)
-                            @include(
-                                'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos'
-                            )
+                            @if ($inscrito = \App\Models\EventoInscrito::query()->where([
+                                    'event_id' => $model->id,
+                                    'event_id' => data_get($model, 'id', false),
+                                    'instituicao_id' => data_get($instituicao, 'id', false),
+                                    'evento_inscricao_id' => data_get($inscricoes, 'id', false),
+                                    'lote' => 0,
+                                    'user_id' => $item->id,
+                                ])->first())                                
+                                @include(
+                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-avulso'
+                                )
+                                @elseif ($inscrito = \App\Models\EventoInscrito::query()->where([
+                                    'event_id' => $model->id,
+                                    'event_id' => data_get($model, 'id', false),
+                                    'instituicao_id' => data_get($instituicao, 'id', false),
+                                    'evento_inscricao_id' => data_get($inscricoes, 'id', false),
+                                    'lote' => 1,
+                                    'user_id' => $item->id,
+                                ])->first())
+                                @include(
+                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-lote'
+                                )
+
+                            @else
+                                @include(
+                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos'
+                                )
+                            @endif
                         @endforeach
                     </tbody>
                     @if ($instituicao)

@@ -16,4 +16,16 @@ class EventoInscrito  extends AbstractModel
   //protected $with = ['description'];
   protected $guarded = ["id"];
 
+  public function inscricoes()
+  {
+    return $this->belongsTo(EventoInscricao::class);
+  }
+
+    /**
+     * @return string
+     */
+    protected function slugTo()
+    {
+    return false;
+    }
 }

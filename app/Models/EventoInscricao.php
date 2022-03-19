@@ -23,4 +23,9 @@ class EventoInscricao  extends AbstractModel
     {
     return false;
     }
+
+    public function inscritos()
+    {
+      return $this->hasMany(EventoInscrito::class);
+    }
 }
