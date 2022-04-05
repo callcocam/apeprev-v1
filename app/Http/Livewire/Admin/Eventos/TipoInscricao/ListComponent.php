@@ -69,7 +69,7 @@ final class ListComponent extends TableComponent
     protected function tableAttr(): array
     {
         return [
-           'tableTitle' => __('TipoInscricaos'),
+           'tableTitle' => __('Tipo Inscrições'),
        ];
     }
     /*
@@ -82,8 +82,8 @@ final class ListComponent extends TableComponent
     protected function actions(){
 
         return [
-            Link::make('Edit')->route('admin.tipoinscricao.edit')->xs()->icon('pencil-alt')->primary(),
-            Delete::make('Delete')->xs()->icon('trash')->negative(),
+            Link::make('Editar')->route('admin.tipo-inscricao.edit')->xs()->icon('pencil-alt')->primary(),
+            Delete::make('Excluir')->xs()->icon('trash')->negative(),
         ];
     }
 
@@ -111,7 +111,7 @@ final class ListComponent extends TableComponent
             ->makeInputStatusBasic()
             ->makeInputStatus()
             ->status(),
-            Column::make('Created At')->format(function($model, $column){
+            Column::make('Data Da Criação')->format(function($model, $column){
                 return $model->created_at->format('d/m/Y');
             })
             ->field('created_at_formatted')

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHotelIdEventoInscritosTable extends Migration
+class AlterEventoInscritosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddHotelIdEventoInscritosTable extends Migration
     public function up()
     {
         Schema::table('evento_inscritos', function (Blueprint $table) {
-            $table->foreignUuid('hotel_id')->nullable()->constrained('hotels')->cascadeOnDelete();
+            $table->dropForeign('evento_inscritos_hotel_id_foreign');
+            $table->dropColumn('hotel_id');
+            $table->integer('hotel')->nullable();
         });
     }
 
@@ -26,8 +28,7 @@ class AddHotelIdEventoInscritosTable extends Migration
     public function down()
     {
         Schema::table('evento_inscritos', function (Blueprint $table) {
-            $table->dropForeign('evento_inscritos_hotel_id_foreign');
-            $table->dropColumn('hotel_id');
+            $table->dropColumn('hotel');
         });
     }
 }

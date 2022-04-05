@@ -21,18 +21,37 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'instituicao_id' => ['required'],
-            'office_id' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+          
         ])->validate();
-       if($redirect = data_get($input,'redirect')){
+        if(data_get($input,'intituition')){
+            Validator::make($input, [
+                'intituition_name' => ['required', 'string', 'max:255'],
+                'document' => ['required', 'string', 'max:255', 'unique:instituicoes'],
+                'office_id' => ['required'],
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => $this->passwordRules(),
+                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            ])->validate();
+         }
+         else{
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'instituicao_id' => ['required'],
+                'office_id' => ['required'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => $this->passwordRules(),
+                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            ])->validate();
+         }
+        if($redirect = data_get($input,'redirect')){
             config([
                 'fortify.home'=>$redirect
             ]);
-       }
+         }
+
+        
+         dd($input);
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],

@@ -39,32 +39,17 @@
                     <tbody class="block md:table-row-group">
                         <!-- TABELA MOBILE-->
                         @foreach ($participantes as $item)
-                            @if ($inscrito = \App\Models\EventoInscrito::query()->where([
-                                    'event_id' => $model->id,
-                                    'event_id' => data_get($model, 'id', false),
-                                    'instituicao_id' => data_get($instituicao, 'id', false),
-                                    'evento_inscricao_id' => data_get($inscricoes, 'id', false),
-                                    'lote' => 0,
-                                    'user_id' => $item->id,
-                                ])->first())                                
+                            @if ($inscrito = $this->getInscrito($model,$instituicao,$inscricoes, $item, 0))
                                 @include(
-                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-avulso'
+                                'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-avulso'
                                 )
-                                @elseif ($inscrito = \App\Models\EventoInscrito::query()->where([
-                                    'event_id' => $model->id,
-                                    'event_id' => data_get($model, 'id', false),
-                                    'instituicao_id' => data_get($instituicao, 'id', false),
-                                    'evento_inscricao_id' => data_get($inscricoes, 'id', false),
-                                    'lote' => 1,
-                                    'user_id' => $item->id,
-                                ])->first())
+                            @elseif ($inscrito = $this->getInscrito($model,$instituicao,$inscricoes, $item, 1))
                                 @include(
-                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-lote'
+                                'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos-lote'
                                 )
-
                             @else
                                 @include(
-                                    'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos'
+                                'livewire.admin.eventos.inscricoes.includes.lista-de-inscritos'
                                 )
                             @endif
                         @endforeach

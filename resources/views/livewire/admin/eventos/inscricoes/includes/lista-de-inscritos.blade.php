@@ -26,10 +26,9 @@
         <div class="flex space-x-2">
             <span class="inline-block w-1/3 md:hidden font-bold">AÇÃO</span>
             @if (!\Arr::get($checkboxValues, $item->id))
-                <x-button.circle positive icon="qrcode" data-bs-toggle="tooltip" data-bs-placement="top" title="Gerar Boleto" spinner="gerarBoleto" wire:click="gerarBoleto('{{ $item->id }}')" />
+                <x-button.circle positive icon="check" data-bs-toggle="tooltip" data-bs-placement="top" title="Gerar Inscrição" spinner="gerarBoleto" wire:click="gerarBoleto('{{ $item->id }}')" />
             @endif
             <x-button.circle icon="pencil" spinner="edit" primary label="Alterar" wire:click="edit('{{ $item->id }}')" />
-            <x-button.circle icon="trash" spinner="excluir" negative label="Exluir" wire:click="excluir('{{ $item->id }}')" />
         </div>
     </td>
 </tr>

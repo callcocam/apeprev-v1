@@ -11,8 +11,8 @@
     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
         @if ($hotel = $model->hotel)
             <span class="inline-block w-1/3 md:hidden font-bold">HOTEL</span>
-            <x-toggle lg wire:model.defer="hotel.{{ $item->id }}"
-                label="{{ sprintf('Fazer reservar de hotel. R$ %s', form_read($hotel->valor_single)) }}" />
+            <x-toggle lg wire:model.defer="data.hotel.{{ $item->id }}"
+                label="Fazer reservar de hotel." />
         @endif
     </td>
     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
@@ -33,3 +33,4 @@
         </div>
     </td>
 </tr>
+
