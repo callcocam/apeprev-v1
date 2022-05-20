@@ -35,7 +35,9 @@
         </div>
         <h1 class="mt-3 text-gray-800 text-xl font-bold my-2"><a href="{{ $model->url }}"
                 target="_blank">{{ $model->name }}</a></h1>
-        <p class="text-gray-700 mb-2 h-10">{{ \Str::limit($model->description->preview, 80) }}</p>
+        @if ($description = $model->description)
+            <p class="text-gray-700 mb-2 h-10">{{ \Str::limit($description->preview, 80) }}</p>
+        @endif
 
     </div>
 </div>

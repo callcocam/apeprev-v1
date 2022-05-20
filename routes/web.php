@@ -29,3 +29,7 @@ Route::get('/dashboard', function(){
 
 
 \App\ComponentParser::generateRoute(app_path('Http/Livewire/Paginas'));
+
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function() {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+  });

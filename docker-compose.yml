@@ -51,7 +51,7 @@ services:
         links:
             - mysql
         ports:
-            - 8000:80
+            - 8001:80
         environment:
             - PMA_ARBITRARY=1
             - UPLOAD_LIMIT=100m

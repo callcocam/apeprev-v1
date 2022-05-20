@@ -15,6 +15,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "unisharp/laravel-filemanager": "^2.4",
+        "van-ons/laraberg": "^1.1",
         "wireui/wireui": "^1.0"
     },
     "require-dev": {

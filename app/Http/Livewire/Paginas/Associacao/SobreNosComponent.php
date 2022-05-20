@@ -8,8 +8,11 @@ namespace App\Http\Livewire\Paginas\Associacao;
 
 use App\Http\Livewire\AbstractPaginaComponent;
 
+use App\Http\Livewire\Traits\WithPages;
+
 class SobreNosComponent extends AbstractPaginaComponent
 {
+    use WithPages;
      /*
     |--------------------------------------------------------------------------
     |  Features route

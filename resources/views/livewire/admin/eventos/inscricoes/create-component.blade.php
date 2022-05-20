@@ -50,7 +50,6 @@
                             @endif
                         @endif
                     </div>
-
                 </div>
             </div>
             <div class="flex justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 z-10 space-x-2">

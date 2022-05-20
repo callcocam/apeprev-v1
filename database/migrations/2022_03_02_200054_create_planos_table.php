@@ -13,7 +13,7 @@ class CreatePlanosTable extends Migration
      */
     public function up()
     {
-        Schema::create('planos', function (Blueprint $table) {
+        Schema::create('instituicoes_planos', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('slug')->nullable(); 
@@ -39,6 +39,6 @@ class CreatePlanosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planos');
+        Schema::dropIfExists('instituicoes_planos');
     }
 }

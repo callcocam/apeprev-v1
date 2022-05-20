@@ -15,6 +15,8 @@ use App\Tenant\Concerns\UsesLandlordConnection;
 class Tenant extends AbstractModel
 {
     use HasFactory, UsesLandlordConnection;
+    
+    protected $guarded = ['id'];
 
     public function makeCurrent(): self
     {

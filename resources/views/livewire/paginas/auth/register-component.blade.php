@@ -1,40 +1,36 @@
-<div>
+<form wire:submit.prevent="store">
+    @csrf
     @if ($redirect = request()->query('redirect'))
         <input type="hidden" name="redirect" value="{{ $redirect }}">
     @endif
     @if (App\Helpers\LoadActionsHelper::hasSelectInstituitionFeature())
         <fieldset class="p-2 mt-2 border border-2 rounded">
             <legend>{{ __('DADOS DA INSTITUIÇÃO') }}</legend>
-            @if ($createNew)
-                <input type="hidden" name="intituition" value="1">
-                <div>
-                    <x-input label="{{ __('Nome da instituição') }}" name="intituition_name"
-                        :value="old('intituition_name')" placeholder="{{ __('Nome da instituição') }}" />
-                </div>
-                <div class="mt-4">
-                    <x-tall-document-maskable-input label="{{ __('CNPJ da instituição') }}" name="document"  wire:model.defer="data.document"
-                        placeholder="{{ __('CNPJ da instituição') }}" />
-                </div>
-            @else
-                <div class="mt-4">
-                    <x-select label="{{ __('Selecione Um Instituição') }}"
-                        placeholder="{{ __('Selecione Um Instituição') }}" wire:model="data.instituicao_id"
-                        id="instituicao_id" name="instituicao_id">
-                        <x-select.user-option img="{{ asset('img/icon-plus-icon.jpg') }}"
-                            label="{{ __('CADASTRAR NOVA') }}" value="1" />
-                        @if ($instituicoes = \App\Models\Instituicao::all())
-                            @foreach ($instituicoes as $instituicao)
-                                <x-select.option label="{{ $instituicao->name }}-{{ $instituicao->document }}"
-                                    value="{{ $instituicao->id }}" />
-                            @endforeach
-                        @endif
-                    </x-select>
-                </div>
-            @endif
+            <div class="mt-4">
+                <x-select label="{{ __('Selecione Um Instituição') }}" autofocus
+                    placeholder="{{ __('Selecione Um Instituição') }}" wire:model="data.instituicao_id">
+                    <x-select.user-option img="{{ asset('img/icon-plus-icon.jpg') }}"
+                        label="{{ __('CADASTRAR NOVA') }}" value="1" />
+                    @if ($instituicoes = \App\Models\Instituicao::all())
+                        @foreach ($instituicoes as $instituicao)
+                            <x-select.option label="{{ $instituicao->name }}-{{ $instituicao->document }}"
+                                value="{{ $instituicao->id }}" />
+                        @endforeach
+                    @endif
+                </x-select>
+            </div>
+            <div class="mt-4">
+                <x-input label="{{ __('Nome da instituição') }}" wire:model.defer="data.intituition_name"
+                    placeholder="{{ __('Nome da instituição') }}" />
+            </div>
+            <div class="mt-4">
+                <x-tall-document-maskable-input label="{{ __('CNPJ da instituição') }}"
+                    wire:model.lazy="data.document" placeholder="{{ __('CNPJ da instituição') }}" />
+            </div>
 
             <div class="mt-4">
                 <x-select label="{{ __('Tipo de ligação') }}" placeholder="{{ __('Tipo de ligação') }}"
-                    id="office_id" name="office_id" wire:model.defer="data.office_id">
+                    wire:model.lazy="data.office_id">
                     @if ($offices = \App\Models\Office::all())
                         @foreach ($offices as $office)
                             <x-select.option label="{{ $office->name }}" value="{{ $office->id }}" />
@@ -47,29 +43,29 @@
     <fieldset class="p-2 mt-2 border border-2 rounded">
         <legend>{{ __('DADOS DO USUÁRIO') }}</legend>
         <div>
-            <x-input label="{{ __('Name') }}" type="text" name="name" :value="old('name')"
-                placeholder="{{ __('Name') }}" autofocus autocomplete="name" />
+            <x-input label="{{ __('Name') }}" wire:model="data.name" placeholder="{{ __('Name') }}"
+                autocomplete="name" />
         </div>
 
         <div class="mt-4">
-            <x-input label="{{ __('Email') }}" type="email" name="email" :value="old('email')"
+            <x-input label="{{ __('Email') }}" type="email" wire:model="data.email"
                 placeholder="{{ __('Email') }}" />
         </div>
 
         <div class="mt-4">
-            <x-input label="{{ __('Password') }}" type="password" name="password"
+            <x-input label="{{ __('Password') }}" type="password" wire:model="data.password"
                 placeholder="{{ __('Password') }}" />
         </div>
 
         <div class="mt-4">
-            <x-input label="{{ __('Confirm Password') }}" type="password" name="password_confirmation"
+            <x-input label="{{ __('Confirm Password') }}" type="password" wire:model="data.password_confirmation"
                 placeholder="{{ __('Confirm Password') }}" />
         </div>
         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <div class="mt-4">
                 <x-jet-label for="terms">
                     <div class="flex items-center">
-                        <x-jet-checkbox name="terms" id="terms" />
+                        <x-jet-checkbox wire:model="data.terms" id="terms" />
 
                         <div class="ml-2">
                             {!! __('I agree to the :terms_of_service and :privacy_policy', [
@@ -92,4 +88,4 @@
             {{ __('Register') }}
         </x-jet-button>
     </div>
-</div>
+</form>

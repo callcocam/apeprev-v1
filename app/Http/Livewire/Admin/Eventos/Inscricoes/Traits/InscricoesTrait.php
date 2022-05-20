@@ -61,7 +61,9 @@ trait InscricoesTrait
        }
 
        collect($this->instituicao->participantes)->each(function ($model) {
-           $this->checkboxValues[$model->id] = (string) $model->id;
+            if($this->validarInscrito($model)){
+                $this->checkboxValues[$model->id] = (string) $model->id;
+            }
        });
    }
 
@@ -127,4 +129,42 @@ trait InscricoesTrait
          return null;
    }
 
+   public function validarLote()
+   {
+
+        $checkboxValues = collect($this->instituicao->participantes)->filter(function ($model) {
+           return $this->validarInscrito($model);
+        })->count();
+        return $checkboxValues;
+   }
+
+   public function validarInscrito($item)
+   {
+       
+    if(!data_get($item,'name')){
+       return false;
+    }
+
+    if(!data_get($item,'email')){
+        return false;
+     }
+     
+    if(!data_get($item,'phone')){
+        return false;
+     }
+     
+    if(!data_get($item,'birth_date')){
+        return false;
+     }
+     
+    if(!data_get($item,'rg')){
+        return false;
+     }
+     
+    if(!data_get($item,'cpf')){
+        return false;
+     }
+     
+     return true;
+   }
 }
