@@ -4,26 +4,20 @@
 * User: callcocam@gmail.com, contato@sigasmart.com.br
 * https://www.sigasmart.com.br
 */
-namespace App\Http\Livewire\Paginas\Noticias;
+namespace App\Http\Livewire\Paginas\Eventos;
 
 use App\Http\Livewire\AbstractPaginaComponent;
-use App\Models\Post;
 
-class ShowComponent extends AbstractPaginaComponent
+class CertificadoComponent extends AbstractPaginaComponent
 {
 
-    public $limit = 3;
-
-    public function mount(Post $model){
-           $this->setFormProperties($model);
-    }
-
-    public function query(){
-
-        return Post::query()
-        ->whereNotIn('id',[$this->model->id])
-        ->where('type','post')
-        ->orderByDesc('created_at');
+    public function mount($model)
+    {
+        $certificados=(new \App\Imports\EventsImport)->toCollection('events/imports/eventosApeprev.xlsx');
+        $certificados = $certificados[0];
+        unset($certificados[0]);
+        $this->rows['id']= $model;
+        $this->rows['certificado']= $certificados->where(0,$model)->first()->toArray();
     }
 
      /*
@@ -37,7 +31,6 @@ class ShowComponent extends AbstractPaginaComponent
        \Route::get($this->path(true), static::class)->name($this->route_name());
     }
 
-    
     /*
     |--------------------------------------------------------------------------
     |  Features order
@@ -45,12 +38,12 @@ class ShowComponent extends AbstractPaginaComponent
     | Order visivel no me menu
     |
     */
-    public function generate(){
-        return false;
+    public function order(){
+        return 1000;
      }
 
     public function view()
     {
-        return 'livewire.paginas.noticias.show-component';
+        return 'livewire.paginas.eventos.certificado-component';
     }
 }

@@ -7,9 +7,24 @@
 namespace App\Http\Livewire\Paginas\Noticias;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use App\Models\Post;
 
 class ListComponent extends AbstractPaginaComponent
 {
+
+    public function query(){
+
+      return Post::query()->where('type','post')->orderByDesc('created_at');
+    }
+
+    protected function models(){
+
+      $this->rows['destaque'] = $this->query()->where('type','noticy')->first();
+      // $this->rows['destaque'] = $this->query()->first();
+
+      return parent::models();
+    }
+
      /*
     |--------------------------------------------------------------------------
     |  Features route

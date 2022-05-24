@@ -29,7 +29,7 @@ class CalculadoraComprevComponent extends AbstractPaginaComponent
     |
     */
     public function label(){
-        return 'CALCULADORA COMPREV';
+        return 'FERRAMENTAS COMPREV';
      }
 
     public function view()

@@ -49,7 +49,7 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
-        return Certidao::query();
+        return Certidao::query()->orderBy('ordering', 'asc');
     }
     
     /*
@@ -110,5 +110,16 @@ final class ListComponent extends TableComponent
             ->field('created_at_formatted')
             ->makeInputDatePicker('created_at'),
         ];
+    }
+
+    public function updateOrder($data=[]){
+       if($data){
+            foreach($data as $item){               
+                if($model = $this->query()->find(data_get($item, 'value')) ){
+                    $model->ordering = data_get($item, 'order');
+                    $model->update();
+                }
+            }
+       }
     }
 }

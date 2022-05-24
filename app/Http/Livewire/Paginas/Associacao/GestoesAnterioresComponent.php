@@ -20,7 +20,17 @@ class GestoesAnterioresComponent extends AbstractPaginaComponent
     public function route(){
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
-
+ 
+    /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function label(){
+        return "Gestões Anteriores";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features order

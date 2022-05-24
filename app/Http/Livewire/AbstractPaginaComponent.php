@@ -17,6 +17,8 @@ abstract class AbstractPaginaComponent extends Component
     public $model;
     
     public $data;
+    
+    public $rows=[];
 
     protected $perPage = 12;
     
@@ -43,8 +45,9 @@ abstract class AbstractPaginaComponent extends Component
     public function render()
     {
         return view($this->view())
+        ->with('models', $this->models())
         ->with('model', $this->model)
-        ->with('models', $this->models());
+        ->with($this->rows);
     }
 
 

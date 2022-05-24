@@ -7,9 +7,39 @@
 namespace App\Http\Livewire\Paginas;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use Illuminate\Support\Facades\Mail;
 
 class FaleConoscoComponent extends AbstractPaginaComponent
 {
+
+    protected $rules = [
+        'data.name' => 'required',
+        'data.email' => 'required|email',
+        'data.description' => 'required',
+    ];
+
+    protected $messages = [
+        'data.name' => 'Por favor informe seu nome',
+        'data.email' => 'Por favor informe um email valido',
+        'data.description' => 'Por favor, o campo Menssagem deve ser preenchido',
+    ];
+
+    public function sendMail()
+    {
+        $this->validate();
+
+        if(\App\Models\Newsletter::query()->firstOrCreate($this->data)){
+            Mail::to(config('mail.from.address'))->send(new \App\Mail\ContatoMail($this->data));
+            $this->reset(['data']);
+            $this->dialog()->success(
+                $title = 'E-Mail recebido com sucesso',
+                $description = 'Recebemos o seu contato, muito em breve, entraremos em contato:)'
+            );
+            return true;
+        }
+        return false;
+    }
+
     /*
     |--------------------------------------------------------------------------
     |  Features route

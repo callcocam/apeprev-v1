@@ -21,6 +21,17 @@ class GestaoComponent extends AbstractPaginaComponent
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
 
+     /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function label(){
+        return "Gestão 2021-2025";
+     }
+
     /*
     |--------------------------------------------------------------------------
     |  Features order

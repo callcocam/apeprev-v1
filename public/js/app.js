@@ -1,6 +1,128 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@alpine-collective/toolkit-interval/dist/cdn.min.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@alpine-collective/toolkit-interval/dist/cdn.min.js ***!
+  \**************************************************************************/
+/***/ (() => {
+
+(()=>{function r(i){i.magic("interval",()=>function(...t){if(typeof t[0]!="function")return t[0];let o=t[1],c=0,l=!1;typeof t[1]=="object"&&(Object.prototype.hasOwnProperty.call(t[1],"timer")&&(o=t[1].timer),Object.prototype.hasOwnProperty.call(t[1],"delay")&&(c=t[1].delay),Object.prototype.hasOwnProperty.call(t[1],"forceInterval")&&(l=t[1].forceInterval));let n=null,f=!0,e=()=>{let u=f?o+c:o;f=!1,n=setTimeout(()=>{t[0].call(this),l?e():requestAnimationFrame(e)},u)};i.effect(()=>{console.log(this.autoIntervalTest),this.autoIntervalTest==null||this.autoIntervalTest?l?e():requestAnimationFrame(e):(console.log("clear",n),clearTimeout(n))})})}document.addEventListener("alpine:init",()=>{window.Alpine.plugin(r)});})();
+
+
+/***/ }),
+
+/***/ "./node_modules/@alpinejs/collapse/dist/module.esm.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@alpinejs/collapse/dist/module.esm.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ module_default)
+/* harmony export */ });
+// packages/collapse/src/index.js
+function src_default(Alpine) {
+  Alpine.directive("collapse", collapse);
+  collapse.inline = (el, {modifiers}) => {
+    if (!modifiers.includes("min"))
+      return;
+    el._x_doShow = () => {
+    };
+    el._x_doHide = () => {
+    };
+  };
+  function collapse(el, {modifiers}) {
+    let duration = modifierValue(modifiers, "duration", 250) / 1e3;
+    let floor = modifierValue(modifiers, "min", 0);
+    let fullyHide = !modifiers.includes("min");
+    if (!el._x_isShown)
+      el.style.height = `${floor}px`;
+    if (!el._x_isShown && fullyHide)
+      el.hidden = true;
+    if (!el._x_isShown)
+      el.style.overflow = "hidden";
+    let setFunction = (el2, styles) => {
+      let revertFunction = Alpine.setStyles(el2, styles);
+      return styles.height ? () => {
+      } : revertFunction;
+    };
+    let transitionStyles = {
+      transitionProperty: "height",
+      transitionDuration: `${duration}s`,
+      transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)"
+    };
+    el._x_transition = {
+      in(before = () => {
+      }, after = () => {
+      }) {
+        if (fullyHide)
+          el.hidden = false;
+        if (fullyHide)
+          el.style.display = null;
+        let current = el.getBoundingClientRect().height;
+        el.style.height = "auto";
+        let full = el.getBoundingClientRect().height;
+        if (current === full) {
+          current = floor;
+        }
+        Alpine.transition(el, Alpine.setStyles, {
+          during: transitionStyles,
+          start: {height: current + "px"},
+          end: {height: full + "px"}
+        }, () => el._x_isShown = true, () => {
+          if (el.style.height == `${full}px`) {
+            el.style.overflow = null;
+          }
+        });
+      },
+      out(before = () => {
+      }, after = () => {
+      }) {
+        let full = el.getBoundingClientRect().height;
+        Alpine.transition(el, setFunction, {
+          during: transitionStyles,
+          start: {height: full + "px"},
+          end: {height: floor + "px"}
+        }, () => el.style.overflow = "hidden", () => {
+          el._x_isShown = false;
+          if (el.style.height == `${floor}px` && fullyHide) {
+            el.style.display = "none";
+            el.hidden = true;
+          }
+        });
+      }
+    };
+  }
+}
+function modifierValue(modifiers, key, fallback) {
+  if (modifiers.indexOf(key) === -1)
+    return fallback;
+  const rawValue = modifiers[modifiers.indexOf(key) + 1];
+  if (!rawValue)
+    return fallback;
+  if (key === "duration") {
+    let match = rawValue.match(/([0-9]+)ms/);
+    if (match)
+      return match[1];
+  }
+  if (key === "min") {
+    let match = rawValue.match(/([0-9]+)px/);
+    if (match)
+      return match[1];
+  }
+  return rawValue;
+}
+
+// packages/collapse/builds/module.js
+var module_default = src_default;
+
+
+
+/***/ }),
+
 /***/ "./node_modules/alpinejs/dist/module.esm.js":
 /*!**************************************************!*\
   !*** ./node_modules/alpinejs/dist/module.esm.js ***!
@@ -5437,6 +5559,33 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/alpine.js":
+/*!********************************!*\
+  !*** ./resources/js/alpine.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpinejs_collapse__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @alpinejs/collapse */ "./node_modules/@alpinejs/collapse/dist/module.esm.js");
+/* harmony import */ var _alpine_collective_toolkit_interval__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @alpine-collective/toolkit-interval */ "./node_modules/@alpine-collective/toolkit-interval/dist/cdn.min.js");
+/* harmony import */ var _alpine_collective_toolkit_interval__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_alpine_collective_toolkit_interval__WEBPACK_IMPORTED_MODULE_2__);
+ // import trap from '@alpinejs/trap'
+
+
+ // Alpine.plugin(trap)
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].plugin(_alpinejs_collapse__WEBPACK_IMPORTED_MODULE_1__["default"]);
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5447,15 +5596,13 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! livewire-sortable */ "./node_modules/livewire-sortable/dist/livewire-sortable.js");
 /* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(livewire_sortable__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpine__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alpine */ "./resources/js/alpine.js");
 /* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tw-elements */ "./node_modules/tw-elements/dist/js/index.min.js");
 /* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tw_elements__WEBPACK_IMPORTED_MODULE_2__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
  //import './slider';
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");

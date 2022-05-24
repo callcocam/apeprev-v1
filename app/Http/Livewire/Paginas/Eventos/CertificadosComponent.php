@@ -10,6 +10,28 @@ use App\Http\Livewire\AbstractPaginaComponent;
 
 class CertificadosComponent extends AbstractPaginaComponent
 {
+
+     /*
+    |--------------------------------------------------------------------------
+    |  Features mount
+    |--------------------------------------------------------------------------
+    | Inicializar o component
+    |
+    */
+    public function mount()
+    {
+    
+        $this->rows['certificados']=[];
+      
+        if (\Storage::disk('public')->exists('events/imports/eventosApeprev.xlsx')) {
+            $certificados=(new \App\Imports\EventsImport)->toCollection('events/imports/eventosApeprev.xlsx');
+            $certificados = $certificados[0];
+            unset($certificados[0]);
+            $this->rows['certificados']= $certificados->sortDesc()->toArray();
+        }
+      
+    }
+
      /*
     |--------------------------------------------------------------------------
     |  Features route

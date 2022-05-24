@@ -2473,6 +2473,11 @@ textarea.form-control.is-invalid {
 .\!offcanvas.\!show {
   transform: none !important;
 }
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
 .fixed-bottom {
   position: fixed;
   right: 0;
@@ -4857,13 +4862,21 @@ textarea.form-control.is-invalid {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.-mx-56 {
-  margin-left: -14rem;
-  margin-right: -14rem;
-}
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
+}
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.-mx-56 {
+  margin-left: -14rem;
+  margin-right: -14rem;
 }
 .mx-1 {
   margin-left: 0.25rem;
@@ -4876,6 +4889,10 @@ textarea.form-control.is-invalid {
 .-my-2 {
   margin-top: -0.5rem;
   margin-bottom: -0.5rem;
+}
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .-mx-2 {
   margin-left: -0.5rem;
@@ -4953,6 +4970,18 @@ textarea.form-control.is-invalid {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mr-1\.5 {
+  margin-right: 0.375rem;
+}
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .ml-60 {
   margin-left: 15rem;
 }
@@ -4962,9 +4991,6 @@ textarea.form-control.is-invalid {
 .-ml-64 {
   margin-left: -16rem;
 }
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
 .mr-12 {
   margin-right: 3rem;
 }
@@ -4973,9 +4999,6 @@ textarea.form-control.is-invalid {
 }
 .ml-5 {
   margin-left: 1.25rem;
-}
-.mb-5 {
-  margin-bottom: 1.25rem;
 }
 .-mt-10 {
   margin-top: -2.5rem;
@@ -5010,6 +5033,9 @@ textarea.form-control.is-invalid {
 .ml-auto {
   margin-left: auto;
 }
+.mr-auto {
+  margin-right: auto;
+}
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -5018,12 +5044,6 @@ textarea.form-control.is-invalid {
 }
 .-mr-6 {
   margin-right: -1.5rem;
-}
-.mr-1\.5 {
-  margin-right: 0.375rem;
-}
-.mr-1 {
-  margin-right: 0.25rem;
 }
 .block {
   display: block;
@@ -5079,6 +5099,9 @@ textarea.form-control.is-invalid {
 .h-3 {
   height: 0.75rem;
 }
+.h-\[326px\] {
+  height: 326px;
+}
 .h-full {
   height: 100%;
 }
@@ -5094,14 +5117,14 @@ textarea.form-control.is-invalid {
 .h-96 {
   height: 24rem;
 }
+.h-40 {
+  height: 10rem;
+}
 .h-28 {
   height: 7rem;
 }
 .h-0 {
   height: 0px;
-}
-.h-\[326px\] {
-  height: 326px;
 }
 .h-72 {
   height: 18rem;
@@ -5112,14 +5135,14 @@ textarea.form-control.is-invalid {
 .h-auto {
   height: auto;
 }
+.h-32 {
+  height: 8rem;
+}
 .h-56 {
   height: 14rem;
 }
 .h-80 {
   height: 20rem;
-}
-.h-40 {
-  height: 10rem;
 }
 .h-64 {
   height: 16rem;
@@ -5205,14 +5228,26 @@ textarea.form-control.is-invalid {
 .w-9 {
   width: 2.25rem;
 }
+.w-\[400px\] {
+  width: 400px;
+}
 .w-2\/3 {
   width: 66.666667%;
 }
 .w-screen {
   width: 100vw;
 }
+.w-96 {
+  width: 24rem;
+}
+.w-40 {
+  width: 10rem;
+}
 .w-28 {
   width: 7rem;
+}
+.w-32 {
+  width: 8rem;
 }
 .w-64 {
   width: 16rem;
@@ -5220,17 +5255,14 @@ textarea.form-control.is-invalid {
 .w-56 {
   width: 14rem;
 }
-.w-32 {
-  width: 8rem;
+.w-1\/2 {
+  width: 50%;
 }
 .w-52 {
   width: 13rem;
 }
 .w-2\/4 {
   width: 50%;
-}
-.w-40 {
-  width: 10rem;
 }
 .w-2 {
   width: 0.5rem;
@@ -5485,6 +5517,9 @@ textarea.form-control.is-invalid {
 .justify-items-start {
   justify-items: start;
 }
+.justify-items-center {
+  justify-items: center;
+}
 .gap-6 {
   gap: 1.5rem;
 }
@@ -5563,6 +5598,11 @@ textarea.form-control.is-invalid {
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .space-x-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
@@ -5577,11 +5617,6 @@ textarea.form-control.is-invalid {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -5674,6 +5709,9 @@ textarea.form-control.is-invalid {
 .rounded-sm {
   border-radius: 0.125rem;
 }
+.rounded-2xl {
+  border-radius: 1rem;
+}
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -5739,6 +5777,9 @@ textarea.form-control.is-invalid {
 .border-b {
   border-bottom-width: 1px;
 }
+.border-t-2 {
+  border-top-width: 2px;
+}
 .border-l-2 {
   border-left-width: 2px;
 }
@@ -5750,9 +5791,6 @@ textarea.form-control.is-invalid {
 }
 .border-t-0 {
   border-top-width: 0px;
-}
-.border-t-2 {
-  border-top-width: 2px;
 }
 .border-r-0 {
   border-right-width: 0px;
@@ -6036,6 +6074,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(16 185 129 / var(--tw-bg-opacity));
 }
+.bg-secondary-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
 .bg-green-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
@@ -6067,6 +6109,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
+.bg-blue-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+}
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
@@ -6091,6 +6137,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
+.bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
 .bg-secondary-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
@@ -6114,10 +6164,6 @@ textarea.form-control.is-invalid {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-.bg-gray-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 .bg-gray-900 {
   --tw-bg-opacity: 1;
@@ -6145,10 +6191,6 @@ textarea.form-control.is-invalid {
 .bg-blue-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 246 255 / var(--tw-bg-opacity));
-}
-.bg-secondary-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 .bg-blue-200 {
   --tw-bg-opacity: 1;
@@ -6307,6 +6349,10 @@ textarea.form-control.is-invalid {
 .stroke-current {
   stroke: currentColor;
 }
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -6331,6 +6377,9 @@ textarea.form-control.is-invalid {
 .p-0 {
   padding: 0px;
 }
+.p-4 {
+  padding: 1rem;
+}
 .p-1 {
   padding: 0.25rem;
 }
@@ -6342,9 +6391,6 @@ textarea.form-control.is-invalid {
 }
 .p-12 {
   padding: 3rem;
-}
-.p-4 {
-  padding: 1rem;
 }
 .p-8 {
   padding: 2rem;
@@ -6519,6 +6565,9 @@ textarea.form-control.is-invalid {
 .pb-8 {
   padding-bottom: 2rem;
 }
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -6629,6 +6678,9 @@ textarea.form-control.is-invalid {
 .font-bold {
   font-weight: 700;
 }
+.font-thin {
+  font-weight: 100;
+}
 .font-normal {
   font-weight: 400;
 }
@@ -6665,14 +6717,14 @@ textarea.form-control.is-invalid {
 .tracking-widest {
   letter-spacing: 0.1em;
 }
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
 .tracking-wider {
   letter-spacing: 0.05em;
 }
 .tracking-tighter {
   letter-spacing: -0.05em;
-}
-.tracking-wide {
-  letter-spacing: 0.025em;
 }
 .text-gray-500 {
   --tw-text-opacity: 1;
@@ -6782,6 +6834,10 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity));
 }
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
 .text-red-800 {
   --tw-text-opacity: 1;
   color: rgb(153 27 27 / var(--tw-text-opacity));
@@ -6790,9 +6846,9 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
 }
-.text-blue-500 {
+.text-gray-100 {
   --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 .text-blue-600 {
   --tw-text-opacity: 1;
@@ -6810,10 +6866,6 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
-.text-gray-100 {
-  --tw-text-opacity: 1;
-  color: rgb(243 244 246 / var(--tw-text-opacity));
-}
 .text-secondary-300 {
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
@@ -6825,6 +6877,10 @@ textarea.form-control.is-invalid {
 .text-secondary-500 {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+.text-gray-50 {
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 .text-negative-800 {
   --tw-text-opacity: 1;
@@ -6849,10 +6905,6 @@ textarea.form-control.is-invalid {
 .text-teal-300 {
   --tw-text-opacity: 1;
   color: rgb(94 234 212 / var(--tw-text-opacity));
-}
-.text-gray-50 {
-  --tw-text-opacity: 1;
-  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 .text-positive-100 {
   --tw-text-opacity: 1;
@@ -7155,6 +7207,10 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(22 163 74 / var(--tw-ring-opacity));
 }
+.ring-gray-700 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
+}
 .ring-secondary-600 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(71 85 105 / var(--tw-ring-opacity));
@@ -7327,10 +7383,6 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
 }
-.ring-gray-700 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
-}
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
 }
@@ -7346,6 +7398,10 @@ textarea.form-control.is-invalid {
 }
 .drop-shadow-md {
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.grayscale {
+  --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .filter {
@@ -7531,14 +7587,14 @@ textarea.form-control.is-invalid {
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.hover\:scale-110:hover {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .hover\:scroll-auto:hover {
@@ -7608,6 +7664,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(5 150 105 / var(--tw-bg-opacity));
 }
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
 .hover\:bg-gray-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -7623,6 +7683,10 @@ textarea.form-control.is-invalid {
 .hover\:bg-purple-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+}
+.hover\:bg-gray-900:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 .hover\:bg-secondary-50:hover {
   --tw-bg-opacity: 1;
@@ -7844,10 +7908,6 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
-.hover\:bg-gray-900:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-}
 .hover\:bg-slate-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
@@ -7964,6 +8024,10 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
+.hover\:text-gray-50:hover {
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
+}
 .hover\:text-blue-100:hover {
   --tw-text-opacity: 1;
   color: rgb(219 234 254 / var(--tw-text-opacity));
@@ -7987,10 +8051,6 @@ textarea.form-control.is-invalid {
 .hover\:text-teal-900:hover {
   --tw-text-opacity: 1;
   color: rgb(19 78 74 / var(--tw-text-opacity));
-}
-.hover\:text-gray-50:hover {
-  --tw-text-opacity: 1;
-  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 .hover\:text-orange-500:hover {
   --tw-text-opacity: 1;
@@ -8043,6 +8103,10 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(79 70 229 / var(--tw-ring-opacity));
 }
+.hover\:ring-gray-900:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(17 24 39 / var(--tw-ring-opacity));
+}
 .hover\:ring-secondary-600:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(71 85 105 / var(--tw-ring-opacity));
@@ -8054,10 +8118,6 @@ textarea.form-control.is-invalid {
 .hover\:ring-info-600:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(37 99 235 / var(--tw-ring-opacity));
-}
-.hover\:ring-gray-900:hover {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(17 24 39 / var(--tw-ring-opacity));
 }
 .hover\:ring-slate-600:hover {
   --tw-ring-opacity: 1;
@@ -8761,6 +8821,10 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(67 56 202 / var(--tw-ring-opacity));
 }
+.dark .dark\:ring-gray-700 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
+}
 .dark .dark\:ring-secondary-700 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(51 65 85 / var(--tw-ring-opacity));
@@ -8853,10 +8917,6 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(190 18 60 / var(--tw-ring-opacity));
 }
-.dark .dark\:ring-gray-700 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
-}
 .dark .dark\:ring-zinc-700 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(63 63 70 / var(--tw-ring-opacity));
@@ -8917,6 +8977,10 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
+.dark .dark\:hover\:bg-gray-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
 .dark .dark\:hover\:bg-secondary-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
@@ -8928,10 +8992,6 @@ textarea.form-control.is-invalid {
 .dark .dark\:hover\:bg-info-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-}
-.dark .dark\:hover\:bg-gray-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 .dark .dark\:hover\:bg-slate-600:hover {
   --tw-bg-opacity: 1;
@@ -9033,6 +9093,10 @@ textarea.form-control.is-invalid {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(79 70 229 / var(--tw-ring-opacity));
 }
+.dark .dark\:hover\:ring-gray-600:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity));
+}
 .dark .dark\:hover\:ring-secondary-600:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(71 85 105 / var(--tw-ring-opacity));
@@ -9044,10 +9108,6 @@ textarea.form-control.is-invalid {
 .dark .dark\:hover\:ring-info-600:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(37 99 235 / var(--tw-ring-opacity));
-}
-.dark .dark\:hover\:ring-gray-600:hover {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity));
 }
 .dark .dark\:hover\:ring-slate-600:hover {
   --tw-ring-opacity: 1;
@@ -9475,6 +9535,12 @@ textarea.form-control.is-invalid {
     row-gap: 0px;
   }
 
+  .sm\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -9485,12 +9551,6 @@ textarea.form-control.is-invalid {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
-  }
-
-  .sm\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .sm\:overflow-hidden {
@@ -9622,14 +9682,14 @@ textarea.form-control.is-invalid {
     line-height: 1.25rem;
   }
 
-  .sm\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .sm\:shadow-md {
@@ -9708,6 +9768,10 @@ textarea.form-control.is-invalid {
     margin-top: 0px;
   }
 
+  .md\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
   .md\:ml-0 {
     margin-left: 0px;
   }
@@ -9718,10 +9782,6 @@ textarea.form-control.is-invalid {
 
   .md\:mt-14 {
     margin-top: 3.5rem;
-  }
-
-  .md\:mb-6 {
-    margin-bottom: 1.5rem;
   }
 
   .md\:flex {
@@ -9762,6 +9822,14 @@ textarea.form-control.is-invalid {
 
   .md\:h-8 {
     height: 2rem;
+  }
+
+  .md\:w-56 {
+    width: 14rem;
+  }
+
+  .md\:w-64 {
+    width: 16rem;
   }
 
   .md\:w-60 {
@@ -9808,6 +9876,10 @@ textarea.form-control.is-invalid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
   .md\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
@@ -9834,6 +9906,10 @@ textarea.form-control.is-invalid {
 
   .md\:gap-6 {
     gap: 1.5rem;
+  }
+
+  .md\:gap-3 {
+    gap: 0.75rem;
   }
 
   .md\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
@@ -9874,6 +9950,11 @@ textarea.form-control.is-invalid {
 
   .md\:p-2 {
     padding: 0.5rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:py-3 {
@@ -9955,6 +10036,10 @@ textarea.form-control.is-invalid {
     margin-left: 1rem;
   }
 
+  .lg\:-mt-96 {
+    margin-top: -24rem;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -9987,12 +10072,24 @@ textarea.form-control.is-invalid {
     width: 33.333333%;
   }
 
-  .lg\:w-5\/6 {
-    width: 83.333333%;
+  .lg\:w-9\/12 {
+    width: 75%;
+  }
+
+  .lg\:w-2\/4 {
+    width: 50%;
+  }
+
+  .lg\:w-2\/6 {
+    width: 33.333333%;
   }
 
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:w-5\/6 {
+    width: 83.333333%;
   }
 
   .lg\:w-auto {
@@ -10118,6 +10215,14 @@ textarea.form-control.is-invalid {
     padding-top: 0.75rem;
   }
 
+  .lg\:pl-20 {
+    padding-left: 5rem;
+  }
+
+  .lg\:pr-40 {
+    padding-right: 10rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
@@ -10152,6 +10257,10 @@ textarea.form-control.is-invalid {
 
   .xl\:h-full {
     height: 100%;
+  }
+
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:p-6 {

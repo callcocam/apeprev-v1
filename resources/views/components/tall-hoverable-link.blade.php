@@ -19,11 +19,11 @@
                 @if ($model)
                     <a href="{{ route($route, $model) }}"
                         class="text-gray-700 bold border-b-2 border-gray-300 hover:text-gray-900">
-                        {{ __('Find out more') }}...</a>
+                        {{ __('Ir para') }}...</a>
                 @else
                     <a href="{{ route($route) }}"
                         class="text-gray-700 bold border-b-2 border-gray-300 hover:text-gray-900">
-                        {{ __('Find out more') }}...</a>
+                        {{ __('Ir para') }}...</a>
                 @endif
             @endif
         @endif

@@ -24,11 +24,11 @@
                 <x-tall-toggleable-dropdown label="ASSOCIAÇÃO">
                     <x-tall-toggleable-link component="Associacao\SobreNosComponent" />
                     <x-tall-toggleable-link component="Associacao\CertidoesComponent" />
-                    <x-tall-toggleable-link component="Associacao\AtualizacaoSalarioComponent" />
+                    {{-- <x-tall-toggleable-link component="Associacao\AtualizacaoSalarioComponent" /> --}}
                     <x-tall-toggleable-link component="Associacao\StatusSocialComponent" />
-                    <x-tall-toggleable-link component="Associacao\RegrasInternasComponent" />
+                    {{-- <x-tall-toggleable-link component="Associacao\RegrasInternasComponent" /> --}}
                     <x-tall-toggleable-link component="Associacao\RegulacaoEleitoralComponent" />
-                    <x-tall-toggleable-link component="Associacao\LegislacaoComponent" />
+                    {{-- <x-tall-toggleable-link component="Associacao\LegislacaoComponent" /> --}}
                     <x-tall-toggleable-link component="Associacao\GestaoComponent" />
                     <x-tall-toggleable-link component="Associacao\GestoesAnterioresComponent" />
                     <x-tall-toggleable-link component="Associacao\GaleriaDosPresidentesComponent" />

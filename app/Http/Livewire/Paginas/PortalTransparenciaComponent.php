@@ -7,9 +7,16 @@
 namespace App\Http\Livewire\Paginas;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use App\Models\Transparencias\Transparencia;
 
 class PortalTransparenciaComponent extends AbstractPaginaComponent
 {
+
+    public function query(){
+
+        return Transparencia::query()->orderByDesc("reference_date");
+    }
+    
      /*
     |--------------------------------------------------------------------------
     |  Features route

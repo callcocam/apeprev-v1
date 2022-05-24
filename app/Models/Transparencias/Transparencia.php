@@ -33,4 +33,16 @@ class Transparencia  extends AbstractModel
   public function url(){
     return $this->morphOne(File::class, 'fileable')->orderByDesc('created_at');
   } 
+
+  
+  public function detalhe()
+  {
+    return $this->belongsTo(Detalhe::class, 'transparencias_detalhe_id');
+  }
+
+  public function tipo()
+  {
+    return $this->belongsTo(Tipo::class);
+  }
+  
 }

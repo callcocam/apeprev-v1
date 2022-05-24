@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/callcocam/packages-tall.git",
-                "reference": "bfa8ae6becfe5b5931ec38839c57fcc60ec50efb"
+                "reference": "67796e55d3e8f540b9637594e1b1c71f853ef18e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/callcocam/packages-tall/zipball/bfa8ae6becfe5b5931ec38839c57fcc60ec50efb",
-                "reference": "bfa8ae6becfe5b5931ec38839c57fcc60ec50efb",
+                "url": "https://api.github.com/repos/callcocam/packages-tall/zipball/67796e55d3e8f540b9637594e1b1c71f853ef18e",
+                "reference": "67796e55d3e8f540b9637594e1b1c71f853ef18e",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "issues": "https://github.com/callcocam/packages-tall/issues",
                 "source": "https://github.com/callcocam/packages-tall/tree/main"
             },
-            "time": "2022-03-18T17:06:41+00:00"
+            "time": "2022-05-20T13:42:22+00:00"
         },
         {
             "name": "composer/ca-bundle",

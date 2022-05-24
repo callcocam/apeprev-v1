@@ -7,6 +7,7 @@
 namespace App\Http\Livewire\Paginas\Associacao;
 
 use App\Http\Livewire\AbstractPaginaComponent;
+use App\Models\Certidao;
 
 class CertidoesComponent extends AbstractPaginaComponent
 {
@@ -19,6 +20,12 @@ class CertidoesComponent extends AbstractPaginaComponent
     */
     public function route(){
        \Route::get($this->path(), static::class)->name($this->route_name());
+    }
+
+    
+    public function query(){
+
+        return Certidao::query()->orderBy("ordering");
     }
 
     /*
