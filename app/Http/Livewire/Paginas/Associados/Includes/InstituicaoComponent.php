@@ -8,10 +8,11 @@ namespace App\Http\Livewire\Paginas\Associados\Includes;
 
 use App\Http\Livewire\AbstractPaginaComponent;
 use App\Models\Instituicao;
+use App\Http\Livewire\Traits\WithZip;
 
 class InstituicaoComponent extends AbstractPaginaComponent
 {
-    
+    use WithZip;
   
     public function mount(Instituicao $model)
     {

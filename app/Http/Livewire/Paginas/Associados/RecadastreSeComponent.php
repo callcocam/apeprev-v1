@@ -11,7 +11,7 @@ use App\Models\Instituicao;
 
 class RecadastreSeComponent extends AbstractPaginaComponent
 {
-    
+
     
     public $data = [
         "document"  =>"",
@@ -36,9 +36,58 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     public function mount(?Instituicao $model)
     {
     
-        $this->setFormProperties($model);
+        $this->model = $model;
     }
   
+    public function save()
+    {
+        if ($this->model->exists) {
+            
+            return ;
+         }
+
+         if ($model =$this->model->query()->create($this->data)) {
+            $model->servidor()->create([]);
+            $model->representante()->create([]);
+            $model->address()->create([]);
+            return redirect()->route('associados.associe-se.finalizar', $model);
+         }
+    }
+
+
+    public function cancel()
+    {
+        return redirect()->route('associados.associe-se');
+    }
+    public function validarDocument()
+    {
+    
+        $this->validate([
+            'data.document'=>'required'
+        ]);
+
+        if ($model =$this->model->query()->where('document',$this->data['document'])->first()) {
+            $model->servidor()->firstOrCreate([]);
+            $model->representante()->firstOrCreate([]);
+           // $representante->address()->firstOrCreate([]);
+            $model->address()->firstOrCreate([]);
+            return redirect()->route('associados.associe-se.finalizar', $model);
+        }
+        $this->dialog()->confirm([
+            'title'       => 'Tem certeza?',
+            'description' => 'O CNPJ informado não consta em nossa base de dados de filiados para o corrente ano. Deseja iniciar o processo de filiação com a Apeprev para o ano corrente?',
+            'icon'        => 'question',
+            'accept'      => [
+                'label'  => 'Sim, Iniciar processo de Filiação!',
+                'method' => 'save'
+            ],
+            'reject' => [
+                'label'  => 'Não, eu quero cancelar',
+                'method' => 'cancel',
+            ],
+        ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     |  Features label
