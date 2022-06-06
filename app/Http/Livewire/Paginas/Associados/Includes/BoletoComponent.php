@@ -65,9 +65,15 @@ class BoletoComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Dados da Instituição atualizado com sucesso!!"
                 );
-                dd($response, $response->json(),$response->body());
+                $this->model->instituicao_virgente()->create([
+                    'instituicao_id'=>$this->model->id,
+                    'link'=>$response->json('link'),
+                    'year'=>date('Y'),
+                    'created_at'=>date('Y-m-d'),
+                    'updated_at'=>date('Y-m-d'),
+                ]);
+                return redirect()->route('associados.associe-se.finalizar', $this->model);
             }
-            dd($response, $response->json(),$response->body());
             return true;
         } catch (\PDOException $PDOException) {
             $this->notification()->error(

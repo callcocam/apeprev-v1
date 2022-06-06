@@ -86,6 +86,11 @@ class Instituicao  extends AbstractModel
   {
     return $this->belongsTo(InstituicaoTipo::class,'instituicao_tipo_id');
   }
+  
+  public function instituicao_virgente()
+  {
+    return $this->hasOne(InstituicaoVirgente::class,'instituicao_id')->where('year', date('Y'));
+  }
 
   
   public function evento_inscricaos()
