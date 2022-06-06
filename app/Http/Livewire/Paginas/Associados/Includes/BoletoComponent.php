@@ -44,13 +44,13 @@ class BoletoComponent extends AbstractPaginaComponent
                     "uf"=> $this->model->state,
                     "vencimento"=> $this->model->id,
             ]);
-            
+
             if($response->successful()){
                 $this->notification()->success(
                     $title = __('saved'),
                     $description = "Dados da Instituição atualizado com sucesso!!"
                 );
-                dd($response->object());
+                dd($response->object(), $response->json());
             }
             return true;
         } catch (\PDOException $PDOException) {
