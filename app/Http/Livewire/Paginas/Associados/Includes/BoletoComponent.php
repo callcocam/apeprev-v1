@@ -30,8 +30,9 @@ class BoletoComponent extends AbstractPaginaComponent
     { 
         try {
             $response = Http::withHeaders([
-                'Authorization' => 'Token e57683d82d2e1e4e58461972090f85bf5abebb02'
-            ])->post('https://evento.apeprev.com.br/api/boleto', [
+                'Authorization' => 'Token e57683d82d2e1e4e58461972090f85bf5abebb02',
+            ])->contentType("application/json")->post('https://evento.apeprev.com.br/api/boleto/gerar/', [
+                'body'=>[
                     "instituicao_id"=> $this->model->id,
                     "valor"=> 1,
                     "obs"=> data_get($this->data,'obs'),
@@ -43,6 +44,7 @@ class BoletoComponent extends AbstractPaginaComponent
                     "cidade"=> $this->model->city,
                     "uf"=> $this->model->state,
                     "vencimento"=> $this->model->id,
+            ]
             ]);
 
             if($response->successful()){
@@ -50,8 +52,9 @@ class BoletoComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Dados da Instituição atualizado com sucesso!!"
                 );
-                dd($response->object(), $response->json(),$response->body());
+                dd($response, $response->json(),$response->body());
             }
+            dd($response, $response->json(),$response->body());
             return true;
         } catch (\PDOException $PDOException) {
             $this->notification()->error(
