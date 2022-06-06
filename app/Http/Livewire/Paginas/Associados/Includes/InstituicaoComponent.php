@@ -43,6 +43,9 @@ class InstituicaoComponent extends AbstractPaginaComponent
         ]);
        
         try {
+           
+            $this->data['slug'] = \Str::slug($this->data['name']);
+            $this->data['status_id'] = data_get(published(),'status_id');
             if($this->model->update($this->data)){
                 if($address = \Arr::get($this->data, 'address')){
                     $this->model->address()->update([

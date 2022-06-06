@@ -47,10 +47,11 @@ class RecadastreSeComponent extends AbstractPaginaComponent
             return ;
          }
 
+         $this->data['status_id'] = data_get(draft(),'status_id');
          if ($model =$this->model->query()->create($this->data)) {
-            $model->servidor()->create([]);
-            $model->representante()->create([]);
-            $model->address()->create([]);
+            $model->servidor()->create(draft());
+            $model->representante()->create(draft());
+            $model->address()->create(draft());
             return redirect()->route('associados.associe-se.finalizar', $model);
          }
     }
@@ -63,21 +64,17 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     public function validarDocument()
     {
     
-
-
         $this->validate([
             'data.document'=>'required'
         ]);
 
-        $response = Http::get('https://evento.apeprev.com.br/api/boleto/');
-
-        dd($response->json(),$response->object());
+       
 
         if ($model =$this->model->query()->where('document',$this->data['document'])->first()) {
-            $model->servidor()->firstOrCreate([]);
-            $model->representante()->firstOrCreate([]);
-           // $representante->address()->firstOrCreate([]);
-            $model->address()->firstOrCreate([]);
+        //     $model->servidor()->firstOrCreate(draft());
+        //     $model->representante()->firstOrCreate(draft());
+        //    // $representante->address()->firstOrCreate([]);
+        //     $model->address()->firstOrCreate(draft());
             return redirect()->route('associados.associe-se.finalizar', $model);
         }
         $this->dialog()->confirm([

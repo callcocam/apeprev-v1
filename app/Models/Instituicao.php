@@ -21,9 +21,9 @@ class Instituicao  extends AbstractModel
   
   protected $appends = ['tipo_inscricoes'];
   
-  public function getRouteKeyName(){
-    return 'slug';
-  }
+  // public function getRouteKeyName(){
+  //   return 'slug';
+  // }
 
   //Tipo de iscrições - como ele pode se insrever - pega do model de EventoPlano
   //ABRE Tipo de iscrições

@@ -21,6 +21,11 @@
 
             <!--BEGIN: ficha de filiação -*** PROVISÓRIA POIS VAMOS CRIAR NO BANCO DE DADOS ***-  abrir o arquivo: fichadefiliacaodoc_doc.doc -->
             <div>
+                @if ($model->status->slug =='published')
+                    <!--BEGIN: DADOS DA INSTITUIÇÃO -->
+                    @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('instituicao')))
+                    <!--END: DADOS DA INSTITUIÇÃO -->
+                @endif
 
                 <!--BEGIN: DADOS DA INSTITUIÇÃO -->
                 @livewire('paginas.associados.includes.instituicao-component', compact('model'), key(uniqId('instituicao')))
