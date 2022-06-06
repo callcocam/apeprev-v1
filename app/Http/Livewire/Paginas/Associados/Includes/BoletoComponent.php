@@ -19,7 +19,7 @@ class BoletoComponent extends AbstractPaginaComponent
     {
     
         $this->setFormProperties($model);
-    
+         
     }
 
     public $data = [
@@ -31,7 +31,8 @@ class BoletoComponent extends AbstractPaginaComponent
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Token e57683d82d2e1e4e58461972090f85bf5abebb02',
-            ])->contentType("application/json")->post('https://evento.apeprev.com.br/api/boleto/gerar/', [
+                'Content-Type'=>'application/json'
+            ])->post('https://evento.apeprev.com.br/api/boleto/gerar/',[
                 'body'=>[
                     "instituicao_id"=> $this->model->id,
                     "valor"=> 1,
