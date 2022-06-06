@@ -18,8 +18,21 @@ class BoletoComponent extends AbstractPaginaComponent
     public function mount(Instituicao $model)
     {
     
+       
         $this->setFormProperties($model);
-         
+        $this->data= array_merge($this->data,[
+            "instituicao_id"=> $this->model->id,
+            "valor"=> '100.0',
+            "obs"=> data_get($this->data,'obs',''),
+            "razao_social"=> $this->model->name,
+            "cnpj"=> $this->model->document,
+            "cep"=> $this->model->address->zip,
+            "endereco"=> $this->model->address->street,
+            "bairro"=> $this->model->address->district,
+            "cidade"=> $this->model->address->city,
+            "uf"=> $this->model->address->state,
+            "vencimento"=> '17112002'
+        ]);
     }
 
     public $data = [
@@ -28,25 +41,24 @@ class BoletoComponent extends AbstractPaginaComponent
 
     public function save()
     { 
+        $data= $this->data;
+        
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Token e57683d82d2e1e4e58461972090f85bf5abebb02',
-                'Content-Type'=>'application/json'
-            ])->post('https://evento.apeprev.com.br/api/boleto/gerar/',[
-                'body'=>[
-                    "instituicao_id"=> $this->model->id,
-                    "valor"=> 1,
-                    "obs"=> data_get($this->data,'obs'),
-                    "razao_social"=> $this->model->name,
-                    "cnpj"=> $this->model->document,
-                    "cep"=> $this->model->zip,
-                    "endereco"=> $this->model->street,
-                    "bairro"=> $this->model->district,
-                    "cidade"=> $this->model->city,
-                    "uf"=> $this->model->state,
-                    "vencimento"=> $this->model->id,
-            ]
-            ]);
+            ])->withBody(json_encode([
+                "instituicao_id"=> data_get($this->data,'instituicao_id',''),
+                "valor"=> data_get($this->data,'valor',''),
+                "obs"=> data_get($this->data,'obs',''),
+                "razao_social"=> data_get($this->data,'razao_social',''),
+                "cnpj"=>data_get($this->data,'cnpj',''),
+                "cep"=>data_get($this->data,'cep',''),
+                "endereco"=> data_get($this->data,'endereco',''),
+                "bairro"=> data_get($this->data,'bairro',''),
+                "cidade"=> data_get($this->data,'cidade',''),
+                "uf"=> data_get($this->data,'uf',''),
+                "vencimento"=> data_get($this->data,'vencimento','')
+            ]),'application/json')->post('https://evento.apeprev.com.br/api/boleto/gerar/');
 
             if($response->successful()){
                 $this->notification()->success(
