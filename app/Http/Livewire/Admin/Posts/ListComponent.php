@@ -21,6 +21,8 @@ final class ListComponent extends TableComponent
     
     use AuthorizesRequests;
 
+    public $sortable = true;
+
     public function mount()
     {
         $this->authorize(Route::currentRouteName());
