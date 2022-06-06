@@ -50,7 +50,7 @@ class BoletoComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Dados da Instituição atualizado com sucesso!!"
                 );
-                dd($response->object(), $response->json());
+                dd($response->object(), $response->json(),$response->body());
             }
             return true;
         } catch (\PDOException $PDOException) {
