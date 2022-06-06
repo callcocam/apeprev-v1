@@ -8,6 +8,7 @@ namespace App\Http\Livewire\Paginas\Associados;
 
 use App\Http\Livewire\AbstractPaginaComponent;
 use App\Models\Instituicao;
+use Illuminate\Support\Facades\Http;
 
 class RecadastreSeComponent extends AbstractPaginaComponent
 {
@@ -27,7 +28,7 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     |
     */
     public function route(){
-      
+     
        \Route::get($this->path(), static::class)->name('associados.recadastre-se');
        \Route::get($this->path(true), static::class)->name('associados.associe-se.finalizar');
     }
@@ -62,9 +63,15 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     public function validarDocument()
     {
     
+
+
         $this->validate([
             'data.document'=>'required'
         ]);
+
+        $response = Http::get('https://evento.apeprev.com.br/api/boleto/');
+
+        dd($response->json(),$response->object());
 
         if ($model =$this->model->query()->where('document',$this->data['document'])->first()) {
             $model->servidor()->firstOrCreate([]);

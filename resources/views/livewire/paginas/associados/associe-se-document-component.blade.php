@@ -18,7 +18,7 @@
 <x-content class="p-8">
     <div class="py-12 bg-white">
         <div class=" mx-auto gap-4 sm:px-6 ">
-
+           
             <!--BEGIN: ficha de filiação -*** PROVISÓRIA POIS VAMOS CRIAR NO BANCO DE DADOS ***-  abrir o arquivo: fichadefiliacaodoc_doc.doc -->
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
