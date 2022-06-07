@@ -7,11 +7,17 @@
         @if ($instituicao_virgente = $model->instituicao_virgente)
             <div class="col-span-6 text-right">
                 <div class="inline-flex items-end space-x-2">
-                    <button wire:click="cancelarBoleto" class="flex space-x-2 items-center bg-red-700 hover:bg-red-600 text-white rounded p-3" target="_blank"
-                        rel="noopener noreferrer"><x-icon name="x" style="solid" class="w-5 h-5" /> Cancelar boleto</button>
+                    <button wire:click="cancelarBoleto"
+                        class="flex space-x-2 items-center bg-red-700 hover:bg-red-600 text-white rounded p-3"
+                        target="_blank">
+                        <x-icon name="x" style="solid" class="w-5 h-5" /> Cancelar boleto
+                    </button>
 
-                    <a href="{{ $instituicao_virgente->link }}" class="flex space-x-2 items-center bg-green-700 hover:bg-green-600 text-white rounded p-3" target="_blank"
-                        rel="noopener noreferrer"><x-icon name="printer" style="solid" class="w-5 h-5" /> Imprimir boleto</a>
+                    <a href="{{ $instituicao_virgente->link }}"
+                        class="flex space-x-2 items-center bg-green-700 hover:bg-green-600 text-white rounded p-3"
+                        target="_blank" rel="noopener noreferrer">
+                        <x-icon name="printer" style="solid" class="w-5 h-5" /> Imprimir boleto
+                    </a>
                 </div>
             </div>
         @else
