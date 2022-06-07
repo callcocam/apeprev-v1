@@ -49,7 +49,7 @@ class AssociaSeComponent extends TableComponent
             return Instituicao::query()->where('instituicao_tipo_id', $tipo->id);
         }
        
-       
+        return Instituicao::query();
     }
     
     /*
