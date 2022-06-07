@@ -96,6 +96,11 @@ class BoletoComponent extends AbstractPaginaComponent
         }
     }
 
+    public function cancelarBoleto(){
+        $this->model->instituicao_virgente()->where('year',date('Y'))->delete();
+        return redirect()->route('associados.associe-se.finalizar', $this->model);
+    }
+
     public function getCountServidoresProperty(){
             return $this->servidores_count;
     }
