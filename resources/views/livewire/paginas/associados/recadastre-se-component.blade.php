@@ -21,10 +21,18 @@
 
             <!--BEGIN: ficha de filiação -*** PROVISÓRIA POIS VAMOS CRIAR NO BANCO DE DADOS ***-  abrir o arquivo: fichadefiliacaodoc_doc.doc -->
             <div>
-                @if ($model->status->slug =='published')
-                    <!--BEGIN: DADOS DA INSTITUIÇÃO -->
-                    @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('instituicao')))
-                    <!--END: DADOS DA INSTITUIÇÃO -->
+                @if ($model->status->slug == 'published')
+                    @if ($servidores_count)
+                        <!--BEGIN: DADOS DA INSTITUIÇÃO -->
+                        @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('instituicao')))
+                        <!--END: DADOS DA INSTITUIÇÃO -->
+                    @else
+
+                    <div class="border border-b-2 mb-2">
+                        Por favor preencha os campos <a class="font-bold text-blue-500" href="#servidores">Quantidade de Servidores</a> para gerar boleto de afiliação...
+                    </div>
+                   
+                    @endif
                 @endif
 
                 <!--BEGIN: DADOS DA INSTITUIÇÃO -->

@@ -13,7 +13,7 @@
             </div>
         @else
             <form wire:submit.prevent="save" class="lg:col-span-2 space-y-2">
-                @if (request()->query('show'))
+                @if (request()->query('show', 1))
                     <div class="col-span-6">
                         <x-input wire:model.defer="data.instituicao_id" label="instituicao_id"
                             placeholder="instituicao_id" />

@@ -53,6 +53,7 @@ class RepresentanteComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Dados do Representante atualizados com sucesso:)"
                 );
+                $this->emit('loadInstitution');
                 return true;
             }
             return false;

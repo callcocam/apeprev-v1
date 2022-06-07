@@ -31,6 +31,7 @@ class ServidoresComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Quantidade de Servidores Atualizado com sucesso :)"
                 );
+                $this->emit('loadInstitution');
                 return true;
             }
             return false;

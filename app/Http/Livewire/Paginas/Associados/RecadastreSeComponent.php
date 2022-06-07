@@ -20,6 +20,15 @@ class RecadastreSeComponent extends AbstractPaginaComponent
         "whatsapp"  =>null,
     ];
 
+    public $servidores_count;
+
+    protected $listeners = ['loadInstitution'];
+
+    public function loadInstitution(){
+        if($model= $this->model){
+            $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+        }
+    }
      /*
     |--------------------------------------------------------------------------
     |  Features route
@@ -38,6 +47,9 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     {
     
         $this->model = $model;
+        if($model){
+            $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+        }
     }
   
     public function save()

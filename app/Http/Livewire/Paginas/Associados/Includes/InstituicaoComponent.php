@@ -18,6 +18,7 @@ class InstituicaoComponent extends AbstractPaginaComponent
     {
     
         $this->setFormProperties($model);
+       
     
     }
 
@@ -66,6 +67,7 @@ class InstituicaoComponent extends AbstractPaginaComponent
                     $title = __('saved'),
                     $description = "Dados da Instituição atualizado com sucesso!!"
                 );
+                $this->emit('loadInstitution');
                 return true;
             }
             return false;

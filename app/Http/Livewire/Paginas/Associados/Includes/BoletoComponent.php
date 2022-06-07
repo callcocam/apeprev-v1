@@ -15,15 +15,27 @@ class BoletoComponent extends AbstractPaginaComponent
 {
     use WithZip;
   
+    public $plan;
+    public $servidores_count;
+    protected $listeners = ['loadInstitution'];
+
+    public function loadInstitution(){
+        $this->servidores_count = $this->model->servidor->ativos + $this->model->servidor->aposentados + $this->model->servidor->pensionistas;
+    }
     public function mount(Instituicao $model)
     {
     
-       
         $this->setFormProperties($model);
+        $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+        $this->plan = \App\Models\InstituicoesPlano::query()
+        ->where('min_insured','<=',$this->servidores_count)
+        ->where('max_insured','>=',$this->servidores_count)
+        ->first();
+
         $this->data= array_merge($this->data,[
             "instituicao_id"=> $this->model->id,
-            "valor"=> '100.0',
-            "obs"=> data_get($this->data,'obs',''),
+            "valor"=> $this->plan->valor,
+            "obs"=> data_get($this->data,'obs',$this->plan->name),
             "razao_social"=> $this->model->name,
             "cnpj"=> $this->model->document,
             "cep"=> $this->model->address->zip,
@@ -82,6 +94,10 @@ class BoletoComponent extends AbstractPaginaComponent
             );
             return false;
         }
+    }
+
+    public function getCountServidoresProperty(){
+            return $this->servidores_count;
     }
     public function view()
     {
