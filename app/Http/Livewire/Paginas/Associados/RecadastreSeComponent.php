@@ -126,6 +126,16 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     public function order(){
         return 1000;
      }
+ /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function label(){
+        return 'Associa-se/Recadastramento';
+     }
 
     public function view()
     {

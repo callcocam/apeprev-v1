@@ -9,6 +9,7 @@ namespace App\Http\Livewire\Paginas\Associados\Includes;
 use App\Http\Livewire\AbstractPaginaComponent;
 use App\Models\Instituicao;
 use App\Http\Livewire\Traits\WithZip;
+use Illuminate\Support\Facades\Http;
 
 class InstituicaoComponent extends AbstractPaginaComponent
 {
@@ -18,8 +19,31 @@ class InstituicaoComponent extends AbstractPaginaComponent
     {
     
         $this->setFormProperties($model);
-       
-    
+
+        if(empty($model->name)){
+            $version = app()->version();
+            $cnpj = $model->document;
+            $response = Http::withHeaders([
+                'User-Agent' => "consultar-cnpj/{$version}",
+            ])->get("https://publica.cnpj.ws/cnpj/{$cnpj}");  
+           
+            if($response->successful()){
+                data_set($this->data,"name", $response->json('razao_social'));
+                data_set($this->data,"slug", \Str::slug($response->json('razao_social')));
+                data_set($this->data,"fantasy_name", $response->json('estabelecimento.nome_fantasia'));
+                data_set($this->data,"email", \Str::lower($response->json('estabelecimento.email')));
+                data_set($this->data,"description", $response->json('porte.descricao'));
+                data_set($this->data,"address.zip", $response->json('estabelecimento.cep'));
+                data_set($this->data,"address.state", $response->json('estabelecimento.estado.sigla'));
+                data_set($this->data,"address.city", $response->json('estabelecimento.cidade.nome'));
+                data_set($this->data,"address.street", $response->json('estabelecimento.tipo_logradouro').' '.$response->json('estabelecimento.logradouro'));
+                data_set($this->data,"address.number", $response->json('estabelecimento.numero'));
+                data_set($this->data,"address.district", $response->json('estabelecimento.bairro'));
+                data_set($this->data,"address.complement", $response->json('estabelecimento.complemento'));
+                data_set($this->data,"address.country", $response->json('estabelecimento.pais.nome'));
+            }
+           
+        }
     }
 
     public $data = [
@@ -84,6 +108,8 @@ class InstituicaoComponent extends AbstractPaginaComponent
     {
         $this->zip($value);
     }
+
+  
     public function view()
     {
         return 'livewire.paginas.associados.includes.instituicao-component';
