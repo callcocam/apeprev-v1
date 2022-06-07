@@ -48,7 +48,9 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     
         $this->model = $model;
         if($model){
-            $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+            if($servidor = $model->servidor){
+                $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+            }
         }
     }
   
