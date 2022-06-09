@@ -23,7 +23,7 @@
             {{-- START MENU --}}
             <x-tall-toggleable label="OPERACIONAL">
                 {{-- START SUB MENU --}}
-                <x-tall-toggleable-dropdown label="USERS" border="r" width="w-1/6">
+                <x-tall-toggleable-dropdown label="USERS" border="r" width="w-1/5" class="lg:w-1/5">
                     <x-tall-toggleable-link component="Users\ListComponent" path="Admin"/>
                     <x-tall-toggleable-link component="Users\CreateComponent" path="Admin"/>
                     
