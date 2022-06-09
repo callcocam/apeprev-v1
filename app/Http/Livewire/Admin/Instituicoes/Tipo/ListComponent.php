@@ -37,6 +37,17 @@ final class ListComponent extends TableComponent
         Route::get('/instituicao/tipos', static::class)->name('admin.instituicao-tipos');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.instituicao-tipos";
+     }
+
     public function getCreateProperty()
     {
         return 'admin.instituicao-tipo.create';

@@ -121,4 +121,13 @@ class Event extends AbstractModel
 
         return route('eventos.show', $this);
     }
+
+    
+    public function scopeOrder($query)
+    {
+       return $query->leftJoin('orderings', function ($join) {
+                $join->on('events.id', '=', 'orderings.orderingable_id')
+                    ->where('orderingable_type', '=', \App\Models\Event::class);
+            })->select('events.*')->orderBy('orderings.order');
+    }
 }

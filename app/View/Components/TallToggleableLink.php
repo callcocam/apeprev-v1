@@ -19,9 +19,10 @@ class TallToggleableLink extends Component
      *
      * @return void
      */
-    public function __construct($component,$model=null)
+    public function __construct($component,$model=null, $path = "Paginas")
     {
-        $this->component = app(sprintf("\App\Http\Livewire\Paginas\%s",$component));
+        $this->component = app(sprintf("\App\Http\Livewire\\%s\\%s",$path,$component));
+       
         $this->model = $model;
     }
 
@@ -32,6 +33,7 @@ class TallToggleableLink extends Component
      */
     public function render()
     {
+       
         return view('components.tall-toggleable-link')->with([
             'label'=>$this->component->label(),
             'route'=>$this->component->route_name(),

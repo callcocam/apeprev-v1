@@ -4,7 +4,7 @@
             primary outline rightIcon="chevron-double-down" />
     </x-slot>
     @if ($expots = $this->getExportsHeaders())
-        <x-dropdown.header label="{{ __($expots->label) }}">
+        <x-dropdown.header label="{{ $expots->label }}">
             @foreach ($expots->groups as $group)
                 @if ($icon = $group->icon)
                     @if ($dialog = $group->dialog)
@@ -23,7 +23,7 @@
         @foreach ($headers as $header)
             @if ($header->can)
                 @if ($groups = $header->groups)
-                    <x-dropdown.header label="{{ __(\Str::title($label)) }}">
+                    <x-dropdown.header label="{{ $header->label }}">
                         @foreach ($groups as $group)
                             @if ($icon = $group->icon)
                                 @if ($dialog = $group->dialog)

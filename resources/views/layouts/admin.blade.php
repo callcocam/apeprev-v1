@@ -12,10 +12,11 @@
 <body class="h-screen">
     <x-dialog z-index="z-50" blur="md" align="center" />
     <x-notifications z-index="z-50" />
-    @livewire('admin.includes.header-component')
+    {{-- @livewire('admin.includes.header-component') --}}
+    @livewire('admin.includes.menu-component')
     <!-- Page Content -->
-    <main class="flex w-full">
-        @livewire('admin.includes.menu-component')
+    <main class="flex flex-col w-full">
+        {{-- @livewire('admin.includes.menu-component') --}}
         <!-- Page Heading -->
         <div class="flex-1 h-screen p-5">
             <div class="flex flex-col">

@@ -29,7 +29,17 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/sponsor/create', static::class)->name('admin.sponsor.create');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.sponsor.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

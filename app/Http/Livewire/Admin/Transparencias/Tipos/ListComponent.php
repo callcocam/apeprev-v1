@@ -41,7 +41,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/transparencias/tipos', static::class)->name('admin.transparencias.tipos');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.transparencias.tipos";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features query

@@ -34,6 +34,40 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/users', static::class)->name('admin.users');
     }
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.users";
+     }
+     
+    // /*
+    // |--------------------------------------------------------------------------
+    // |  Features label
+    // |--------------------------------------------------------------------------
+    // | Label visivel no me menu
+    // |
+    // */
+    // public function route_name($sufix=null){
+    //     return 'admin.users';
+    //  }
+
+    //     /*
+    // |--------------------------------------------------------------------------
+    // |  Features label
+    // |--------------------------------------------------------------------------
+    // | Label visivel no me menu
+    // |
+    // */
+    public function label(){
+      
+        return "Listar";
+     }
 
     /*
     |--------------------------------------------------------------------------

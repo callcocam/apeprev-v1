@@ -29,6 +29,16 @@ class CreateComponent extends FormComponent
         Route::get('/faq/create', static::class)->name('admin.faq.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.faq.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

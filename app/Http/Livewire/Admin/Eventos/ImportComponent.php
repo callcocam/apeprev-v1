@@ -29,6 +29,9 @@ class ImportComponent extends FormComponent
         Route::get('/eventos/import', static::class)->name('admin.events.import');
     }
 
+    public function format_view(){
+        return "admin.events.import";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

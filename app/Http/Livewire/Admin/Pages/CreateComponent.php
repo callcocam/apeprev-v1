@@ -31,7 +31,17 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/page/create', static::class)->name('admin.page.create');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.page.create";
+     }
     public function mount(?Page $model)
     {
         $this->authorize(Route::currentRouteName());

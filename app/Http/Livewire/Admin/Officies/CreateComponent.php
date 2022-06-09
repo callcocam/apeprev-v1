@@ -29,6 +29,16 @@ class CreateComponent extends FormComponent
         Route::get('/office/create', static::class)->name('admin.office.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.office.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

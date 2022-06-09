@@ -41,6 +41,9 @@ final class ListComponent extends TableComponent
         Route::get('/eventos', static::class)->name('admin.events');
     }
 
+    public function format_view(){
+        return "admin.events";
+     }
      /*
     |--------------------------------------------------------------------------
     |  Features tableAttr
@@ -63,6 +66,12 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
+        return Event::query()->order();
+    }
+
+    
+    protected function order()
+    {
         return Event::query();
     }
 

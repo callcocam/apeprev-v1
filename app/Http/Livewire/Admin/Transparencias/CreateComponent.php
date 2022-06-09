@@ -33,6 +33,16 @@ class CreateComponent extends FormComponent
         Route::get('/transparencia/create', static::class)->name('admin.transparencia.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.transparencia.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

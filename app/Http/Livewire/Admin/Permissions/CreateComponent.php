@@ -30,6 +30,16 @@ class CreateComponent extends FormComponent
         Route::get('/permission/create', static::class)->name('admin.permission.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.permission.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

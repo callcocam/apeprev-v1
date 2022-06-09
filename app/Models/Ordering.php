@@ -23,5 +23,15 @@ class Ordering extends AbstractModel
     {
         return $this->morphTo();
     }
-
+   /**
+     * @return string
+     */
+    protected function slugTo()
+    {
+    return false;
+    }
+    
+    public function isUser(){
+        return false;
+    }
 }

@@ -15,4 +15,11 @@ class Sponsor extends AbstractModel
     
     protected $guarded = ['id'];
 
+    public function scopeOrder($query)
+    {
+       return $query->leftJoin('orderings', function ($join) {
+                $join->on('sponsors.id', '=', 'orderings.orderingable_id')
+                    ->where('orderingable_type', '=', static::class);
+            })->select('sponsors.*')->orderBy('orderings.order');
+    }
 }

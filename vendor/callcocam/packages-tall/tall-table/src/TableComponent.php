@@ -18,12 +18,13 @@ use Tall\Table\Traits\WithExport;
 use Illuminate\Support\{Collection as BaseCollection, Str};
 use WireUi\Traits\Actions;
 use Tall\Form\Traits\Message;
+use Tall\Theme\Traits\WithMenus;
 
 use Illuminate\Support\Facades\Cache;
 
 abstract class TableComponent extends Component
 {
-    use  Message, WithExport, Actions, WithKill, WithSearch, WithFilter, WithCheckbox, WithToggleColumns, WithModal, WithSorting, WithPagination;
+    use WithMenus, Message, WithExport, Actions, WithKill, WithSearch, WithFilter, WithCheckbox, WithToggleColumns, WithModal, WithSorting, WithPagination;
 
     protected $columns;
 
@@ -32,6 +33,7 @@ abstract class TableComponent extends Component
     public bool $isCollection = false;
     public  $status = [];
     public $sortable = false;
+    public $actionsHeaders = false;
 
     protected $layout = "app";
 
@@ -77,6 +79,9 @@ abstract class TableComponent extends Component
 
         $themeBase = tallTheme()->apply();
 
+        if (method_exists($this, 'order')) {
+            $this->sortable = true;
+        }
 
         $this->columns  = $this->makeColumns();
 
@@ -146,6 +151,18 @@ abstract class TableComponent extends Component
     public function confirm($id): void
     {
              
+    }
+    
+    public function sortable(): void
+    {
+        if (method_exists($this, 'order')) {
+            // if ($this->sortable) {
+            //     $this->sortable = false;
+            // }
+            // else{
+            //     $this->sortable = true;
+            // }
+        }
     }
     
     public function getCreateProperty()

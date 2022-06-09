@@ -15,7 +15,7 @@
 :flat="$action->flat"
 :color="$action->color"
 :size="$action->size"
-label="{{__($action->label)}}"
+label="{{$action->label}}"
 icon="{{$action->icon}}"
 rightIcon="{{$action->rightIcon}}"
 :spinner="$action->spinner"

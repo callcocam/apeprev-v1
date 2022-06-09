@@ -35,6 +35,16 @@ class CreateComponent extends FormComponent
         Route::get('/post/create', static::class)->name('admin.post.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.post.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

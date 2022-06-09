@@ -34,7 +34,7 @@
     @if (isset($divider))
         {{$divider}}
     @else
-        <x-divider-content fill="text-gray-700" bg="bg-white" />
+        {{-- <x-divider-content fill="text-gray-700" bg="bg-white" /> --}}
     @endif
 
     @include('layouts.includes.footer')

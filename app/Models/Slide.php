@@ -74,4 +74,13 @@ class Slide extends AbstractModel
         }
         return $value ?: "background-image:url('" . asset($background) . "')";
     }
+
+    
+    public function scopeOrder($query)
+    {
+       return $query->leftJoin('orderings', function ($join) {
+                $join->on('slides.id', '=', 'orderings.orderingable_id')
+                    ->where('orderingable_type', '=', static::class);
+            })->select('slides.*')->orderBy('orderings.order');
+    }
 }

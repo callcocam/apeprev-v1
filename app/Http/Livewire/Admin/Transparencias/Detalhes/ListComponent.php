@@ -40,7 +40,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/transparencias/detalhes', static::class)->name('admin.transparencias.detalhes');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.transparencias.detalhes";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features query

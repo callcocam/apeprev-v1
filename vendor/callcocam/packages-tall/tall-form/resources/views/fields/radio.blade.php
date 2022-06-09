@@ -5,6 +5,6 @@
 <x-radio  id="{{ $key }}" value="{{ $key }}" :lg="$field->lg" :md="$field->md" left-label="{{ __(\Str::title($label)) }}"
     wire:model.defer="{{ $field->key }}" />
 @else
-<x-radio  id="{{ $key }}" value="{{ $key }}" :lg="$field->lg" :md="$field->md" label="{{ __( \Str::title($label)) }}"
+<x-radio  id="{{ $key }}" value="{{ $key }}" :lg="$field->lg" :md="$field->md" label="{{ __(\Str::title($label)) }}"
     wire:model.defer="{{ $field->key }}" />
 @endif

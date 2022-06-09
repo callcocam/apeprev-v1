@@ -36,6 +36,17 @@ final class ListComponent extends TableComponent
         Route::get('/hotels', static::class)->name('admin.hotels');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.hotels";
+     }
+
     public function getCreateProperty()
     {
         return 'admin.hotel.create';

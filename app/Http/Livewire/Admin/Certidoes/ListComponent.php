@@ -40,7 +40,16 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/certidaos', static::class)->name('admin.certidaos');
     }
-
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.certidaos";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features query

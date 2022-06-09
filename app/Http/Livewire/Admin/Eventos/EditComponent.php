@@ -89,8 +89,8 @@ class EditComponent extends FormComponent
         return [
             Input::make('name')
             ->placeholder("Your name")->rules("required"),
-            Select::make('Hotel','hotel_id')->span(6)->options(\App\Models\Hotel::query()->pluck('name','id')->toArray())->rules("required"),
-            Select::make('Local','local_id')->span(6)->options(\App\Models\Local::query()->pluck('name','id')->toArray())->rules("required"),
+            Select::make('Hotel','hotel_id')->span(6)->options(\App\Models\Hotel::query()->pluck('name','id')->toArray()),
+            Select::make('Local','local_id')->span(6)->options(\App\Models\Local::query()->pluck('name','id')->toArray()),
             Upload::make('Cover', 'cover')->span(7)->placeholder("Select Your Image"),  
             Upload::make('Mobile', 'mobile')->span(5)->placeholder("Select Your Image"),  
             Textarea::make('Url', 'url')->placeholder("Your url"),     
@@ -104,10 +104,10 @@ class EditComponent extends FormComponent
             DatetimePicker::make('Publish Up','start')->placeholder("Your start date")->span(3),   
             DatetimePicker::make('Publish Down','end')->placeholder("Your end date")->span(3),
             Select::make('Abrir inscrições','inscrevase')->span(6)->options(['0'=>"NÃO",'1'=>'SIM'])->rules("required"),
-            Divider::blank("Planos Eventos")->hint('Planos - Selecione os planos para o evento'),
+            Divider::blank("Contatos")->hint('Planos - Selecione as meios de entrar em para o evento'),
             Checkbox::make('Contatos')->options($query->pluck("name",'id')->toArray()),
-            Divider::blank("Planos Contatos")->hint('Planos - Selecione os contatos para o evento'),
-            Checkbox::make('Planos')->options(\App\Models\EventoPlano::query()->pluck("name",'id')->toArray())->rules('required'),
+            //Divider::blank("Planos Contatos")->hint('Planos - Selecione os contatos para o evento'),
+            //Checkbox::make('Planos')->options(\App\Models\EventoPlano::query()->pluck("name",'id')->toArray())->rules('required'),
             Radio::make('Status', 'status_id')->status()->lg()
         ];
     }

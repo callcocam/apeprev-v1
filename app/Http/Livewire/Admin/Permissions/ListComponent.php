@@ -35,7 +35,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/permissions', static::class)->name('admin.permissions');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.permissions";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features query

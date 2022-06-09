@@ -12,16 +12,19 @@ class TallToggleableDropdown extends Component
 {
     protected $label;
     protected $border;
+    protected $width;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label, $border="r")
+    public function __construct($label, $border="r",$width="w-1/5")
     {
+
         $this->label = $label;
         $this->border = $border;
+        $this->width = $width;
     }
 
 
@@ -35,6 +38,7 @@ class TallToggleableDropdown extends Component
         return view('components.tall-toggleable-dropdown')->with([
             'label'=>$this->label,
             'border'=>$this->border,
+            'width'=>$this->width,
         ]);
     }
 }

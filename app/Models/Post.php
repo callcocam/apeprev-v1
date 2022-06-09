@@ -36,4 +36,11 @@ class Post extends AbstractModel
         return route('noticias.show', $this);
     }
 
+    public function scopeOrder($query)
+    {
+       return $query->leftJoin('orderings', function ($join) {
+                $join->on('posts.id', '=', 'orderings.orderingable_id')
+                    ->where('orderingable_type', '=', static::class);
+            })->select('posts.*')->orderBy('orderings.order');
+    }
 }

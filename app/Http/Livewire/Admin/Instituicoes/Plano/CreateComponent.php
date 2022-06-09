@@ -30,6 +30,16 @@ class CreateComponent extends FormComponent
         Route::get('/instituicoes/plano/cadastro', static::class)->name('admin.instituicoes.plano.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.instituicoes.plano.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

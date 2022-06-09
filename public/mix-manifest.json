@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=0b58b1dd562f7876475506c4d42f5196",
-    "/js/slider.js": "/js/slider.js?id=65638e858789eaa24400252d3429a508",
-    "/js/assets/app.js": "/js/assets/app.js?id=7e3f652d0b58fde0692eab9c8c30edf2",
-    "/css/assets/app.css": "/css/assets/app.css?id=6b3b111701b1cff3ae5ff684a3c1d06b",
-    "/css/app.css": "/css/app.css?id=c9fa42c4ddc9f6f10929a2a824136f0f",
-    "/js/assets/scroll.js": "/js/assets/scroll.js?id=ee606c2f3bf95157a1dcd1530126f288"
+    "/js/app.js": "/js/app.js",
+    "/js/slider.js": "/js/slider.js",
+    "/js/assets/app.js": "/js/assets/app.js",
+    "/css/assets/app.css": "/css/assets/app.css",
+    "/css/app.css": "/css/app.css",
+    "/js/assets/scroll.js": "/js/assets/scroll.js"
 }

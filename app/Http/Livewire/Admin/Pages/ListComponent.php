@@ -36,7 +36,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/pages', static::class)->name('admin.pages');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.pages";
+     }
      /*
     |--------------------------------------------------------------------------
     |  Features tableAttr

@@ -47,7 +47,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/patrocinadores', static::class)->name('admin.sponsors');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.sponsors";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features query
@@ -56,9 +66,13 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
-        return Sponsor::query();
+        return Sponsor::query()->order();
     }
 
+    protected function order()
+    {
+        return Sponsor::query();
+    }
      /*
     |--------------------------------------------------------------------------
     |  Features tableAttr
@@ -135,4 +149,22 @@ final class ListComponent extends TableComponent
     {       
         return route("admin.sponsors");
     }
+
+    
+    public function updateOrder($data=[]){
+        if($data){
+             foreach($data as $item){               
+                 if($model = $this->query()->find(data_get($item, 'value')) ){
+                    if($ordering =$model->ordering ){
+                        $ordering->order = data_get($item, 'order');
+                        $ordering->update();
+                    } else {
+                        $model->ordering()->create([
+                            'order'=>data_get($item, 'order')
+                        ]);
+                    }
+                 }
+             }
+        }
+     }
 }

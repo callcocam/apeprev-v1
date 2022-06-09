@@ -17,7 +17,7 @@ class ListComponent extends AbstractPaginaComponent
         $this->limit = $limit;
     }
     public function query(){
-        return Event::query()->orderByDesc('start')->limit($this->limit);
+        return Event::query()->order()->limit($this->limit);
     }
     protected function models(){
         if($this->query()){

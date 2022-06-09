@@ -29,7 +29,17 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/certidao/create', static::class)->name('admin.certidao.create');
     }
-    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.certidao.create";
+     }
+     
    /*
     |--------------------------------------------------------------------------
     |  Features mount

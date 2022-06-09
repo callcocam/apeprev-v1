@@ -32,6 +32,17 @@ class CreateComponent extends FormComponent
         Route::get('/palestra/create', static::class)->name('admin.palestra.create');
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.palestra.create";
+     }
+
    /*
     |--------------------------------------------------------------------------
     |  Features mount

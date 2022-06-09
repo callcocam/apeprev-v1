@@ -35,11 +35,21 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/user/create', static::class)->name('admin.user.create');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
     protected function view(){
         return "tall-forms::profile";
     }
 
+    public function format_view(){
+        return 'admin.user.create';
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

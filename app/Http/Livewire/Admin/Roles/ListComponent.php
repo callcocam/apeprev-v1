@@ -34,7 +34,17 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/roles', static::class)->name('admin.roles');
     }
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.roles";
+     }
     /*
     |--------------------------------------------------------------------------
     |  Features route

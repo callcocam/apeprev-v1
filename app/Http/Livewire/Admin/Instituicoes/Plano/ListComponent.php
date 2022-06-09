@@ -38,6 +38,16 @@ final class ListComponent extends TableComponent
 
     /*
     |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.instituicoes.planos";
+     }
+    /*
+    |--------------------------------------------------------------------------
     |  Features query
     |--------------------------------------------------------------------------
     | Rota para criar novo registro

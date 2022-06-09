@@ -30,7 +30,23 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/hotel/create', static::class)->name('admin.hotel.create');
     }
-    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.hotel.create";
+     }
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
    /*
     |--------------------------------------------------------------------------
     |  Features mount

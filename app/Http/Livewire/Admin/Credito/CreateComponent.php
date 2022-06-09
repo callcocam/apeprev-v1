@@ -31,7 +31,17 @@ class CreateComponent extends FormComponent
     public function route(){
         Route::get('/credito/create', static::class)->name('admin.credito.create');
     }
-    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.credito.create";
+     }
+     
    /*
     |--------------------------------------------------------------------------
     |  Features mount

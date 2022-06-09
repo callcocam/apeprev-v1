@@ -38,6 +38,18 @@ final class ListComponent extends TableComponent
         Route::get('/sliders', static::class)->name('admin.sliders');
     }
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    |  Features format_view
+    |--------------------------------------------------------------------------
+    | Inicia as configurações basica do de nomes e rotas
+    |
+    */
+    public function format_view(){
+        return "admin.sliders";
+     }
+
     public function getCreateProperty()
     {
         return 'admin.slider.create';
@@ -50,9 +62,14 @@ final class ListComponent extends TableComponent
     |
     */
     protected function query(){
-        return Slide::query();
+        return Slide::query()->order();
     }
     
+    
+    protected function order()
+    {
+        return Slide::query();
+    }
      /*
     |--------------------------------------------------------------------------
     |  Features tableAttr
@@ -117,4 +134,22 @@ final class ListComponent extends TableComponent
             // Action::make('Help Center')->separator(),    
         ];
     }
+
+    public function updateOrder($data=[]){
+        if($data){
+             foreach($data as $item){               
+                 if($model = $this->query()->find(data_get($item, 'value')) ){
+                    if($ordering =$model->ordering ){
+                        $ordering->order = data_get($item, 'order');
+                        $ordering->update();
+                    } else {
+                        $model->ordering()->create([
+                            'order'=>data_get($item, 'order')
+                        ]);
+                    }
+                 }
+             }
+        }
+     }
+     
 }

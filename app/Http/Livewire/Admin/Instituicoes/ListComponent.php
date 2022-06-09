@@ -38,6 +38,10 @@ final class ListComponent extends TableComponent
     public function route(){
         Route::get('/instituicaos', static::class)->name('admin.instituicaos');
     }
+    
+    public function format_view(){
+        return "admin.instituicaos";
+     }
 
     /*
     |--------------------------------------------------------------------------

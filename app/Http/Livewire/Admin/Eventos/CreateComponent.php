@@ -35,6 +35,9 @@ class CreateComponent extends FormComponent
         Route::get('/evento/create', static::class)->name('admin.event.create');
     }
 
+    public function format_view(){
+        return "admin.event.create";
+     }
    /*
     |--------------------------------------------------------------------------
     |  Features mount

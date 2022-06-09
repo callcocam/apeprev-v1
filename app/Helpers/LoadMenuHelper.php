@@ -50,13 +50,13 @@ class LoadMenuHelper
         
         $submenus=[];
         $submenus[] = $this->make('Listar','admin.events','chevron-right');
-        $submenus[] = $this->make('Planos','admin.evento-planos','chevron-right');
-        $submenus[] = $this->make('Tipo De Inscrição','admin.tipo-inscricaos','chevron-right');
+        //$submenus[] = $this->make('Planos','admin.evento-planos','chevron-right');
+        //$submenus[] = $this->make('Tipo De Inscrição','admin.tipo-inscricaos','chevron-right');
         $submenus[] = $this->make('Palestras','admin.palestras','chevron-right');
         $submenus[] = $this->make('Hotel','admin.hotels','chevron-right');
         $submenus[] = $this->make('Local','admin.locals','chevron-right');
-        $submenus[] = $this->make('Contato','admin.eventos-contatos','chevron-right');
-        $submenus[] = $this->make('Inscrições','admin.eventos.inscricoes.create','chevron-right');
+        //$submenus[] = $this->make('Contato','admin.eventos-contatos','chevron-right');
+        //$submenus[] = $this->make('Inscrições','admin.eventos.inscricoes.create','chevron-right');
         $submenus[] = $this->make('Importar','admin.events.import','chevron-right');
         $menus[] = $this->make('EVENTOS',null,'plus-circle',$submenus);
 
