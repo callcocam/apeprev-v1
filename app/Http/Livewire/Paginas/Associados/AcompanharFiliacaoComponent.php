@@ -17,8 +17,15 @@ class AcompanharFiliacaoComponent extends AbstractPaginaComponent
 
     public $cancelarConfirm = false;
 
+     protected $queryString = [
+        'year' => ['except' => '']
+    ];
+
+    public $year;
+
     public function mount()
     {
+        $this->year = request()->query('year', date("Y"));
         $this->setFormProperties(auth()->user()->instituicao);
 
     }
@@ -36,7 +43,7 @@ class AcompanharFiliacaoComponent extends AbstractPaginaComponent
     {
         if($user = auth()->user()){
             if($instituicao = $user->instituicao){
-                if($instituicao_vigente = $instituicao->instituicao_vigente){
+                if($instituicao_vigente = $instituicao->instituicao_vigente()->where('year',$this->year)->first()){
                     return $instituicao_vigente;
                 }
             }

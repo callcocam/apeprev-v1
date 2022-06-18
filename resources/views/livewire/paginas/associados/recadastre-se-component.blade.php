@@ -38,9 +38,13 @@
                                                 <p>Aguardando gerar boleto</p>
                                             </div>
                                             <!--BEGIN: DADOS DA INSTITUIÇÃO -->
-                                            @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('boleto')))
+                                            <div class="flex col-span-2 items-center space-x-2">
+                                             <span> Por favor</span> <a class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                                                    href="{{ route('associados.acompanhar-filiacao') }}">Click aqui </a>
+                                               <span> para gerar boleto de afiliação...</span>
+                                            </div>
                                             <!--END: DADOS DA INSTITUIÇÃO -->
-                                       </div>
+                                        </div>
                                     </div>
                                 @else
                                     <div class="border border-b-2 mb-2">
