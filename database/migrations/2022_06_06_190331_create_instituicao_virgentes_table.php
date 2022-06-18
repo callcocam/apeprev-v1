@@ -13,7 +13,7 @@ class CreateInstituicaoVirgentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('instituicao_virgentes', function (Blueprint $table) {
+        Schema::create('instituicao_vigentes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('link')->nullable();
             $table->string('year')->nullable();

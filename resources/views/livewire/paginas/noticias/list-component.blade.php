@@ -22,8 +22,8 @@
         <div class="flex flex-col md:flex-row mx-5 items-center shadow-md">
             <div class="md:px-10 sm:px-5">
                 <h1 class="text-gray-800 font-bold text-2xl my-2">{{ $destaque->name }}</h1>
-                @if ($model->description)
-                    <p class="text-gray-700 mb-2 md:mb-6">{{ $destaque->description->preview }}</p>
+                @if ($description = $destaque->description)
+                    <p class="text-gray-700 mb-2 md:mb-6">{{ $description->preview }}</p>
                 @endif
                 <div class="flex justify-between mb-2">
                     <span

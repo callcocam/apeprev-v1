@@ -4,27 +4,13 @@
 * User: callcocam@gmail.com, contato@sigasmart.com.br
 * https://www.sigasmart.com.br
 */
-namespace App\Http\Livewire\Paginas\Noticias;
+namespace App\Http\Livewire\Paginas\Associados\Includes;
 
 use App\Http\Livewire\AbstractPaginaComponent;
-use App\Models\Post;
+use App\Models\Instituicao;
 
-class ListComponent extends AbstractPaginaComponent
+class LoginComponent extends AbstractPaginaComponent
 {
-
-    public function query(){
-
-      return Post::query()->where(published())->where('type','post')->orderByDesc('created_at');
-    }
-
-    protected function models(){
-
-      $this->rows['destaque'] = $this->query()->where('type','post')->first();
-      // $this->rows['destaque'] = $this->query()->first();
-
-      return parent::models();
-    }
-
      /*
     |--------------------------------------------------------------------------
     |  Features route
@@ -36,20 +22,25 @@ class ListComponent extends AbstractPaginaComponent
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
 
-
-      /*
+    public function mount(Instituicao $model, $data=[])
+    {
+    
+        $this->setFormProperties($model);
+       
+    }
+    /*
     |--------------------------------------------------------------------------
-    |  Features label
+    |  Features order
     |--------------------------------------------------------------------------
-    | Label visivel no me menu
+    | Order visivel no me menu
     |
     */
-    public function label(){
-        return "NOTICÍAS";
+    public function order(){
+        return 1000;
      }
 
     public function view()
     {
-        return 'livewire.paginas.noticias.list-component';
+        return 'livewire.paginas.associados.includes.login-component';
     }
 }

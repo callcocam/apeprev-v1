@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use App\Models\Traits\HasCover;
 
-class InstituicaoVirgente  extends AbstractModel
+class InstituicaoVigente  extends AbstractModel
 {
   use HasFactory;
   //use HasCover;

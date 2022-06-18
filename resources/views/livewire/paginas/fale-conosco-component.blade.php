@@ -44,9 +44,11 @@
 
                 </div>
                 <div class="my-2 w-1/2 lg:w-2/4">
-                    <x-button type="submit" primary lg spinner="sendMail" class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
-                    focus:outline-none focus:shadow-outline" label=" Enviar Email" />
-                   
+                    <x-button type="submit" primary lg spinner="sendMail"
+                        class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
+                    focus:outline-none focus:shadow-outline"
+                        label=" Enviar Email" />
+
                 </div>
             </form>
             <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-blue-900 rounded-2xl">
@@ -59,29 +61,25 @@
                         <div class="flex flex-col">
                             <i class="fas fa-map-marker-alt pt-2 pr-2">
                             </i>
-                        </div><i class="fas fa-map-marker-alt pt-2 pr-2">
-                            <div class="flex flex-col">
-                                <h2 class="text-2xl">Endereço</h2>
-                                <p class="text-gray-400">Av Cândido de Abreu, 660 - Sala 407 - <br>Centro Cívico -
-                                    <br>CEP: 80530-010
-                                </p>
-                            </div>
-                        </i>
-                    </div><i class="fas fa-map-marker-alt pt-2 pr-2">
-
-                        <div class="flex my-4 w-2/3 lg:w-1/2">
-                            <div class="flex flex-col">
-                                <i class="fas fa-phone-alt pt-2 pr-2">
-                                </i>
-                            </div><i class="fas fa-phone-alt pt-2 pr-2">
-                                <div class="flex flex-col">
-                                    <h2 class="text-2xl">Telefone</h2>
-                                    <p class="text-gray-400">(41) 98791-4672</p>
-
-                                </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-2xl">Endereço</h2>
+                            <p class="text-gray-400">Av Cândido de Abreu, 660 - Sala 407 - <br>Centro Cívico -
+                                <br>CEP: 80530-010
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex my-4 w-2/3 lg:w-1/2">
+                        <div class="flex flex-col">
+                            <i class="fas fa-phone-alt pt-2 pr-2">
                             </i>
                         </div>
-                    </i>
+                        <div class="flex flex-col">
+                            <h2 class="text-2xl">Telefone</h2>
+                            <p class="text-gray-400">(41) 98791-4672</p>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

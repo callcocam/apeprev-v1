@@ -18,39 +18,45 @@
 <x-content class="p-8">
     <div class="py-12 bg-white">
         <div class=" mx-auto gap-4 sm:px-6 ">
-
             <!--BEGIN: ficha de filiação -*** PROVISÓRIA POIS VAMOS CRIAR NO BANCO DE DADOS ***-  abrir o arquivo: fichadefiliacaodoc_doc.doc -->
             <div>
-                @if ($status = $model->status)
-                    @if ($status->slug == 'published')
-                        @if ($servidores_count)
-                            <!--BEGIN: DADOS DA INSTITUIÇÃO -->
-                            @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('instituicao')))
-                            <!--END: DADOS DA INSTITUIÇÃO -->
-                        @else
-                            <div class="border border-b-2 mb-2">
-                                Por favor preencha os campos <a class="font-bold text-blue-500"
-                                    href="#servidores">Quantidade de Servidores</a> para gerar boleto de afiliação...
-                            </div>
-                        @endif
-                    @endif
-                @endif
-
                 <!--BEGIN: DADOS DA INSTITUIÇÃO -->
                 @livewire('paginas.associados.includes.instituicao-component', compact('model'), key(uniqId('instituicao')))
                 <!--END: DADOS DA INSTITUIÇÃO -->
-
                 <!-- BEGIN: NÚMEROS DA INSTITUIÇÃO -->
-                @livewire('paginas.associados.includes.servidores-component', compact('model'), key(uniqId('instituicao')))
+                @livewire('paginas.associados.includes.servidores-component', compact('model'), key(uniqId('servidores')))
                 <!-- END: NÚMEROS DA INSTITUTIÇÃO -->
-
+                @auth
+                    @can('create', $model)
+                        @if ($status = $model->status)
+                            @if ($status->slug == 'published')
+                                @if ($servidores_count)
+                                    <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                                            <div class="text-gray-600">
+                                                <p class="font-medium text-lg">EFETOU PAGAMENTO?</p>
+                                                <p>Aguardando gerar boleto</p>
+                                            </div>
+                                            <!--BEGIN: DADOS DA INSTITUIÇÃO -->
+                                            @livewire('paginas.associados.includes.boleto-component', compact('model'), key(uniqId('boleto')))
+                                            <!--END: DADOS DA INSTITUIÇÃO -->
+                                       </div>
+                                    </div>
+                                @else
+                                    <div class="border border-b-2 mb-2">
+                                        Por favor preencha os campos <a class="font-bold text-blue-500"
+                                            href="#servidores">Quantidade de Servidores</a> para gerar boleto de afiliação...
+                                    </div>
+                                @endif
+                            @endif
+                        @endif
+                    @endcan
+                @endauth
                 <!--BEGIN: DADOS REPRESENTANTE  -->
                 @livewire('paginas.associados.includes.representante-component', compact('model'), key(uniqId('representante')))
                 <!--END: DADOS REPRESENTANTE -->
-
             </div>
             <!--END -->
-
             <!--BEGIN: valores da anuidade, abrir o arquivo: Resolucao-n-05-2021-anuidade-2022.doc -->
             <div
                 class="lg:flex lg:items-center mb-5 p-4 lg:justify-between bg-gray-100 rounded transform hover:scale-105 transition duration-500">
@@ -61,7 +67,6 @@
                     <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                         <div class="mt-2 flex items-center text-sm text-gray-500">
                             <!-- Heroicon name: solid/calendar -->
-
                             Confira a tabela
                         </div>
                     </div>

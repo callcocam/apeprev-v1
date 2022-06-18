@@ -77,6 +77,22 @@ class AbstractModel extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function published(){
+        if($status = $this->status)
+            return $status->slug == 'published';
+
+        return false;
+    }
+
+    
+    public function draft(){
+        if($status = $this->status)
+            return $status->slug == 'draft';
+
+        return false;
+    }
+
+
     public function description(){
         return $this->morphOne(Description::class, 'descriptionable')->orderByDesc('created_at');
     }

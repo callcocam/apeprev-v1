@@ -2,18 +2,9 @@
     <a href="{{ $model->url }}" target="_blank"><img class="w-full object-fill rounded-t-lg h-[326px]"
             src="{{ $model->cover_url }}" alt="{{ $model->name }}"></a>
     <div class="flex flex-col px-4">
-        <div class="flex  justify-between mt-4 md:bottom-4  gap-5 pb-3">
-
-            <a href="{{ $model->url }}" target="_blank"
-                class="font-semibold
-                bg-blue-500
-                px-4 py-1 rounded
-                mb-4
-                inline-block
-                text-white
-                hover:text-blue-100">{{ __('Ver Mais') }}</a>
+    <div class="flex  justify-between mt-4 md:bottom-4  gap-5 pb-3">
             @if ($model->inscrevase)
-                <a href="http://5.183.8.142" target="_blank"
+                <a href="{{ $model->url }}" target="_blank"
                     class="font-semibold
                     bg-green-500
                     px-4 py-1 rounded
@@ -21,6 +12,18 @@
                     inline-block
                     text-white
                     hover:text-green-100">{{ __('Inscreva-se') }}</a>
+            @else
+            @if (!empty(str_replace('#', '', $model->url)))
+                    <a href="{{ $model->url }}" target="_blank"
+                        class="font-semibold
+            bg-blue-500
+            px-4 py-1 rounded
+            mb-4
+            inline-block
+            text-white
+            hover:text-blue-100">{{ __('Ver Mais') }}</a>
+                @endif
+
             @endif
             @if ($model->tem_palestras)
                 <a href="{{ route('eventos.palestras', $model) }}"

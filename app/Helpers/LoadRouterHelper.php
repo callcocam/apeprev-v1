@@ -21,7 +21,7 @@ class LoadRouterHelper
     /**
      * @var array
      */
-    private $required = ['admin','app'];
+    private $required = ['admin','app','list', 'show'];
 
 
     public static function make()

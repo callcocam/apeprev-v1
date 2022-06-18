@@ -9,4 +9,7 @@
     <x-content>
         @livewire(lv_includes('posts.lasts'))
     </x-content>
+    <x-content>
+    @livewire(lv_includes('pareceres.lasts'))
+    </x-content>
 </div>

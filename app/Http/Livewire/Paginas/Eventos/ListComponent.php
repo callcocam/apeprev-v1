@@ -24,7 +24,7 @@ class ListComponent extends AbstractPaginaComponent
 
     public function query(){
 
-        return Event::query()->orderByDesc('start');
+        return Event::query()->order();
     }
       /*
     |--------------------------------------------------------------------------

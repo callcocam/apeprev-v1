@@ -62,6 +62,16 @@ if (!function_exists('corretor')) {
     }
 }
 
+if (!function_exists('status')) {
+    
+    function status($status="published"){
+      if($statuses = \App\Models\Status::where('slug', $status)->first()){
+        return $statuses->id;
+      }
+      return data_get(draft(), 'status_id', null);
+    }
+}
+
 if (!function_exists('published')) {
     
     function published($status="published"){

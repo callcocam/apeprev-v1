@@ -18,11 +18,15 @@
                     <x-input wire:model.defer="data.pensionistas" label="Nº Pensionistas"
                         placeholder="Nº Pensionistas" />
                 </div>
-                <div class="md:col-span-6 text-right">
-                    <div class="inline-flex items-end">
-                        <x-button type="submit" spinner="save" primary label="Salvar Dados dos Servidores" />
-                    </div>
-                </div>
+                @auth
+                    @can('update', $model)
+                        <div class="md:col-span-6 text-right">
+                            <div class="inline-flex items-end">
+                                <x-button type="submit" spinner="save" primary label="Salvar Dados dos Servidores" />
+                            </div>
+                        </div>
+                    @endcan
+                @endauth
             </div>
         </form>
     </div>

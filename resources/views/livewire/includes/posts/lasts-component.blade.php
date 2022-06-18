@@ -1,6 +1,6 @@
 <section class="w-full mx-auto  py-0">
     <h1 class="text-3xl text-center w-full">
-        <span class="font-bold">Artigos | Notícias | Pareceres</span>
+    <span class="font-bold">Artigos | Notícias</span>
     </h1>
     <div class="scrollbar-thin overflow-y-scroll">
         @if ($models)

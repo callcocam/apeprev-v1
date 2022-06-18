@@ -87,9 +87,9 @@ class Instituicao  extends AbstractModel
     return $this->belongsTo(InstituicaoTipo::class,'instituicao_tipo_id');
   }
   
-  public function instituicao_virgente()
+  public function instituicao_vigente()
   {
-    return $this->hasOne(InstituicaoVirgente::class,'instituicao_id')->where('year', date('Y'));
+    return $this->hasOne(InstituicaoVigente::class,'instituicao_id')->where('year', date('Y'));
   }
 
   
@@ -106,4 +106,8 @@ class Instituicao  extends AbstractModel
       return $this->morphOne(Address::class, 'addressable')->orderByDesc('created_at');
   }
 
+  public function user()
+  {
+      return $this->hasOne(User::class, 'instituicao_id');
+  }
 }

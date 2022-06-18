@@ -45,11 +45,16 @@ class RecadastreSeComponent extends AbstractPaginaComponent
 
     public function mount(?Instituicao $model)
     {
-    
+           
         $this->model = $model;
-        if($model){
+        if($model->exists){
             if($servidor = $model->servidor){
                 $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+            }
+        }
+        else{
+            if($user = auth()->user()){
+                return redirect()->route('associados.associe-se.finalizar', $user->instituicao);
             }
         }
     }

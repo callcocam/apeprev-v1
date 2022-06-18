@@ -37,10 +37,10 @@ class RepresentanteComponent extends AbstractPaginaComponent
             'data.email'=>'required|email',
             'data.phone'=>'required',
             'data.whatsapp'=>'required',
-            'data.accept'=>[
-                'required',
-                Rule::in(['1']),
-            ],
+            // 'data.accept'=>[
+            //     'required',
+            //     Rule::in(['1']),
+            // ],
             'data.authorize'=>[
                 'required',
                 Rule::in(['1']),
