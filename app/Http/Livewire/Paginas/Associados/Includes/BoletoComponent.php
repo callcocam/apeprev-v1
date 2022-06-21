@@ -44,7 +44,7 @@ class BoletoComponent extends AbstractPaginaComponent
             "bairro"=> $this->model->address->district,
             "cidade"=> $this->model->address->city,
             "uf"=> $this->model->address->state,
-            "vencimento"=> now()->addDays(5)->format('dmY')
+            "vencimento"=> now()->addDays(config('boletos.recadastramento.venvimento',10))->format('dmY')
         ]);
     }
 
