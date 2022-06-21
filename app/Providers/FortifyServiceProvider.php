@@ -53,7 +53,7 @@ class FortifyServiceProvider extends ServiceProvider
             }
             else{
                 $instituicao = \App\Models\Instituicao::where('document', $request->email)->first();
-                $users = $instituicao->user->get();
+                $users = \App\Models\User::where('instituicao_id', $instituicao->id)->get();
                 foreach($users as $user){
                     if( Hash::check($request->password, $user->password)){
                         $currentUser = $user;

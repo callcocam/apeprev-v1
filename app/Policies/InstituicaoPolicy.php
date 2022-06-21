@@ -34,7 +34,7 @@ class InstituicaoPolicy
      */
     public function view(User $user, Instituicao $instituicao)
     {
-        dd($user);
+       
     }
 
     /**

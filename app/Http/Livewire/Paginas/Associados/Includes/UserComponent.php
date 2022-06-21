@@ -28,7 +28,6 @@ class UserComponent extends AbstractPaginaComponent
 
    public function mount(Instituicao $model, $data=[])
    {
-   
  
        $this->setFormProperties($model);
       
@@ -41,7 +40,7 @@ class UserComponent extends AbstractPaginaComponent
         $this->model = $model;
         data_set($this->data,"instituicao_id", $model->id);
         data_set($this->data,"office_id",null);
-        unset($this->data['email']);
+       // unset($this->data['email']);
     }
      /*
     |--------------------------------------------------------------------------

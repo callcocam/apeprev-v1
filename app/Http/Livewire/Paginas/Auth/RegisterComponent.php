@@ -13,6 +13,7 @@ use App\Actions\Fortify\PasswordValidationRules;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterComponent extends AbstractPaginaComponent
 {
@@ -114,8 +115,8 @@ class RegisterComponent extends AbstractPaginaComponent
                 'fortify.home'=>$redirect
             ]);
          }
-
-        event(new Registered($user =  User::create($this->data)));
+         $this->data['password'] = Hash::make($this->data['password']);
+         event(new Registered($user =  User::create($this->data)));
 
         app(StatefulGuard::class)->login($user);
 

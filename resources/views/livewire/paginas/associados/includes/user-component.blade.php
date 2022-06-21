@@ -9,25 +9,10 @@
                 <div class="md:col-span-6">                    
                 <x-jet-validation-errors class="mb-4" />
                 </div>
-                {{-- <div class="md:col-span-3">
-                    <x-input label="{{ __('Name') }}" wire:model="data.name" placeholder="{{ __('Name') }}"
-                        autocomplete="name" />
-                </div> --}}
                 <div class="md:col-span-6">
                     <x-input label="{{ __('Email Institucional') }}" type="email" wire:model="data.email"
                         placeholder="{{ __('Email Institucional') }}" />
-                </div>
-                {{-- <div class="md:col-span-6">
-                    <x-select label="{{ __('Tipo de ligação') }}" 
-                        placeholder="{{ __('Tipo de ligação') }}"
-                        wire:model.lazy="data.office_id">
-                        @if ($offices = \App\Models\Office::all())
-                            @foreach ($offices as $office)
-                                <x-select.option label="{{ $office->name }}" value="{{ $office->id }}" />
-                            @endforeach
-                        @endif
-                    </x-select>
-                </div> --}}
+                </div>              
                 <div class="md:col-span-3">
                     <x-input label="{{ __('Password') }}" type="password" wire:model="data.password"
                         placeholder="{{ __('Password') }}" />

@@ -25,7 +25,9 @@ class LoginComponent extends AbstractPaginaComponent
     public function mount(Instituicao $model, $data=[])
     {
     
+   
         $this->setFormProperties($model);
+        
        
     }
     /*
