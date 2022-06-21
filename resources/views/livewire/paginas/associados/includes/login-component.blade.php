@@ -21,7 +21,7 @@
                 @csrf
                 <input type="hidden" name="redirect" value="{{ route(\Route::currentRouteName(), $model) }}">
                 <div class="md:col-span-3">
-                    <x-jet-label for="email" value="{{ __('Email') }}" />
+                    <x-jet-label for="email" value="{{ __('Email\Cnpj') }}" />
                     <x-jet-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" />
                 </div>
                 <div class="md:col-span-3">

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LoginResponse;
+use Illuminate\Support\Facades\Hash;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,26 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $currentUser = null;
+            if(\Str::contains($request->email, '@')){
+                $currentUser = \App\Models\User::where('email', $request->email)->first();
+            }
+            else{
+                $instituicao = \App\Models\Instituicao::where('document', $request->email)->first();
+                $users = $instituicao->user->get();
+                foreach($users as $user){
+                    if( Hash::check($request->password, $user->password)){
+                        $currentUser = $user;
+                    }
+                }
+            }
+            if ($currentUser) {
+                return $currentUser;
+            }
+        });
+
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
