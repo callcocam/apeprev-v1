@@ -1,5 +1,5 @@
 @component('mail::message')
-# SOLICITAÇÃO DE AFILIAÇÃO DE USUÁRIO(A)
+# SOLICITAÇÃO DE FILIAÇÃO DE USUÁRIO(A)
 
 O(a) usuário(a) {{ $solicitante->name }}, solicitou a afilição do seu cadastro com a associação {{ $recebedor->instituicao->name }}.
 

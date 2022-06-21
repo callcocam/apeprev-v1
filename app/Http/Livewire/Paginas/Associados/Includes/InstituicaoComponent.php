@@ -18,6 +18,11 @@ class InstituicaoComponent extends AbstractPaginaComponent
     public function mount(Instituicao $model)
     {
     
+        $this->dialog()->success(
+            $title = 'Profile saved',
+            $description = 'Your profile was successfull saved'
+        );
+        
         $this->setFormProperties($model);
 
         if(empty($model->name)){

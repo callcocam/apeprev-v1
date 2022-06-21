@@ -1,9 +1,9 @@
 <div>
     @if ($model->user)
         @auth
-        <div>
-            Logado
-        </div>
+            <div>
+
+            </div>
         @else
             <!--BEGIN: DADOS DO USUÀRIO DA INSTITUIÇÃO -->
             @livewire('paginas.associados.includes.login-component', compact('model', 'data'), key(uniqId('user')))
@@ -40,7 +40,7 @@
                     </div>
                     <div class="md:col-span-6">
                         <x-input wire:model.defer="data.email" class="pr-28" label="Email da Instituição"
-                            placeholder="E-mail" suffix="@mail.com" />
+                            placeholder="E-mail" />
                     </div>
 
                     <div class="md:col-span-2">
@@ -66,7 +66,13 @@
                     @auth
                         @can('update', $model)
                             <div class="md:col-span-6 text-right">
-                                <div class="inline-flex items-end">
+
+                                <div class="flex items-center space-x-3">
+                                    @empty($model->name)
+                                        <div class="text-red-500">
+                                            Por favor confira os dados da instituição, e salve as informações :)
+                                        </div>
+                                    @endempty
                                     <x-button type="submit" spinner="save" primary label="Salvar Dados da Instituição" />
                                 </div>
                             </div>

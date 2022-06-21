@@ -128,7 +128,7 @@
                 <div class="flex flex-col items-center justify-center mt-5">
                     <div class=" w-full  max-w-lg pb-12 px-12 pt-2 space-y-4 shadow-2xl rounded">
                         <p class="pt-3">
-                           <b> Opss!</b> parece que você não esta afiliado a nenhuma associação, para solicitar uma afiliação,
+                           <b> Opss!</b> parece que você não esta afiliado a nenhuma associação, para solicitar uma filiação,
                             Selecione um instituição e o seu cargo na associação selecionada, e o responsavel pelas
                             inscrições vai finalizar sua inscrição!
                         </p>

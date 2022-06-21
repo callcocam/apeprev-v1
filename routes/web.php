@@ -25,6 +25,10 @@ Route::get('/dashboard', function(){
     return redirect()->route('admin.dashboard.index');
 })->name('admin.dashboard');
 
+Route::middleware(['auth:sanctum'])->get('/associados/certificado-filiacao/{model}/gerar', function(\App\Models\Instituicao $model){
+    return view('prints.certificado-filiacao', compact('model'));
+})->name('associados.certificado.emitir');
+
 //Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', \App\Http\Livewire\Admin\DashboardComponent::class)->name('dashboard');
 
 

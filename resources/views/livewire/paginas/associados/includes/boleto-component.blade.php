@@ -39,7 +39,7 @@
             </div>
             <div class="col-span-6 text-right">
                 <div class="inline-flex items-end">
-                    <x-button type="submit" spinner="save" positive label="Gerar boleto para afiliação" />
+                    <x-button type="submit" spinner="save" positive label="Gerar boleto para filiação" />
                 </div>
             </div>
         </form>

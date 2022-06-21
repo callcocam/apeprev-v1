@@ -2,7 +2,7 @@
     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
         <div class="text-gray-600 lg:col-span-1">
             <p class="font-medium text-lg">Muito bem, antes de começar, vamos precisar de algumas informações.</p>
-            <p>Primeiro você deve fornecer seu dados de acesso</p>
+            <p>Primeiro você deve fornecer seus dados de acesso</p>
         </div>
 
         <x-jet-validation-errors class="mb-4" />
@@ -22,7 +22,7 @@
                 <input type="hidden" name="redirect" value="{{ route(\Route::currentRouteName(), $model) }}">
                 <div class="md:col-span-3">
                     <x-jet-label for="email" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
+                    <x-jet-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" />
                 </div>
                 <div class="md:col-span-3">
                     <x-jet-label for="password" value="{{ __('Password') }}" />

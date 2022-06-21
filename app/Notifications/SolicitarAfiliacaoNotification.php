@@ -44,7 +44,7 @@ class SolicitarAfiliacaoNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('SOLICITAÇÃO DE AFILIAÇÃO')->markdown('mail.instituicao.solicitar-afiliacao', ['recebedor' => $this->recebedor, 'solicitante' => $this->solicitante]);
+        return (new MailMessage)->subject('SOLICITAÇÃO DE FILIAÇÃO')->markdown('mail.instituicao.solicitar-afiliacao', ['recebedor' => $this->recebedor, 'solicitante' => $this->solicitante]);
     }
 
     /**

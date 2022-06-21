@@ -25,4 +25,4 @@ async function getCNPJ() {
   }
 
   getCNPJ()
-  console.log(empresa);
+  
