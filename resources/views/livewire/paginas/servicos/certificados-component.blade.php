@@ -16,17 +16,15 @@
     </header>
 </x-slot>
 <x-content class="mt-5">
-    <div>
-        Certificados a partir de 2022
-    </div>
     @if ($certificados)
         <table class="flex flex-col w-full space-y-1 mb-5">
             <thead>
-                <tr class=" text-left flex w-full justify-start space-x-4 py-1 border-t-2 border-secondary-200 items-center">
+                <tr
+                    class=" text-left flex w-full justify-start space-x-4 py-1 border-t-2 border-secondary-200 items-center">
                     <th class="flex-1">Evento</th>
                     <th class="md:w-56">Cidade</th>
-                    <th  class="md:w-64">Período</th>
-                    <th  class="w-8"></th>
+                    <th class="md:w-64">Período</th>
+                    <th class="w-8"></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,13 +32,19 @@
                     @if ($index)
                         <tr
                             class="flex w-full justify-start space-x-4 hover:bg-gray-200  py-1 border-t-2 border-secondary-200 items-center">
-                           <td class="flex-1">{{ $certificado[1]}}</td>
-                            <td class="md:w-56">{{ $certificado[3]}}</td>
-                            <td class="md:w-64">{{ $certificado[2]}}</td>
+                            <td class="flex-1">{{ $certificado[1] }}</td>
+                            <td class="md:w-56">{{ $certificado[3] }}</td>
+                            <td class="md:w-64">{{ $certificado[2] }}</td>
                             <td class="text-center w-8">
-                                <a href="{{ route('servicos.certificado', $certificado[0]) }}">
-                                    <x-icon name="search" class="h-5 w-5" />
-                                </a>
+                                @if (\Str::contains($certificado[0], 'http'))
+                                    <a target="_blank" href="{{ $certificado[0] }}">
+                                        <x-icon name="search" class="h-5 w-5" />
+                                    </a>
+                                @else
+                                    <a target="_blank" href="{{ route('servicos.certificado', $certificado[0]) }}">
+                                        <x-icon name="search" class="h-5 w-5" />
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endif

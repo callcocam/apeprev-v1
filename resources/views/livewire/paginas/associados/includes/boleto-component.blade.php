@@ -35,7 +35,7 @@
                 </div>
             @endif
             <div class="col-span-6">
-                <x-input wire:model.defer="data.obs" label="Observações" placeholder="Observações" />
+                <x-textarea wire:model.defer="data.obs" label="Observações" placeholder="Observações" />
             </div>
             <div class="col-span-6 text-right">
                 <div class="inline-flex items-end">

@@ -45,7 +45,7 @@ class ListComponent extends AbstractPaginaComponent
     |
     */
     public function label(){
-        return "NOTICÍAS";
+        return "NOTÍCIAS";
      }
 
     public function view()
