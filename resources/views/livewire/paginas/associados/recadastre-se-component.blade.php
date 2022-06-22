@@ -42,7 +42,7 @@
                                                 <div class="flex col-span-2 items-center space-x-2">
                                                     <span> Por favor</span> <a
                                                         class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                        href="{{ route('associados.acompanhar-filiacao') }}">Cli aqui </a>
+                                                        href="{{ route('associados.acompanhar-filiacao') }}">Clique aqui </a>
                                                     <span> para gerar boleto de filiação...</span>
                                                 </div>
                                                 <!--END: DADOS DA INSTITUIÇÃO -->
