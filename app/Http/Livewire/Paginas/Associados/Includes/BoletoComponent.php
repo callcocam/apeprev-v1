@@ -36,7 +36,8 @@ class BoletoComponent extends AbstractPaginaComponent
         $this->data= array_merge($this->data,[
             "instituicao_id"=> $this->model->id,
             "valor"=> $this->plan->valor,
-            "obs"=> data_get($this->data,'obs',sprintf('REFERENTE FILIACAO AUNIDADE %s, %s', date("Y"), $this->plan->name)),
+            //"obs"=> data_get($this->data,'obs',sprintf('REFERENTE FILIACAO AUNIDADE %s, %s', date("Y"), $this->plan->name)),
+            "obs"=> data_get($this->data,'obs',sprintf('REFERENTE FILIACAO ANUIDADE %s.', date("Y"))),
             "razao_social"=> $this->model->name,
             "cnpj"=> $this->model->document,
             "cep"=> $this->model->address->zip,
