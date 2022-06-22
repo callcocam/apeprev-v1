@@ -41,7 +41,7 @@
                                         <x-icon name="search" class="h-5 w-5" />
                                     </a>
                                 @else
-                                    <a target="_blank" href="{{ route('servicos.certificado', $certificado[0]) }}">
+                                    <a target="_blank" href="{{ route('eventos.certificado', $certificado[0]) }}">
                                         <x-icon name="search" class="h-5 w-5" />
                                     </a>
                                 @endif
