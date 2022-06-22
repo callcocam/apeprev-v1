@@ -35,7 +35,7 @@ Route::get('/atualizar/status/{id}/boleto', function ($id) {
                 "bairro"=> data_get($instituicao,'address.district',''),
                 "cidade"=> data_get($instituicao,'address.city',''),
                 "uf"=> data_get($instituicao,'address.state',''),            
-                "valor"=> data_get($instituicao,'instituicao_vigente.valor',''),            
+                "valor"=> form_w(data_get($instituicao,'instituicao_vigente.valor','')),            
                 "obs"=> data_get($instituicao,'instituicao_vigente.description',''),            
             ]
         ),'application/json')->post(config('boletos.recadastramento.onsulta','https://evento.apeprev.com.br/api/boleto/consultar/'));
