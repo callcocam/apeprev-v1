@@ -64,8 +64,11 @@ if (!function_exists('corretor')) {
 
 if (!function_exists('status')) {
     
-    function status($status="published"){
+    function status($status="published", $slug = null){
       if($statuses = \App\Models\Status::where('slug', $status)->first()){
+        if($slug)
+         return data_get($statuses, $slug);
+
         return $statuses->id;
       }
       return data_get(draft(), 'status_id', null);

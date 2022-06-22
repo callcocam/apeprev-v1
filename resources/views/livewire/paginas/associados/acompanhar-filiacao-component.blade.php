@@ -10,6 +10,7 @@
     </h3>
 
     <ol class="border-l-2 border-purple-600">
+
         @if ($instituicao = $this->instituicao)
             <li>
                 <div class="md:flex flex-start">
@@ -33,7 +34,8 @@
                         @if ($instituicao->published())
                             <p class="text-gray-700 mb-6">Dados da filiação do RPPS preenchindo com sucesso.</p>
                         @else
-                            <p class="text-gray-700 mb-6">Solicite a filiação do RPPS preenchendo os dados abaixo.</p>
+                            <p class="text-gray-700 mb-6">Solicite a filiação do RPPS preenchendo os dados abaixo.
+                            </p>
                         @endif
                         @if ($instituicao->published())
                             <a href="{{ route('associados.associe-se.finalizar', ['model' => $instituicao]) }}"
@@ -47,6 +49,7 @@
                     </div>
                 </div>
             </li>
+
             <li>
                 <div class="md:flex flex-start">
                     <div class="bg-purple-600 w-6 h-6 flex items-center justify-center rounded-full -ml-3">
@@ -60,8 +63,8 @@
                     <div class="block p-6 rounded-lg shadow-lg bg-gray-100 w-full ml-6 mb-10">
                         <div class="flex justify-between mb-4 space-x-2">
                             <a href="#!"
-                                class="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">EFETOU
-                                PAGAMENTO?</a>
+                                class="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
+                                EFETOU PAGAMENTO?</a>
                             @if ($filiacao = $this->filiacao)
                                 @if ($filiacao->payment_date)
                                     <a href="#!"
@@ -76,23 +79,30 @@
                             @if ($status = $filiacao->status)
                                 <p class="text-gray-700 mb-6">{{ $status->name }}</p>
                             @else
-                                <p class="text-gray-700 mb-6">Nemhuma informação encontrado sobre o estado da filiação
+                                <p class="text-gray-700 mb-6">Nemhuma informação encontrado sobre o estado da
+                                    filiação
                                 </p>
                             @endif
                             @if ($filiacao = $this->filiacao)
                                 @if (!$filiacao->payment_date)
-                                    <a target="_blank" href="{{ $filiacao->link }}"
-                                        class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                                        data-mdb-ripple="true">Imprimir Boleto</a>
-                                    <button type="button" wire:click="cancelarBoleto"
-                                        class="inline-block px-3.5 py-1 border-2 border-purple-600 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                                        data-mdb-ripple="true">
-                                        @if ($cancelarConfirm)
-                                            Confirmar o cancelamento do boleto
-                                        @else
-                                            Cancelar Boleto
-                                        @endif
-                                    </button>
+                                    @if (status('pagamento-nao-localizado') == $filiacao->status_id)
+                                        <a target="_blank" href="{{ $filiacao->link }}"
+                                            class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                                            data-mdb-ripple="true">Gerar Boleto</a>
+                                        <button type="button" wire:click="cancelarBoleto"
+                                            class="inline-block px-3.5 py-1 border-2 border-purple-600 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                                            data-mdb-ripple="true">
+                                            @if ($cancelarConfirm)
+                                                Confirmar o cancelamento do boleto
+                                            @else
+                                                Cancelar Boleto
+                                            @endif
+                                        </button>
+                                    @else
+                                        <a target="_blank" href="{{ $filiacao->link }}"
+                                            class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                                            data-mdb-ripple="true">Imprimir Boleto</a>
+                                    @endif
                                 @endif
                             @endif
                         @else
@@ -167,11 +177,9 @@
                                     data-mdb-ripple="true">Emitir</a>
                             @endif
                         @endif
-
                     </div>
                 </div>
             </li>
         @endif
     </ol>
-
 </x-content>

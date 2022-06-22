@@ -27,6 +27,8 @@ class AcompanharFiliacaoComponent extends AbstractPaginaComponent
     {
         $this->year = request()->query('year', date("Y"));
         $this->setFormProperties(auth()->user()->instituicao);
+       
+        $this->verifidStatus();
 
     }
     public function getInstituicaoProperty()

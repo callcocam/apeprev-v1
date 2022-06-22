@@ -15,6 +15,7 @@ use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Models\Instituicao;
 use App\Models\User;
 use App\Models\Auth\Acl\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserComponent extends AbstractPaginaComponent
 {
@@ -89,6 +90,7 @@ class UserComponent extends AbstractPaginaComponent
             'data.password' => $this->passwordRules(),
             'data.terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ]);
+        data_set($this->data,"password", Hash::make(data_get($this->data,"password")));
         config([
             'fortify.home'=>route('associados.associe-se.finalizar', $this->model)
         ]);

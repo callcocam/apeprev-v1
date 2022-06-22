@@ -5,6 +5,7 @@
 * https://www.sigasmart.com.br
 */
 namespace App\Http\Livewire\Paginas\Associados\Includes\Traits;
+use Illuminate\Support\Facades\Http;
 
 /**
  * Instituicao
@@ -12,12 +13,19 @@ namespace App\Http\Livewire\Paginas\Associados\Includes\Traits;
 trait TraitInstituicao
 {
     public function getStatusProperty(){
-              
+       
+      
+       return $this->verifidStatus();
+    }
+
+    public function verifidStatus(){
+       
+      
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Token e57683d82d2e1e4e58461972090f85bf5abebb02',
-            ])->withBody(json_encode($this->getDataBoleto()),'application/json')->get(config('boletos.recadastramento.consulta','https://evento.apeprev.com.br/api/boleto/gerar/'));
-
+            ])->withBody(json_encode($this->getDataBoleto()),'application/json')->post(config('boletos.recadastramento.onsulta','https://evento.apeprev.com.br/api/boleto/consultar/'));
+         
             if($response->successful()){    
                 if($response->json('status')){
                     if($response->json('Data do Pagamento')){
@@ -38,9 +46,10 @@ trait TraitInstituicao
                         'status_id'=>status(\Str::slug($response->json('Situação do pagamento')))
                     ]);
                 }
-            }
+            }           
             return false;
-        } catch (\PDOException $PDOException) {
+        } catch (\Exception $PDOException) {
+          
             $this->notification()->error(
                 $title = 'Error !!!',
                 $description = $PDOException->getMessage()
@@ -51,14 +60,16 @@ trait TraitInstituicao
     
     public function getDataBoleto(){
         return [
-            "instituicao_id"=> data_get($this->data,'instituicao_id',''),
-            "razao_social"=> data_get($this->data,'razao_social',''),
-            "cnpj"=>data_get($this->data,'cnpj',''),
-            "cep"=>data_get($this->data,'cep',''),
-            "endereco"=> data_get($this->data,'endereco',''),
-            "bairro"=> data_get($this->data,'bairro',''),
-            "cidade"=> data_get($this->data,'cidade',''),
-            "uf"=> data_get($this->data,'uf',''),            
+            "instituicao_id"=> data_get($this->data,'id',''),
+            "razao_social"=> data_get($this->data,'name',''),
+            "cnpj"=>data_get($this->data,'document',''),
+            "cep"=>data_get($this->data,'address.zip',''),
+            "endereco"=> data_get($this->data,'address.street',''),
+            "bairro"=> data_get($this->data,'address.district',''),
+            "cidade"=> data_get($this->data,'address.city',''),
+            "uf"=> data_get($this->data,'address.state',''),            
+            "valor"=> data_get($this->model,'instituicao_vigente.valor',''),            
+            "obs"=> data_get($this->model,'instituicao_vigente.description',''),            
         ];
     }
 
