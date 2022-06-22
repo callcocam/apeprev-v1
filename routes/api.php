@@ -39,7 +39,7 @@ Route::get('/atualizar/status/{id}/boleto', function ($id) {
                 "obs"=> data_get($instituicao,'instituicao_vigente.description',''),            
             ]
         ),'application/json')->post(config('boletos.recadastramento.onsulta','https://evento.apeprev.com.br/api/boleto/consultar/'));
-    
+     
         if($response->successful()){    
             if($response->json('status')){
                 if($response->json('Data do Pagamento')){
@@ -64,6 +64,7 @@ Route::get('/atualizar/status/{id}/boleto', function ($id) {
         return $response->json();
     } catch (\Exception $PDOException) {
         dd($PDOException);
+    }
    }
     
 });
