@@ -37,7 +37,7 @@ class PortalTransparenciaComponent extends AbstractPaginaComponent
     |
     */
     public function label(){
-        return "PRESTAÇÂO DE CONTAS";
+        return "PRESTAÇÃO DE CONTAS";
      }
 
 

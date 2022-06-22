@@ -131,7 +131,7 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     public function order(){
         return 1000;
      }
- /*
+    /*
     |--------------------------------------------------------------------------
     |  Features label
     |--------------------------------------------------------------------------
