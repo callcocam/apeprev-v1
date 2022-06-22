@@ -8,5 +8,6 @@ return [
     'recadastramento'=>[
         'consulta'=>env('APP_BOLETO_URL_CONSULTA','https://evento.apeprev.com.br/api/boleto/consultar/'),
         'gerar'=>env('APP_BOLETO_URL_GERAR','https://evento.apeprev.com.br/api/boleto/gerar/'),
+        'add_vencimento'=>env('APP_BOLETO_ADD_DAYS_VENCIMENTO','https://evento.apeprev.com.br/api/boleto/gerar/'),
         ]
     ];
