@@ -35,7 +35,7 @@
                     <x-tall-toggleable-link component="Associacao\ConvocacaoConselhoComponent" />
                 </x-tall-toggleable-dropdown>
                 <x-tall-toggleable-dropdown label="SERVIÇOS">
-                    <x-tall-toggleable-link component="Servicos\CarteiraDeMembroComponent" />
+                    {{-- <x-tall-toggleable-link component="Servicos\CarteiraDeMembroComponent" /> --}}
                     <x-tall-toggleable-link component="Servicos\CalculadoraComprevComponent" />
                     <x-tall-toggleable-link component="Servicos\InformativoApeprevComponent" />
                 </x-tall-toggleable-dropdown>

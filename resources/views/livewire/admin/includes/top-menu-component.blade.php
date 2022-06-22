@@ -113,8 +113,14 @@
                     <x-tall-toggleable-link component="Instituicoes\Plano\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- START SUB MENU --}}
-                 {{-- START SUB MENU --}}
-                 <x-tall-toggleable-dropdown label="Config">
+                {{-- START SUB MENU --}}
+                <x-tall-toggleable-dropdown label="Tipo">
+                    <x-tall-toggleable-link component="Instituicoes\Tipo\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Instituicoes\Tipo\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown>
+                {{-- START SUB MENU --}}
+                {{-- START SUB MENU --}}
+                <x-tall-toggleable-dropdown label="Config">
                     <x-tall-toggleable-link component="Instituicoes\Config\ListComponent" path="Admin" />
                     <x-tall-toggleable-link component="Instituicoes\Config\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
