@@ -28,6 +28,9 @@ class RecadastreSeComponent extends AbstractPaginaComponent
         if($model= $this->model){
             if($servidor= $model->servidor){
                 $this->servidores_count = $servidor->ativos + $servidor->aposentados + $servidor->pensionistas;
+            }else{
+                $model->servidor()->create([]);
+                return redirect()->route('associados.associe-se.finalizar', $model);
             }
         }
     }
