@@ -12,8 +12,8 @@
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -24,107 +24,125 @@
             <x-tall-toggleable label="OPERACIONAL">
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="USERS" border="r" width="w-1/5" class="lg:w-1/5">
-                    <x-tall-toggleable-link component="Users\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Users\CreateComponent" path="Admin"/>
-                    
+                    <x-tall-toggleable-link component="Users\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Users\CreateComponent" path="Admin" />
+
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="ROLES">
-                    <x-tall-toggleable-link component="Roles\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Roles\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Roles\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Roles\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="PERMISSÕES">
-                      <x-tall-toggleable-link component="Permissions\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Permissions\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Permissions\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Permissions\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="CARGOS">
-                    <x-tall-toggleable-link component="Officies\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Officies\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Officies\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Officies\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
-                <x-tall-toggleable-dropdown label="PAGES" border="none">
-                    <x-tall-toggleable-link component="Pages\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Pages\CreateComponent" path="Admin"/>
-                </x-tall-toggleable-dropdown>
+                {{-- <x-tall-toggleable-dropdown label="PAGES" border="none">
+                    <x-tall-toggleable-link component="Pages\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Pages\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown> --}}
                 {{-- END MENU --}}
+                {{-- START SUB MENU --}}
+                <x-tall-toggleable-dropdown label="STATUS" border="none">
+                    <x-tall-toggleable-link component="Status\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Status\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown>
+                {{-- END SUB MENU --}}
             </x-tall-toggleable>
             <x-tall-toggleable label="CADASTROS">
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Posts">
-                    <x-tall-toggleable-link component="Posts\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Posts\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Posts\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Posts\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Sliders">
-                    <x-tall-toggleable-link component="Sliders\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Sliders\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Sliders\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Sliders\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Sponsors" border="none">
-                    <x-tall-toggleable-link component="Sponsor\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Sponsor\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Sponsor\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Sponsor\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END MENU --}}
             </x-tall-toggleable>
             <x-tall-toggleable label="EVENTOS">
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Palestras">
-                    <x-tall-toggleable-link component="Eventos\Palestras\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Eventos\Palestras\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Eventos\Palestras\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Eventos\Palestras\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Hotel">
-                    <x-tall-toggleable-link component="Eventos\Hotel\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Eventos\Hotel\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Eventos\Hotel\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Eventos\Hotel\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Eventos" border="none">
-                    <x-tall-toggleable-link component="Eventos\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Eventos\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Eventos\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Eventos\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
             </x-tall-toggleable>
             {{-- START MENU --}}
             <x-tall-toggleable label="ASSOCIAÇÃO">
                 <x-tall-toggleable-dropdown label="Intituições">
-                    <x-tall-toggleable-link component="Instituicoes\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Instituicoes\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Instituicoes\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Instituicoes\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
+                <x-tall-toggleable-dropdown label="Planos">
+                    <x-tall-toggleable-link component="Instituicoes\Plano\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Instituicoes\Plano\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown>
+                {{-- START SUB MENU --}}
+                 {{-- START SUB MENU --}}
+                 <x-tall-toggleable-dropdown label="Config">
+                    <x-tall-toggleable-link component="Instituicoes\Config\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Instituicoes\Config\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown>
+                {{-- START SUB MENU --}}
+                {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Certidões" border="none">
-                    <x-tall-toggleable-link component="Certidoes\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Certidoes\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Certidoes\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Certidoes\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- START SUB MENU --}}
             </x-tall-toggleable>
             <x-tall-toggleable label="TRANSPARÊNCIAS">
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Tipo">
-                    <x-tall-toggleable-link component="Transparencias\Tipos\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Transparencias\Tipos\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Transparencias\Tipos\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Transparencias\Tipos\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Detalhes">
-                    <x-tall-toggleable-link component="Transparencias\Detalhes\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Transparencias\Detalhes\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Transparencias\Detalhes\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Transparencias\Detalhes\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}
                 <x-tall-toggleable-dropdown label="Transparência" border="none">
-                    <x-tall-toggleable-link component="Transparencias\ListComponent" path="Admin"/>
-                    <x-tall-toggleable-link component="Transparencias\CreateComponent" path="Admin"/>
+                    <x-tall-toggleable-link component="Transparencias\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Transparencias\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END MENU --}}
             </x-tall-toggleable>
