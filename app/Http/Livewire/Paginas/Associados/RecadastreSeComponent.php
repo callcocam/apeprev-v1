@@ -26,7 +26,9 @@ class RecadastreSeComponent extends AbstractPaginaComponent
 
     public function loadInstitution(){
         if($model= $this->model){
-            $this->servidores_count = $model->servidor->ativos + $model->servidor->aposentados + $model->servidor->pensionistas;
+            if($servidor= $model->servidor){
+                $this->servidores_count = $servidor->ativos + $servidor->aposentados + $servidor->pensionistas;
+            }
         }
     }
      /*
