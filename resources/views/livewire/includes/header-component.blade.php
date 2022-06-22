@@ -20,11 +20,11 @@
                                                this.closest('form').submit();">Sair</a>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-100 dark:text-gray-500 underline">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm text-gray-100 dark:text-gray-500 underline">Acessar minha conta</a>
 
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}"
-                        class="ml-4 text-sm text-gray-100 dark:text-gray-500 underline">Register</a>
+                        class="ml-4 text-sm text-gray-100 dark:text-gray-500 underline">Cadastre-se</a>
                 @endif
             @endauth
         </div>
