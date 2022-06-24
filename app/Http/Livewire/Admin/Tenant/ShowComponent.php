@@ -43,6 +43,28 @@ class ShowComponent extends FormComponent
         $this->setFormProperties($model); // $tenant from hereon, called $this->model
     }
 
+     /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function route_name($sufix=null){
+        return 'admin.tenant.show';
+     }
+
+     /*
+    |--------------------------------------------------------------------------
+    |  Features order
+    |--------------------------------------------------------------------------
+    | Order visivel no me menu
+    |
+    */
+    public function model(){
+        return app('currentTenant');
+     }
+     
    /*
     |--------------------------------------------------------------------------
     |  Features formAttr
@@ -76,6 +98,13 @@ class ShowComponent extends FormComponent
             Input::make('Database')->span(3)->rules('required'),
             Input::make('Middleware')->span(2)->rules('required'),
             Input::make('Provider')->span(2)->rules('required'),
+            Input::make('Codigo Postal','address.zip')->span(3)->rules('required'),
+            Input::make('UF / Estado','address.state')->span(2)->rules('required'),
+            Input::make('Cidade','address.city')->span(4)->rules('required'),
+            Input::make('Bairro','address.district')->span(3)->rules('required'),
+            Input::make('Endereço ** sem o número **','address.street')->span(6)->rules('required'),
+            Input::make('Número','address.number')->span(2)->rules('required'),
+            Input::make('Complemento','address.complement')->span(4),
             Radio::make('Status', 'status_id')->status()->lg()
         ];
     }

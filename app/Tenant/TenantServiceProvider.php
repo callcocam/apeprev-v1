@@ -83,6 +83,10 @@ class TenantServiceProvider  extends ServiceProvider
 
         Config::set('fortify.home', sprintf("/%s", $tenant->prefix));
         Config::set('database.default', $tenant->provider);
+        if($address = $tenant->address){
+            Config::set('app.address', $tenant->address);
+        }
+
        // Config::set('auth.providers.users.model', config(sprintf('tenant.user.model.%s', $tenant->provider)));
 
         optional($tenant)->makeCurrent();

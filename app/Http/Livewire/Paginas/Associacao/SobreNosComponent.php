@@ -24,6 +24,18 @@ class SobreNosComponent extends AbstractPaginaComponent
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
 
+     /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function label(){
+        return 'Sobre nós';
+     }
+
+
     /*
     |--------------------------------------------------------------------------
     |  Features order

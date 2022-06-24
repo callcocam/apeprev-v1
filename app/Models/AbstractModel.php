@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Sluggable\HasSlug;
 use App\Scopes\UuidGenerate;
 
-class AbstractModel extends Model
+abstract class AbstractModel extends Model
 {
     use  SoftDeletes, HasSlug, UuidGenerate;
     
@@ -22,6 +22,12 @@ class AbstractModel extends Model
     protected $keyType = "string";
 
     public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
@@ -77,6 +83,10 @@ class AbstractModel extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function statuses(){
+        return $this->belongsTo(Status::class);
+    }
+
     public function published(){
         if($status = $this->status)
             return $status->slug == 'published';
@@ -92,6 +102,14 @@ class AbstractModel extends Model
         return false;
     }
 
+  
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+   */
+  public function address()
+  {
+      return $this->morphOne(Address::class, 'addressable')->orderByDesc('created_at');
+  }
 
     public function description(){
         return $this->morphOne(Description::class, 'descriptionable')->orderByDesc('created_at');

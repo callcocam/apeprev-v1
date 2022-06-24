@@ -144,7 +144,7 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     |
     */
     public function label(){
-        return 'Associa-se/Recadastramento';
+        return 'Associe-se';
      }
 
     public function view()

@@ -26,6 +26,7 @@
                 <x-tall-toggleable-dropdown label="USERS" border="r" width="w-1/5" class="lg:w-1/5">
                     <x-tall-toggleable-link component="Users\ListComponent" path="Admin" />
                     <x-tall-toggleable-link component="Users\CreateComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Tenant\ShowComponent" path="Admin" />
 
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
@@ -39,6 +40,12 @@
                 <x-tall-toggleable-dropdown label="PERMISSÕES">
                     <x-tall-toggleable-link component="Permissions\ListComponent" path="Admin" />
                     <x-tall-toggleable-link component="Permissions\CreateComponent" path="Admin" />
+                </x-tall-toggleable-dropdown>
+                {{-- END SUB MENU --}}
+                {{-- START SUB MENU --}}
+                <x-tall-toggleable-dropdown label="Relatorios">
+                    <x-tall-toggleable-link component="Relatorios\ListComponent" path="Admin" />
+                    <x-tall-toggleable-link component="Relatorios\CreateComponent" path="Admin" />
                 </x-tall-toggleable-dropdown>
                 {{-- END SUB MENU --}}
                 {{-- START SUB MENU --}}

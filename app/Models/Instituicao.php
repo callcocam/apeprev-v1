@@ -17,7 +17,7 @@ class Instituicao  extends AbstractModel
 
   protected $guarded = ["id"];
 
-  protected $with = ['address', 'representante', 'servidor', 'instituicoes_tipo'];
+  protected $with = ['address','statuses','users', 'representante', 'servidor', 'instituicoes_tipo','instituicao_tipos'];
   
   protected $appends = ['tipo_inscricoes'];
   
@@ -82,6 +82,11 @@ class Instituicao  extends AbstractModel
     return $this->belongsToMany(TipoInscricao::class);
   }
   
+  public function instituicao_tipos()
+  {
+    return $this->belongsTo(InstituicaoTipo::class,'instituicao_tipo_id');
+  }
+  
   public function instituicoes_tipo()
   {
     return $this->belongsTo(InstituicaoTipo::class,'instituicao_tipo_id');
@@ -107,6 +112,11 @@ class Instituicao  extends AbstractModel
   }
 
   public function user()
+  {
+      return $this->hasOne(User::class, 'instituicao_id');
+  }
+  
+  public function users()
   {
       return $this->hasOne(User::class, 'instituicao_id');
   }

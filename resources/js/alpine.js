@@ -8,5 +8,4 @@ import Interval from '@alpine-collective/toolkit-interval'
 Alpine.plugin(collapse)
 window.Alpine = Alpine
 Alpine.start()
-
 export default Alpine

@@ -10,6 +10,8 @@ import 'tw-elements';
 
 require('./components/Example');
 
+
+
 const consultarCNPJ = require("consultar-cnpj");
 
 async function getCNPJ() {

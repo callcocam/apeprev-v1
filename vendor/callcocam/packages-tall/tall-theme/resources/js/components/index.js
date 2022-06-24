@@ -5,5 +5,7 @@ window.tallFlatPickr = tallFlatPickr
 
 
 document.addEventListener('alpine:init', () => {
-    window.Alpine.data('tallFlatPickr', tallFlatPickr)
+    window.Alpine.data('tallFlatPickr', tallFlatPickr)   
+    
 })
+

@@ -47,9 +47,9 @@
             <x-tall-hoverable label="EVENTOS">
                 <x-tall-hoverable-link component="Eventos\ListComponent" />
                 <x-tall-hoverable-link component="Eventos\CertificadosComponent" border="none" />
-                @if ($model = \App\Models\Event::query()->where('inscrevase', 1)->first())
+                {{-- @if ($model = \App\Models\Event::query()->where('inscrevase', 1)->first())
                     <x-tall-hoverable-link component="Eventos\Inscricoes\IniciarComponent" border="none" :model="$model"/>
-                @endif
+                @endif --}}
             </x-tall-hoverable>
             <x-tall-navlink component="Noticias\ListComponent" />
             <x-tall-navlink component="PortalTransparenciaComponent" />

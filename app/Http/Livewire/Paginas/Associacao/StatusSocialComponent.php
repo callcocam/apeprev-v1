@@ -21,6 +21,7 @@ class StatusSocialComponent extends AbstractPaginaComponent
        \Route::get($this->path(), static::class)->name($this->route_name());
     }
 
+    
      /*
     |--------------------------------------------------------------------------
     |  Features label
@@ -31,7 +32,6 @@ class StatusSocialComponent extends AbstractPaginaComponent
     public function label(){
         return 'Estatuto Social';
      }
-
 
     /*
     |--------------------------------------------------------------------------

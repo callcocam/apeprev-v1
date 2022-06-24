@@ -33,14 +33,14 @@ class TallToggleableLink extends Component
      */
     public function render()
     {
-       
+      
         return view('components.tall-toggleable-link')->with([
             'label'=>$this->component->label(),
             'route'=>$this->component->route_name(),
             'restrito'=>$this->component->restrito(),
             'icon'=>$this->component->icon(),
             'classes'=>$this->classes(),
-            'model'=>$this->model,
+            'model'=>$this->model ?? $this->component->model(),
         ]);
     }
 

@@ -18,6 +18,7 @@ class Tenant extends AbstractModel
     
     protected $guarded = ['id'];
 
+    protected $with = ['address'];
     public function makeCurrent(): self
     {
 

@@ -62,7 +62,7 @@ class AssociaSeComponent extends TableComponent
     protected function tableAttr(): array
     {
         return [
-           'tableTitle' => __('Instituicaos Associação'),
+           'tableTitle' => __('Instituições Associação'),
        ];
     }
     /*

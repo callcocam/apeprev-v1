@@ -67,7 +67,7 @@ final class ListComponent extends TableComponent
     protected function tableAttr(): array
     {
         return [
-           'tableTitle' => __('Instituicaos'),
+           'tableTitle' => __('Instituições'),
        ];
     }
     /*

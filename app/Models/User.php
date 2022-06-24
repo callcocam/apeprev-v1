@@ -62,4 +62,19 @@ class User extends Authenticatable
         return $this->belongsTo(Instituicao::class);
     }
 
+    public function offices()
+    {
+        return $this->belongsTo(Office::class);
+    }
+
+    public function statuses()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
+    public function instituicoes()
+    {
+        return $this->hasOne(Instituicao::class);
+    }
+
 }

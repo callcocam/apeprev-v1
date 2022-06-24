@@ -43,6 +43,29 @@ class EditComponent extends FormComponent
         $this->setFormProperties($model); // $tenant from hereon, called $this->model
     }
 
+     /*
+    |--------------------------------------------------------------------------
+    |  Features order
+    |--------------------------------------------------------------------------
+    | Order visivel no me menu
+    |
+    */
+    public function model(){
+        return app('currentTenant');
+     }
+
+      /*
+    |--------------------------------------------------------------------------
+    |  Features label
+    |--------------------------------------------------------------------------
+    | Label visivel no me menu
+    |
+    */
+    public function route_name($sufix=null){
+        return 'admin.tenant.edit';
+     }
+
+
    /*
     |--------------------------------------------------------------------------
     |  Features formAttr
