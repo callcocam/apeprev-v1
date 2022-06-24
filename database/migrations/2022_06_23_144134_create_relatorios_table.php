@@ -17,8 +17,9 @@ class CreateRelatoriosTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name',255)->nullable();
             $table->string('slug',255)->nullable();
-            $table->longtext('content')->nullable();
-            $table->uuidMorphs('relatorioable');
+            $table->string('model',255)->nullable();
+            $table->text('content')->nullable();
+            //$table->uuidMorphs('relatorioable');
             $table->foreignUuid('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignUuid('status_id')->nullable()->constrained('statuses')->cascadeOnDelete();
             $table->timestamps();

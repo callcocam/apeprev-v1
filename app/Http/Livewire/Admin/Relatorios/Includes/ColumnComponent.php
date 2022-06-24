@@ -5,17 +5,20 @@
 * https://www.sigasmart.com.br
 */
 namespace App\Http\Livewire\Admin\Relatorios\Includes;
+
 use App\Models\Relatorio;
+use Tall\Form\FormComponent;
+use Tall\Form\Fields\Input;
+use Tall\Form\Fields\Radio;
 
-use App\Http\Livewire\AbstractPaginaComponent;
-
-class ColumnComponent extends AbstractPaginaComponent
+class ColumnComponent extends FormComponent
 {
 
     public $column;
     public $cardModal;
+    public $name;
 
-    protected $listeners = ['openModal'];
+    public $listeners = ['openModal'];
      /*
     |--------------------------------------------------------------------------
     |  Features mount
@@ -23,15 +26,29 @@ class ColumnComponent extends AbstractPaginaComponent
     | Inicia o formulario com um cadastro selecionado
     |
     */
-    public function mount(?Relatorio $model, $column, $cardModal=false)
+    public function mount(?Relatorio $model, $column, $name)
     {
         
         $this->setFormProperties($model); 
         
         $this->column = $column;
-        $this->cardModal = $cardModal;
+        $this->name = $name;
     }
-    
+   
+    /*
+    |--------------------------------------------------------------------------
+    |  Features fields
+    |--------------------------------------------------------------------------
+    | Inicia a configuração do campos disponiveis no formulario
+    |
+    */
+    protected function fields(): array
+    {
+        return [
+            Input::make('Name')->rules('required'),
+            Radio::make('Status', 'status_id')->status()->lg()
+        ];
+    }
     /*
     |--------------------------------------------------------------------------
     |  Features order
@@ -39,20 +56,8 @@ class ColumnComponent extends AbstractPaginaComponent
     | Order visivel no me menu
     |
     */
-    public function order(){
-        return 1000;
-     }
-    
-    /*
-    |--------------------------------------------------------------------------
-    |  Features order
-    |--------------------------------------------------------------------------
-    | Order visivel no me menu
-    |
-    */
-    public function openModal($column){
-        if($column == $this->column)
-            $this->cardModal = true;
+    public function openModal(){
+        $this->cardModal = true;            
      }
 
      public function save(){

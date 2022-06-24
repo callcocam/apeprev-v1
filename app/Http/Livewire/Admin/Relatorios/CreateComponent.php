@@ -10,8 +10,13 @@ use App\Models\Relatorio;
 use Tall\Form\FormComponent;
 use Illuminate\Support\Facades\Route;
 use Tall\Form\Fields\Input;
+use Tall\Form\Fields\Select;
 use Tall\Form\Fields\Radio;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 
 
 class CreateComponent extends FormComponent
@@ -81,11 +86,50 @@ class CreateComponent extends FormComponent
     protected function fields(): array
     {
         return [
-            Input::make('Name')->rules('required'),
+            Input::make('Nome do relatório', 'name')->span(5)->rules('required'),
+            Select::make('Modelo','model')->span(7)->options($this->tables())->rules('required'),
             Radio::make('Status', 'status_id')->status()->lg()
         ];
     }
     
+    
+    public function tables(){
+
+        
+        $tables = $this->getModels();
+        // $tables = $this->schema->getTableNames();
+
+        $collection = new \Illuminate\Database\Eloquent\Collection;
+
+        foreach($tables as $table){
+            $collection->put(\Str::replace('\\', '-', $table), \Str::afterLast($table, '\\'));
+        }
+
+        return $collection; //or compact('collection'); //for combo select
+    }
+
+    protected function getModels(): Collection
+    {
+        $models = collect(File::allFiles(app_path()))
+            ->map(function ($item) {
+                $path = $item->getRelativePathName();
+                $class = sprintf('\\%s%s', Container::getInstance()->getNamespace(), strtr(substr($path, 0, strrpos($path, '.')), '/', '\\'));
+    
+                return $class;
+            })
+            ->filter(function ($class) {
+                $valid = false;
+    
+                if (class_exists($class)) {
+                    $reflection = new \ReflectionClass($class);
+                    $valid = $reflection->isSubclassOf(Model::class) &&
+                        !$reflection->isAbstract();
+                }
+    
+                return $valid;
+            });
+        return $models->values();
+    }
     /*
     |--------------------------------------------------------------------------
     |  Features saveAndGoBackResponse
@@ -113,8 +157,8 @@ class CreateComponent extends FormComponent
         return route("admin.relatorios");
     }
 
-    public function view()
-    {
-        return 'livewire.admin.relatorios.create-component';
-    }
+    // public function view()
+    // {
+    //     return 'livewire.admin.relatorios.create-component';
+    // }
 }

@@ -3,7 +3,7 @@
         @if (!\Str::contains($item, 'able_id'))
             @if (!\Str::contains($item, '_id'))
                 @if ($column = sprintf('%s.%s', $name, $item))
-                    <div class="flex justify-between items-center  py-2">
+                    <div class="flex justify-between items-center  py-2 ">
                         <div class="flex items-center">
                             <input id="{{ $name }}-{{ $item }}"
                                 wire:model="colums.{{ $name }}.{{ $item }}" value="{{ $item }}"
@@ -14,7 +14,6 @@
                             </label>
                         </div>
                     </div>
-                    @livewire('admin.relatorios.includes.column-component', compact('column', 'model'), key(sprintf('item-%s-%s', $name, $item)))
                 @endif
             @endif
         @endif

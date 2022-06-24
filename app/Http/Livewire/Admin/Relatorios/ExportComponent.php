@@ -14,28 +14,25 @@ use Tall\Table\Fields\Action;
 use Tall\Table\Fields\Link;
 use Tall\Table\Fields\Delete;
 use App\Models\Relatorio;
+use Tall\Form\Fields\Input;
+use Tall\Form\Fields\Radio;
 
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Tall\Form\FormComponent;
 
 
-class ExportComponent extends Component
+class ExportComponent extends FormComponent
 {
 
-    private const MYSQL  = 'mysql';
-    private const PGSQL  = 'pgsql';
-    private const SQLITE = 'sqlite';
-    private const SQLSRV = 'sqlsrv';
 
-    public $data = [];
-    public $model;
-    public $table;
+    public $colums = [];
     private $schema;
     public function mount(?Relatorio $model)
     {
-        $this->model = $model;
+        $this->setFormProperties($model);
     }
 
   
@@ -48,9 +45,14 @@ class ExportComponent extends Component
     */
     protected function tableAttr(): array
     {
+      if($this->model->exists){
         return [
-           'tableTitle' => __('Instituições Associação'),
-       ];
+            'tableTitle' => __(sprintf('Relatórios Editar - %s', $this->model->name)),
+        ];
+      }
+      return [
+        'tableTitle' => __('Relatórios Cadastrar'),
+      ];
     }
     /*
     |--------------------------------------------------------------------------
@@ -65,6 +67,20 @@ class ExportComponent extends Component
         return [];
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    |  Features fields
+    |--------------------------------------------------------------------------
+    | Inicia a configuração do campos disponiveis no formulario
+    |
+    */
+    protected function fields(): array
+    {
+        return [
+            Input::make('Name')->rules('required'),
+            Radio::make('Status', 'status_id')->status()->lg()
+        ];
+    }
     
     public function getDelateAllHeader()
     {
@@ -87,10 +103,10 @@ class ExportComponent extends Component
         ];
     }
 
-    public function getTableColumns($table)
-    {
-        return \DB::select(sprintf("select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA='%s' AND TABLE_NAME = '%s'",env('DB_DATABASE','regimepopriobra_prod'),strtolower($table)));
-    }
+    // public function getTableColumns($table)
+    // {
+    //     return \DB::select(sprintf("select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA='%s' AND TABLE_NAME = '%s'",env('DB_DATABASE','regimepopriobra_prod'),strtolower($table)));
+    // }
 
       /*
     |--------------------------------------------------------------------------
@@ -101,8 +117,8 @@ class ExportComponent extends Component
     */
     protected function query(){
        
-        if($this->table){     
-            $class = \Str::replace('-', '\\', $this->table); 
+        if($this->model->exists){     
+            $class = \Str::replace('-', '\\', $this->model->model); 
             if(class_exists($class))    
             {
                 return app($class)->query();
@@ -124,43 +140,6 @@ class ExportComponent extends Component
         return null;
     }
 
-    public function tables(){
-
-        
-        $tables = $this->getModels();
-        // $tables = $this->schema->getTableNames();
-
-        $collection = new \Illuminate\Database\Eloquent\Collection;
-
-        foreach($tables as $table){
-            $collection->put(\Str::replace('\\', '-', $table), \Str::afterLast($table, '\\'));
-        }
-
-        return $collection; //or compact('collection'); //for combo select
-    }
-
-    protected function getModels(): Collection
-    {
-        $models = collect(File::allFiles(app_path()))
-            ->map(function ($item) {
-                $path = $item->getRelativePathName();
-                $class = sprintf('\\%s%s', Container::getInstance()->getNamespace(), strtr(substr($path, 0, strrpos($path, '.')), '/', '\\'));
-    
-                return $class;
-            })
-            ->filter(function ($class) {
-                $valid = false;
-    
-                if (class_exists($class)) {
-                    $reflection = new \ReflectionClass($class);
-                    $valid = $reflection->isSubclassOf(Model::class) &&
-                        !$reflection->isAbstract();
-                }
-    
-                return $valid;
-            });
-        return $models->values();
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -171,8 +150,8 @@ class ExportComponent extends Component
     */
     protected function columns(){
         $columns = [];
-        if($this->table){     
-            $class = \Str::replace('-', '\\', $this->table); 
+        if($this->model->exists){     
+            $class = \Str::replace('-', '\\', $this->model->model); 
             if(class_exists($class))    
             {
                 $table = app($class)->getTable();
@@ -193,7 +172,7 @@ class ExportComponent extends Component
     {
 
         return view('livewire.admin.relatorios.exportar-component')
-         ->with('tables',$this->tables()->toArray())
+         ->with('tableAttr',$this->tableAttr())
          ->with('columns',$this->columns())
          ->with('models',$this->models())
         ->layout("layouts.admin");
