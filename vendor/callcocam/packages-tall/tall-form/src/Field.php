@@ -15,6 +15,8 @@ abstract class Field
     protected $wire_model = "defer";
     protected $data_name = "data";
     protected $span = "12";
+    protected $mt = "2";
+    protected $id;
     protected $hidden = true;
     protected $default;
     protected $label;
@@ -43,6 +45,7 @@ abstract class Field
         }
         $this->field = $name;
         $this->name = $name;
+        $this->id = $name;
         if(!is_null($label)){
             $this->label = __($label);
          }
@@ -78,7 +81,17 @@ abstract class Field
         $this->field = $field;
         return $this;
     }
+    
+    public function id($id){
+        $this->id = $id;
+        return $this;
+    }
   
+    public function mt($mt){
+        $this->mt = $mt;
+        return $this;
+    }
+    
     public function key($key){
         $this->key = $key;
         return $this;
@@ -171,7 +184,7 @@ abstract class Field
 
     public function status( $type = 'general'){
         $this->options(Cache::remember($this->expiration, "statuses_", function() use($type){
-            return \App\Models\Status::query()->where('type', $type)->pluck('name','id')->toArray();
+            return \Tall\Form\Models\Status::query()->where('type', $type)->pluck('name','id')->toArray();
         }));
         return $this;
     }

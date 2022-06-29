@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Tenant\TenantServiceProvider::class,
+        //App\Tenant\TenantServiceProvider::class,
         // Tall\Theme\ThemeServiceProvider::class,  
         // Tall\Table\TallTableServiceProvider::class,  
         // Tall\Form\FormServiceProvider::class,  

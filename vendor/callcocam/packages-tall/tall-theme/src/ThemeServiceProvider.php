@@ -9,11 +9,18 @@ namespace Tall\Theme;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Symfony\Component\Finder\Finder;
 
 class ThemeServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        if(!\Schema::hasTable('tenants')){
+            return;
+        }
         if ($this->app->runningInConsole()) {
             //$this->commands([\Tall\Theme\Commands\CreateCommand::class]);
         }
@@ -37,6 +44,13 @@ class ThemeServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        if(!\Schema::hasTable('tenants')){
+            return;
+        }
+        $this->app->register(RouteServiceProvider::class);        
+        if (class_exists(Livewire::class)) {
+            \Tall\Theme\ComponentParser::loadComponent(__DIR__.'/Http/Livewire', __DIR__);
+        }
         $this->mergeConfigFrom(
             __DIR__ . '/../config/tall-theme.php','tall-theme'
         );
@@ -89,4 +103,6 @@ class ThemeServiceProvider extends ServiceProvider
             return "<?php echo view('tall-theme::assets.loader')->render(); ?>";
         });
     }
+
+   
 }

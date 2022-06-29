@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use App\Models\AbstractModel;
 use App\Models\Auth\Acl\Concerns\HasPermissions;
 use App\Models\Auth\Acl\Contracts\Role as ContractRole;
-use App\Tenant\Concerns\UsesLandlordConnection;
+use Tall\Tenant\Concerns\UsesLandlordConnection;
 
 class Role extends AbstractModel implements ContractRole
 {

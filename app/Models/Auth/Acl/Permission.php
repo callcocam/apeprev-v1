@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\AbstractModel;
 use App\Models\Auth\Acl\Concerns\RefreshesPermissionCache;
 use App\Models\Menu;
-use App\Tenant\Concerns\UsesLandlordConnection;
+use Tall\Tenant\Concerns\UsesLandlordConnection;
 
 class Permission extends AbstractModel implements Contracts\Permission
 {

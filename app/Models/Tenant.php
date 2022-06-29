@@ -7,10 +7,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Tenant\Actions\ForgetCurrentTenantAction;
-use App\Tenant\Actions\MakeCurrentTenantAction;
-use App\Tenant\TenantCollection;
-use App\Tenant\Concerns\UsesLandlordConnection;
+use Tall\Tenant\Actions\ForgetCurrentTenantAction;
+use Tall\Tenant\Actions\MakeCurrentTenantAction;
+use Tall\Tenant\TenantCollection;
+use Tall\Tenant\Concerns\UsesLandlordConnection;
 
 class Tenant extends AbstractModel
 {

@@ -10,10 +10,11 @@ use Tall\Form\Field;
 
 class Checkbox extends Field
 {
-    protected $type = 'checkboxs';
+    protected $type = 'checkbox';
     protected $left_label  = false;
     protected $lg  = false;
     protected $md  = false;
+    protected $value  = 1;
 
     public function left_label(){
         $this->left_label = true;
