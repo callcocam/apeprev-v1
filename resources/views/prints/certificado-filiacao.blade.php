@@ -20,7 +20,7 @@
         <span
             style="position: absolute;top: 350px;left: 127px;color: #b2bcc4;">DEZEMBRO/{{ $model->instituicao_vigente->year }}</span>
         <span style="position: absolute;top: 252px;left: 505px;color: #005c9f;">{{ $model->document }}</span>
-        <span style="position: absolute;top: 295px;left: 505px;color: #005c9f;">{{ $model->name }}</span>
+        <span style="position: absolute;top: 282px;left: 505px;color: #005c9f;">{{ \Str::beforeLast($model->name, '-') }}</span>
         <span style="position: absolute;top: 338px;left: 505px;color: #005c9f;">{{ $model->address->street }}</span>
         <span style="position: absolute;top: 380px;left: 505px;color: #005c9f;">{{ $model->address->zip }}</span>
         <span

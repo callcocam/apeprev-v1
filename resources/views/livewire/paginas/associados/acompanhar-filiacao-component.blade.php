@@ -164,7 +164,7 @@
                                     <span
                                         style="position: absolute;top: 217px;left: 506px;color: #005c9f;">{{ $model->document }}</span>
                                     <span
-                                        style="position: absolute;top: 256px;left: 506px;color: #005c9f;">{{ $model->name }}</span>
+                                        style="position: absolute;top: 242px;left: 506px;color: #005c9f; height: 70px;">{{ \Str::beforeLast($model->name, '-') }}</span>
                                     <span
                                         style="position: absolute;top: 295px;left: 506px;color: #005c9f;">{{ $model->address->street }}</span>
                                     <span
