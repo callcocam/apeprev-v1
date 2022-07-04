@@ -29,6 +29,10 @@ Route::middleware(['auth:sanctum'])->get('/associados/certificado-filiacao/{mode
     return view('prints.certificado-filiacao', compact('model'));
 })->name('associados.certificado.emitir');
 
+Route::middleware(['auth:sanctum'])->get('/associados/certificado-filiacao/{model}/recibo', function(\App\Models\Instituicao $model){
+    return view('prints.recibo', compact('model'));
+})->name('associados.certificado.recibo');
+
 //Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', \App\Http\Livewire\Admin\DashboardComponent::class)->name('dashboard');
 
 
