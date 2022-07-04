@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Hash;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +17,34 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ 
+Route::post('/forgot-password', function (Request $request) {
+//    dd($request->only('email'));
+
+   $currentUser = null;
+   if(\Str::contains($request->email, '@')){      
+     $request->validate(['email' => 'required|email']);
+     $status = Password::sendResetLink(
+        $request->only('email')
+    ); 
+   }
+   else{    
+       $request->validate(['email' => 'required']); 
+       $instituicao = \App\Models\Instituicao::where('document', $request->email)->first();
+       $data['email'] = null;
+       if($instituicao){
+           $currentUser = \App\Models\User::where('instituicao_id', $instituicao->id)->first();
+            if($currentUser){
+                $data['email'] = $currentUser->email;
+            }
+       }
+       $status = Password::sendResetLink($data); 
+   }
+    
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
 
 Route::get('/home',  function(){
     return redirect()->to('/');
