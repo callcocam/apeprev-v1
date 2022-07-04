@@ -10,7 +10,7 @@
         style="background-image: url({{ \Storage::url(\Arr::get($image, $field->name)) }});"
         @endif
         class="relative bg-cover bg-center border-4 border-dotted border-gray-300  cursor-pointer bg-gray-100 rounded-xl shadow-md h-72 flex items-center justify-center">
-        <label class="absolute cursor-pointer top-0 left-0 right-0 bottom-0 h-full w-full bg-gray-500 opacity-30"
+        <label class="absolute cursor-pointer top-0 left-0 right-0 bottom-0 h-full w-full opacity-30"
             :class="{'invisible':!visible}" :class="{'visible':visible}" for="{{ $field->name }}">
         </label>
         <div :class="{'invisible':!visible}" :class="{'visible':visible}">

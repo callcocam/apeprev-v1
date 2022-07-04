@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "callcocam/packages-tall": "dev-main",
+        "callcocam/packages-tall": "dev-main#52f715fa563391d4d2711d97d8906e15fddff49c",
         "doctrine/dbal": "^3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

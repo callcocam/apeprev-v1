@@ -28,11 +28,17 @@ trait TraitInstituicao
          
             if($response->successful()){    
                 if($response->json('status')){
-                    if($response->json('Data do Pagamento')){
+                    if($response->json('Data do pagamento')){
                         $this->model->instituicao_vigente()->update([
                             'status_id'=>status(\Str::slug($response->json('Situação do pagamento'))),
-                            'payment_date'=>date_carbom_format($response->json('Data do Pagamento'))->format('Y-m-d'),
+                            'payment_date'=>date_carbom_format($response->json('Data do pagamento'))->format('Y-m-d'),
                         ]);
+                        if($instituicao_tipo = \App\Models\InstituicaoTipo::query()->where("slug",config('instituicao.tipo.slug.acossiado','associados'))->first()){
+
+                            $this->model->instituicao_tipo_id = $instituicao_tipo->id;
+
+                            $this->model->update();
+                        }
                         return true;
                     }
                     else{
