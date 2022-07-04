@@ -42,6 +42,7 @@
                 <x-tall-toggleable-dropdown label="ASSOCIADOS" border="none">
                     <x-tall-toggleable-link component="Associados\RecadastreSeComponent" />
                     <x-tall-toggleable-link component="Associados\PareceresComponent" />
+                    <x-tall-toggleable-link component="Associados\AssociadosComponent" />
                 </x-tall-toggleable-dropdown>
             </x-tall-toggleable>
             <x-tall-hoverable label="EVENTOS">

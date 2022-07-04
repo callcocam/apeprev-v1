@@ -16,7 +16,10 @@ class InstituicaoVigente  extends AbstractModel
   //protected $with = ['description'];
   protected $guarded = ["id"];
 
-  
+  public function instituicao()
+  {
+    return $this->belongsTo(Instituicao::class);
+  }
   /**
    * @return string
    */
