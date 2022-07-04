@@ -19,34 +19,49 @@
 <x-content>
     <section class="container mx-auto mt-5">
         <h1 class="text-primary text-center font-bold text-3xl mb-3">ATENÇÃO</h1>
-        <p class="text-justify pb-4 pt-4">
-            1. A simulação é feita com base na data da consulta, não sendo recomendado fazer projeções de valores para
-            requerimentos já deferidos ou projeções para valores futuros
-        </p>
-        <p class="text-justify pb-4 pt-4">
-            2. A simulação leva em consideração duas variáveis: o valor do benefício e o valor médio dos benefícios
-            pagos pelo RGPS, escolhendo sempre o menor, conforme o Artigo 6º do Decreto 10.188/19.
-        </p>
-        <p class="text-justify pb-4 pt-4">
-            3. A simulação não considera as outras formas de cálculo englobadas na compensação previdenciária, como:
-            valor da remuneração da data de desvinculação, valores de contribuições no CNIS, bem como tabelas
-            limitadores de salário-mínimo e teto de benefícios pagos pelo RGPS, além das regras de prescrição
-        </p>
-        <p class="text-justify pb-4 pt-4">
-            4. Não é possível simular os valores das pensões, tendo em vista que os percentuais se rementem diretamente
-            as aposentadorias.
-        </p>
-        <p class="text-justify pb-4 pt-4">
-            5. Não é possível simular requerimentos que tenham a data do início do benefício anterior a julho de 1994,
-            uma vez que o cálculo não está preparado para as conversões de moedas.
-        </p>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <p class="text-justify pb-4 pt-4">
+                    1. A simulação é feita com base na data da consulta, não sendo recomendado fazer projeções de
+                    valores para
+                    requerimentos já deferidos ou projeções para valores futuros
+                </p>
+                <p class="text-justify pb-4 pt-4">
+                    2. A simulação leva em consideração duas variáveis: o valor do benefício e o valor médio dos
+                    benefícios
+                    pagos pelo RGPS, escolhendo sempre o menor, conforme o Artigo 6º do Decreto 10.188/19.
+                </p>
+                <p class="text-justify pb-4 pt-4">
+                    3. A simulação não considera as outras formas de cálculo englobadas na compensação previdenciária,
+                    como:
+                    valor da remuneração da data de desvinculação, valores de contribuições no CNIS, bem como tabelas
+                    limitadores de salário-mínimo e teto de benefícios pagos pelo RGPS, além das regras de prescrição
+                </p>
+                <p class="text-justify pb-4 pt-4">
+                    4. Não é possível simular os valores das pensões, tendo em vista que os percentuais se rementem
+                    diretamente
+                    as aposentadorias.
+                </p>
+                <p class="text-justify pb-4 pt-4">
+                    5. Não é possível simular requerimentos que tenham a data do início do benefício anterior a julho de
+                    1994,
+                    uma vez que o cálculo não está preparado para as conversões de moedas.
+                </p>
 
-        <p class="text-justify pb-4 pt-4">
-            6. Todos os valores apresentados configuram-se <b>em meras estimativas limitadas dentro das condições
-                especificadas acima</b> e dependem exclusivamente das informações preenchidas pelos usuários, desta
-            forma a Associação Paranaense das Entidades Previdenciárias do Estado e dos Municípios (APEPREV) não se
-            responsabiliza por divergências de valores quando da aprovação dos requerimentos simulados.
-        </p>
+                <p class="text-justify pb-4 pt-4">
+                    6. Todos os valores apresentados configuram-se <b>em meras estimativas limitadas dentro das
+                        condições
+                        especificadas acima</b> e dependem exclusivamente das informações preenchidas pelos usuários,
+                    desta
+                    forma a Associação Paranaense das Entidades Previdenciárias do Estado e dos Municípios (APEPREV) não
+                    se
+                    responsabiliza por divergências de valores quando da aprovação dos requerimentos simulados.
+                </p>
+            </div>
+            <div class="mt-5">
+                <img src="{{ \Storage::url('images/arte1.jpg') }}" class="max-w-full h-auto" alt="calculadora comprev" />
+            </div>
+        </div>
         <div x-data="{ show: false }">
             <section class="container mx-auto pb-10 ">
                 <label for="checkbox" class="relative flex-inline items-center isolate  rounded-2xl">
