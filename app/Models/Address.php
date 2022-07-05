@@ -24,4 +24,10 @@ class Address extends AbstractModel
     {
         return $this->morphTo();
     }
+
+    
+    public function instituicoes()
+    {
+        return $this->belongsTo(Instituicao::class, 'addressable_id');
+    }
 }

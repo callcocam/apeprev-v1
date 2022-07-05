@@ -74,3 +74,7 @@ Route::middleware(['auth:sanctum'])->get('/associados/certificado-filiacao/{mode
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function() {
     \UniSharp\LaravelFilemanager\Lfm::routes();
   });
+
+
+  
+Route::middleware(['auth:sanctum'])->get('/associados/relatorios/cidades', [\App\Http\Controllers\ReportController::class, 'instituicao'])->name('export.instituicao');
