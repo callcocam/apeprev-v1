@@ -162,9 +162,9 @@
                                     <img style="height: 500px; width: 100%"
                                         src="{{ \Storage::url('images/certificado-filiacao.png') }}" alt="">
                                     <span
-                                        style="position: absolute;top: 330px;left: 169px;color: #b7c0c7;">{{ str_pad($model->instituicao_vigente->count(), 7, '0', STR_PAD_LEFT) }}</span>
+                                        style="position: absolute;top: 330px;left: 169px;color: #fff;">{{ str_pad($model->instituicao_vigente->count(), 7, '0', STR_PAD_LEFT) }}</span>
                                     <span
-                                        style="position: absolute;top: 304px;left: 128px;color: #b2bcc4;">DEZEMBRO/{{ $model->instituicao_vigente->year }}</span>
+                                        style="position: absolute;top: 304px;left: 128px;color: #fff;">DEZEMBRO/{{ $model->instituicao_vigente->year }}</span>
                                     <span
                                         style="position: absolute;top: 217px;left: 506px;color: #005c9f;">{{ $model->document }}</span>
                                     <span
