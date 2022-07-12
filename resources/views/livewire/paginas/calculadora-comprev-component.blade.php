@@ -97,7 +97,7 @@
                     href=" https://comprevfacil.com.br/comprev/inscricao"
                     class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-secondary-900 hover:bg-secondary-1000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <i class="fas fa-external-link-alt"></i>
-                    <span class="ml-2">CLICK AQUI</span>
+                    <span class="ml-2">CONTRATE AQUI</span>
                 </a>                   
                 </td>
             </tr>
