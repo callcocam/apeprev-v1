@@ -82,7 +82,6 @@ class CreateComponent extends FormComponent
         return [
             Input::make('Name')->span("9")->rules('required'),
             Input::make('Ordem','ordering')->span("3"),
-            DatetimePicker::make('Data emissão','data_emissao')->rules('required'),
             DatetimePicker::make('Data emissão','data_emissao')->span("6")->rules('required'),
             DatetimePicker::make('Data validade','data_validade')->span("6"),
             File::make('Arquivo','url'),

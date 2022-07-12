@@ -91,6 +91,16 @@
                     de compensação previdenciária. Totalmente personalizável permitindo que o RPPS insira dados
                     pessoais e institucionais, como sua logomarca própria.</td>
             </tr>
+             <tr>
+                <td colspan="2" class="py-2 text-center">
+                    <a target="_blank"
+                    href=" https://comprevfacil.com.br/comprev/inscricao"
+                    class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-secondary-900 hover:bg-secondary-1000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span class="ml-2">CLICK AQUI</span>
+                </a>                   
+                </td>
+            </tr>
         </table>
         <div class="flex w-full justify-center border-b-2">
             <h2 class="font-bold py-5">Em caso de dúvidas ou problemas envie um email para: <span class="text-gray-600">faleconosco@comprevfacil.com.br</span></h2>

@@ -4,7 +4,7 @@
 /public/storage
 /public/img
 /storage/*.key
-*Zone.Identifier
+**/*Zone.Identifier
 /vendor
 .env
 .env.backup
