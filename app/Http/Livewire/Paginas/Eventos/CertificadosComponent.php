@@ -27,7 +27,7 @@ class CertificadosComponent extends AbstractPaginaComponent
             $certificados=(new \App\Imports\EventsImport)->toCollection('events/imports/eventosApeprev.xlsx');
             $certificados = $certificados[0];
             unset($certificados[0]);
-            $this->rows['certificados']= $certificados->sortDesc()->toArray();
+            $this->rows['certificados']= $certificados->sortByDesc(4)->toArray();
         }
       
     }
