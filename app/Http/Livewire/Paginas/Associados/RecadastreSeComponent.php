@@ -59,7 +59,9 @@ class RecadastreSeComponent extends AbstractPaginaComponent
         }
         else{
             if($user = auth()->user()){
-                return redirect()->route('associados.associe-se.finalizar', $user->instituicao);
+                if($instituicao = $user->instituicao){
+                    return redirect()->route('associados.associe-se.finalizar', $instituicao);
+                }
             }
         }
     }
