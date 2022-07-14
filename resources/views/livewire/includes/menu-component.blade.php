@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }" class="relative bg-white border-b-2 border-gray-300 text-gray-900">
-    <div class="container md:max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between ">
+    <div class="container md:max-w-7xl  mx-auto flex flex-col md:flex-row md:items-center justify-between ">
         <div class="relative  justify-between flex p-1 text-xl text-gray-600 font-bold">
             <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                 <x-jet-application-logo class="h-14 w-auto" />

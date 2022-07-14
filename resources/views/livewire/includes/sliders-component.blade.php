@@ -1,5 +1,5 @@
 <div class="w-full">
-    <div class="flex flex-col slider h-60 md:h-72 lg:h-[400px] text-center text-black bg-white mx-auto max-w-6xl">
+    <div class="flex flex-col slider h-60 md:h-72 lg:h-[400px] text-center text-black bg-white mx-auto max-w-7xl">
         @if ($slides = $this->slides)
             @foreach ($slides as $slide)
                 <a href="{{ url($slide->url) }}" title="{{ \Str::limit($slide->title, 110) }}">
