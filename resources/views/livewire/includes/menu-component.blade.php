@@ -56,6 +56,7 @@
             <x-tall-navlink component="PortalTransparenciaComponent" />
             <x-tall-navlink component="FaleConoscoComponent" />
             <x-tall-navlink component="CalculadoraComprevComponent" />
+            <x-tall-navlink component="Associados\RecadastreSeComponent" />
         </ul>
     </div>
 
