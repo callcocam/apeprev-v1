@@ -21,7 +21,7 @@ class RecadastreSeComponent extends AbstractPaginaComponent
     |
     */
     public function label(){
-        return "RECADASTRE-SE";
+        return "ASSOCIADOS";
      }
 
 }

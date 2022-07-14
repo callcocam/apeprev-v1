@@ -55,10 +55,10 @@ class TallToggleableLink extends Component
     }
 
     protected function classe_active(){
-        return 'flex px-3 py-2 hover:bg-gray-100 text-gray-700 hover:text-gray-800';
+        return 'flex px-2 py-2 hover:bg-gray-100 text-gray-700 hover:text-gray-800';
     }
     
     protected function classe_link(){
-        return 'flex px-3 py-2 hover:bg-gray-100 text-gray-900 hover:text-gray-800';
+        return 'flex px-2 py-2 hover:bg-gray-100 text-gray-900 hover:text-gray-800';
     }
 }

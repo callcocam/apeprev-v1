@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }" class="relative bg-white border-b-2 border-gray-300 text-gray-900">
-    <div class="container md:max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between ">
+    <div class="container md:max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between ">
         <div class="relative  justify-between flex p-1 text-xl text-gray-600 font-bold">
             <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                 <x-jet-application-logo class="h-14 w-auto" />
@@ -20,7 +20,7 @@
         </div>
         <ul :class="{'block': open, 'hidden': ! open}"
             class="hidden md:flex md:items-center flex-col md:flex-row w-full">
-            <x-tall-toggleable label="A APEPREV">
+            <x-tall-toggleable label="APEPREV">
                 <x-tall-toggleable-dropdown label="ASSOCIAÇÃO">
                     <x-tall-toggleable-link component="Associacao\SobreNosComponent" />
                     <x-tall-toggleable-link component="Associacao\CertidoesComponent" />
@@ -56,7 +56,13 @@
             <x-tall-navlink component="PortalTransparenciaComponent" />
             <x-tall-navlink component="FaleConoscoComponent" />
             <x-tall-navlink component="CalculadoraComprevComponent" />
-            <x-tall-navlink component="RecadastreSeComponent" />
+            <x-tall-toggleable label="ASSOCIADOS">
+                <x-tall-toggleable-dropdown label="ASSOCIADOS" border="none">
+                    <x-tall-toggleable-link component="Associados\RecadastreSeComponent" />
+                    <x-tall-toggleable-link component="Associados\PareceresComponent" />
+                    <x-tall-toggleable-link component="Associados\AssociadosComponent" />
+                </x-tall-toggleable-dropdown>
+            </x-tall-toggleable>
         </ul>
     </div>
 
