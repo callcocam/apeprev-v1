@@ -80,6 +80,11 @@ example:
   w-full;
   }
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        .container{
+            max-width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .mega-menu {
             display: none;
             left: 0;
