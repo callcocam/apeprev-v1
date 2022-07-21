@@ -11,6 +11,8 @@ use App\Models\Instituicao;
 
 class AssociadosComponent extends AbstractPaginaComponent
 {
+    
+    protected $perPage = 1000;
      /*
     |--------------------------------------------------------------------------
     |  Features route
